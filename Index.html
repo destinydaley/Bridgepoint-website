@@ -45,10 +45,15 @@
   .btn-ghost { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
   .btn-ghost:hover { color: var(--gold); border-color: var(--gold); }
 
+  /* COHESIVE IMAGE TREATMENT — warm gold/sepia tone across all photos */
+  .brand-img {
+    filter: sepia(60%) saturate(80%) hue-rotate(5deg) brightness(0.75);
+  }
+
   /* HERO RIGHT — image + stats overlay */
   .hero-right { position: relative; overflow: hidden; background: var(--ink); }
-  .hero-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.45; display: block; min-height: 500px; }
-  .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem; background: linear-gradient(to top, rgba(15,14,12,0.95) 30%, rgba(15,14,12,0.2) 100%); }
+  .hero-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; display: block; min-height: 500px; filter: sepia(70%) saturate(60%) hue-rotate(5deg) brightness(0.65); }
+  .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem; background: linear-gradient(to top, rgba(15,14,12,0.96) 30%, rgba(184,149,74,0.08) 100%); }
   .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; opacity: 0; animation: fadeUp 0.8s 1s forwards; }
   .stat { border-top: 1px solid rgba(184,149,74,0.4); padding-top: 1rem; }
   .stat-num { font-size: 2.8rem; font-weight: 300; line-height: 1; color: var(--gold); }
@@ -75,7 +80,7 @@
   #problem .section-heading { color: var(--cream); max-width: 28ch; }
   #problem .section-label { color: var(--gold); }
   .problem-top { padding: 5rem 5rem 3rem; }
-  .problem-image-strip { width: 100%; height: 280px; object-fit: cover; object-position: center 30%; opacity: 0.35; display: block; }
+  .problem-image-strip { width: 100%; height: 280px; object-fit: cover; object-position: center 30%; display: block; filter: sepia(70%) saturate(60%) hue-rotate(5deg) brightness(0.5); }
   .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,0.08); }
   .problem-item { padding: 2.5rem 2.5rem 2.5rem 0; border-right: 1px solid rgba(255,255,255,0.08); }
   .problem-item:last-child { border-right: none; padding-right: 0; padding-left: 2.5rem; }
@@ -89,8 +94,8 @@
   #services { background: var(--white); padding: 0; }
   .services-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
   .services-image-col { position: relative; overflow: hidden; }
-  .services-image-col img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .services-image-col::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(15,14,12,0.4), transparent); }
+  .services-image-col img { width: 100%; height: 100%; object-fit: cover; display: block; filter: sepia(65%) saturate(70%) hue-rotate(5deg) brightness(0.6); }
+  .services-image-col::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(15,14,12,0.55), rgba(184,149,74,0.08)); }
   .services-content { padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; }
   .services-intro { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 2.5rem; }
   .service-item { display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--rule); }
@@ -113,8 +118,8 @@
 
   /* WHO — image background */
   #who { padding: 0; position: relative; overflow: hidden; }
-  .who-image { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 0; }
-  .who-overlay { position: relative; z-index: 1; background: rgba(184,149,74,0.93); padding: 6rem 5rem; }
+  .who-image { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 0; filter: sepia(70%) saturate(60%) hue-rotate(5deg) brightness(0.55); }
+  .who-overlay { position: relative; z-index: 1; background: rgba(184,149,74,0.9); padding: 6rem 5rem; }
   #who .section-label { color: rgba(255,255,255,0.65); }
   #who .section-heading { color: var(--white); max-width: 30ch; }
   .who-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
@@ -148,7 +153,7 @@
 
   /* CTA */
   #contact { background: var(--ink); color: var(--cream); text-align: center; padding: 7rem 4rem; position: relative; overflow: hidden; }
-  .contact-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.08; }
+  .contact-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: sepia(70%) saturate(60%) hue-rotate(5deg) brightness(0.25); }
   .contact-inner { position: relative; z-index: 1; }
   #contact .section-label { color: var(--gold); }
   #contact .section-heading { color: var(--cream); margin: 0 auto 1rem; text-align: center; max-width: none; }
@@ -436,7 +441,7 @@
     <h2 class="section-heading" style="margin:0 auto 1rem;text-align:center;max-width:none;">Start with a free audit.<br><em>No pitch. Just findings.</em></h2>
     <p class="contact-tagline">Bridge the Gap.</p>
     <p class="contact-sub">Questions? Reach us directly.</p>
-    <a href="mailto:destiny@bridgepointlegal.com" class="contact-email">destiny@bridgepointlegal.com</a>
+    <a href="/cdn-cgi/l/email-protection#5034352324393e2910322239343735203f393e243c3537313c7e333f3d" class="contact-email"><span class="__cf_email__" data-cfemail="86e2e3f5f2efe8ffc6e4f4efe2e1e3f6e9efe8f2eae3e1e7eaa8e5e9eb">[email&#160;protected]</span></a>
   </div>
 </section>
 
@@ -456,11 +461,4 @@
     </svg>
     <div class="footer-text">
       <div class="footer-logo">Bridge Point Legal Consulting LLC</div>
-      <div class="footer-slogan">Bridge the Gap.</div>
-    </div>
-  </div>
-  <div class="footer-copy">© 2026 Bridge Point Legal Consulting LLC · Florida</div>
-</footer>
-
-</body>
-</html>
+      <div class="footer-slogan">Br
