@@ -9,180 +9,168 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    /* Rich red palette — deep to light */
     --ink: #0f0e0c;
     --cream: #f5f1ea;
     --white: #fdfcf9;
     --rule: #e0d5d5;
     --muted: #7a6868;
+    --red-deep:  #6B0000;
+    --red-core:  #8B1A1A;
+    --red-mid:   #A63030;
+    --red-warm:  #C0504A;
+    --red-blush: #E8C5C0;
+    --red-tint:  #F7EEEC;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: 'Cormorant Garamond', serif; font-size: 18px; line-height: 1.6; overflow-x: hidden; }
 
-```
-/* Red system */
---red-deep:   #6B0000;   /* darkest — headers, dramatic backgrounds */
---red-core:   #8B1A1A;   /* primary brand red — buttons, key accents */
---red-mid:    #A63030;   /* medium — hover states, section accents */
---red-warm:   #C0504A;   /* warm red — lighter accents, borders */
---red-blush:  #E8C5C0;   /* very light — subtle tints, backgrounds */
---red-tint:   #F7EEEC;   /* near-white red tint — section backgrounds */
-
-/* Aliases for existing var names so nothing breaks */
---gold:       var(--red-core);
---gold-light: var(--red-mid);
-```
-
-}
-html { scroll-behavior: smooth; }
-body { background: var(–cream); color: var(–ink); font-family: ‘Cormorant Garamond’, serif; font-size: 18px; line-height: 1.6; overflow-x: hidden; }
+/* kill default blue links everywhere */
+a { color: inherit; text-decoration: none; }
 
 /* NAV */
 nav {
 position: fixed; top: 0; left: 0; right: 0; z-index: 100;
 display: flex; align-items: center; justify-content: space-between;
 padding: 1rem 3rem; gap: 1rem;
-background: rgba(245,241,234,0.96); backdrop-filter: blur(10px);
+background: rgba(245,241,234,0.97); backdrop-filter: blur(10px);
 border-bottom: 1px solid var(–rule);
 }
 .nav-brand { display: flex; align-items: center; gap: 0.9rem; flex-shrink: 0; }
-.nav-logo-svg { flex-shrink: 0; }
 .nav-text { display: flex; flex-direction: column; }
 .nav-name { font-family: ‘Libre Baskerville’, serif; font-size: 0.78rem; font-weight: 700; color: var(–ink); white-space: nowrap; letter-spacing: 0.02em; }
 .nav-slogan { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(–red-warm); }
 .nav-links { display: flex; gap: 2rem; list-style: none; flex-shrink: 0; }
-.nav-links a { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; color: var(–muted); transition: color 0.2s; white-space: nowrap; }
-.nav-links a:hover { color: var(–gold); }
+.nav-links a { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(–muted); transition: color 0.2s; white-space: nowrap; }
+.nav-links a:hover { color: var(–red-core); }
 
-/* HERO */
+/* HERO — text left, image right, clean split */
 .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 4.5rem; }
-.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 5rem 4rem 5rem 5rem; position: relative; }
+.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 5rem 4rem 5rem 5rem; position: relative; background: var(–cream); }
 .hero-left::after { content: ‘’; position: absolute; right: 0; top: 15%; bottom: 15%; width: 1px; background: var(–rule); }
-.eyebrow { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(–gold); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
-.hero-headline { font-size: clamp(2.8rem, 4.5vw, 5rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.01em; opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
-.hero-headline em { font-style: italic; color: var(–gold); }
+.eyebrow { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(–red-core); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
+.hero-headline { font-size: clamp(2.6rem, 4vw, 4.8rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.01em; opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
+.hero-headline em { font-style: italic; color: var(–red-core); }
 .hero-sub { margin-top: 1.8rem; font-size: 1.05rem; font-weight: 300; color: var(–muted); max-width: 42ch; line-height: 1.7; opacity: 0; animation: fadeUp 0.8s 0.6s forwards; }
 .hero-cta { margin-top: 2.5rem; display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
-.btn-primary { display: inline-block; padding: 0.85rem 2rem; background: var(–gold); color: var(–white); font-family: ‘DM Mono’, monospace; font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, transform 0.2s; }
-.btn-primary:hover { background: var(–gold-light); transform: translateY(-1px); }
-.btn-ghost { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(–muted); text-decoration: none; border-bottom: 1px solid var(–rule); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
-.btn-ghost:hover { color: var(–gold); border-color: var(–gold); }
+.btn-primary { display: inline-block; padding: 0.85rem 2rem; background: var(–red-core); color: var(–white); font-family: ‘DM Mono’, monospace; font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; transition: background 0.2s, transform 0.2s; }
+.btn-primary:hover { background: var(–red-mid); transform: translateY(-1px); }
+.btn-ghost { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(–muted); border-bottom: 1px solid var(–rule); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+.btn-ghost:hover { color: var(–red-core); border-color: var(–red-core); }
 
-/* COHESIVE IMAGE TREATMENT — dark red tone across all photos */
-.brand-img { filter: grayscale(40%) sepia(40%) saturate(60%) hue-rotate(300deg) brightness(0.7); }
-.hero-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; display: block; min-height: 500px; filter: grayscale(30%) sepia(30%) saturate(60%) hue-rotate(300deg) brightness(0.55); }
-.hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem; background: linear-gradient(to top, rgba(15,14,12,0.96) 30%, rgba(139,0,0,0.08) 100%); }
-.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; opacity: 0; animation: fadeUp 0.8s 1s forwards; }
-.stat { border-top: 1px solid rgba(166,48,48,0.4); padding-top: 1rem; }
-.stat-num { font-size: 2.8rem; font-weight: 300; line-height: 1; color: var(–red-warm); }
-.stat-label { font-family: ‘DM Mono’, monospace; font-size: 0.54rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,241,234,0.55); margin-top: 0.3rem; }
-.hero-quote { margin-top: 2rem; padding-left: 1.2rem; border-left: 2px solid var(–red-warm); font-style: italic; font-size: 1rem; color: rgba(245,241,234,0.7); line-height: 1.7; opacity: 0; animation: fadeUp 0.8s 1.2s forwards; }
+/* hero right — pure image, no overlay, no text */
+.hero-right { overflow: hidden; }
+.hero-right img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 500px; filter: grayscale(20%) sepia(25%) saturate(70%) hue-rotate(320deg) brightness(0.82); }
 
-/* LOGO HERO BAND */
+/* STATS BAND — standalone below hero */
+.stats-band { background: var(–red-deep); display: grid; grid-template-columns: repeat(4, 1fr); }
+.stat-item { padding: 2.5rem 2rem; border-right: 1px solid rgba(255,255,255,0.08); }
+.stat-item:last-child { border-right: none; }
+.stat-num { font-size: 2.8rem; font-weight: 300; line-height: 1; color: var(–red-blush); font-family: ‘Cormorant Garamond’, serif; }
+.stat-label { font-family: ‘DM Mono’, monospace; font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,241,234,0.5); margin-top: 0.4rem; }
+
+/* LOGO BAND */
 .logo-band { background: var(–white); border-top: 1px solid var(–rule); border-bottom: 1px solid var(–rule); padding: 3rem 5rem; display: flex; align-items: center; justify-content: center; gap: 2.5rem; }
-.logo-band-mark { flex-shrink: 0; }
 .logo-band-text { display: flex; flex-direction: column; }
 .logo-band-name { font-family: ‘Libre Baskerville’, serif; font-size: 1.8rem; font-weight: 700; color: var(–ink); letter-spacing: 0.02em; line-height: 1.1; }
 .logo-band-rule { width: 100%; height: 2px; background: var(–red-warm); margin: 0.5rem 0; }
-.logo-band-tag { font-family: ‘DM Mono’, monospace; font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(–red-core); }
+.logo-band-tag { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(–red-core); }
 .logo-band-sub { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(–muted); margin-top: 0.15rem; }
 
 /* SECTIONS */
 section { padding: 6rem 5rem; }
-.section-label { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(–gold); margin-bottom: 1rem; }
+.section-label { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(–red-core); margin-bottom: 1rem; }
 .section-heading { font-size: clamp(1.8rem, 3vw, 3rem); font-weight: 300; line-height: 1.1; max-width: 22ch; }
-.section-heading em { font-style: italic; color: var(–gold); }
+.section-heading em { font-style: italic; color: var(–red-core); }
 
-/* PROBLEM — with image strip */
-#problem { background: var(–red-deep); color: var(–cream); padding: 0; }
+/* IMAGE BLOCKS — standalone, no text on top */
+.img-block { width: 100%; display: block; }
+.img-block img { width: 100%; display: block; object-fit: cover; filter: grayscale(20%) sepia(25%) saturate(70%) hue-rotate(320deg) brightness(0.85); }
+.img-block-tall img { height: 480px; }
+.img-block-medium img { height: 320px; }
+.img-block-short img { height: 220px; }
+
+/* PROBLEM */
+#problem { background: var(–red-deep); color: var(–cream); padding: 5rem 5rem 0; }
 #problem .section-heading { color: var(–cream); max-width: 28ch; }
-#problem .section-label { color: var(–gold); }
-.problem-top { padding: 5rem 5rem 3rem; }
-.problem-image-strip { width: 100%; height: 280px; object-fit: cover; object-position: center 30%; display: block; filter: grayscale(50%) sepia(50%) saturate(80%) hue-rotate(300deg) brightness(0.45); }
-.problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,0.08); }
-.problem-item { padding: 2.5rem 2.5rem 2.5rem 0; border-right: 1px solid rgba(255,255,255,0.08); }
+#problem .section-label { color: var(–red-blush); }
+.problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 4rem; border-top: 1px solid rgba(255,255,255,0.08); }
+.problem-item { padding: 2.5rem 2.5rem 3rem 0; border-right: 1px solid rgba(255,255,255,0.08); }
 .problem-item:last-child { border-right: none; padding-right: 0; padding-left: 2.5rem; }
 .problem-item:nth-child(2) { padding-left: 2.5rem; }
-.problem-num { font-family: ‘DM Mono’, monospace; font-size: 0.56rem; letter-spacing: 0.18em; color: var(–gold); margin-bottom: 0.8rem; }
+.problem-num { font-family: ‘DM Mono’, monospace; font-size: 0.56rem; letter-spacing: 0.18em; color: var(–red-blush); margin-bottom: 0.8rem; }
 .problem-title { font-size: 1.3rem; font-weight: 400; margin-bottom: 0.7rem; color: var(–cream); }
-.problem-desc { font-size: 0.88rem; color: rgba(245,241,234,0.5); line-height: 1.7; }
-.problem-bottom { padding: 0 5rem 5rem; }
+.problem-desc { font-size: 0.88rem; color: rgba(245,241,234,0.55); line-height: 1.7; }
 
-/* SERVICES — split with image */
-#services { background: var(–white); padding: 0; }
-.services-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
-.services-image-col { position: relative; overflow: hidden; }
-.services-image-col img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(50%) sepia(50%) saturate(80%) hue-rotate(300deg) brightness(0.5); }
-.services-image-col::after { content: ‘’; position: absolute; inset: 0; background: linear-gradient(to right, rgba(15,14,12,0.55), rgba(139,0,0,0.08)); }
-.services-content { padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; }
-.services-intro { font-size: 0.95rem; color: var(–muted); line-height: 1.8; margin-bottom: 2.5rem; }
+/* SERVICES — two column layout, image above content */
+#services { background: var(–white); padding: 6rem 5rem; }
+.services-top { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 3rem; align-items: end; }
+.services-intro { font-size: 0.95rem; color: var(–muted); line-height: 1.8; margin-top: 1.5rem; }
+.services-image { width: 100%; height: 340px; object-fit: cover; display: block; filter: grayscale(20%) sepia(25%) saturate(70%) hue-rotate(320deg) brightness(0.82); }
+.service-list { display: flex; flex-direction: column; }
 .service-item { display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(–rule); }
 .service-item:first-child { border-top: 1px solid var(–rule); }
-.service-item:hover .service-name { color: var(–gold); }
+.service-item:hover .service-name { color: var(–red-core); }
 .service-idx { font-family: ‘DM Mono’, monospace; font-size: 0.56rem; letter-spacing: 0.1em; color: var(–muted); padding-top: 3px; }
 .service-name { font-size: 1.2rem; font-weight: 400; transition: color 0.2s; }
 .service-desc { font-size: 0.84rem; color: var(–muted); margin-top: 0.3rem; line-height: 1.6; }
-.service-price { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(–gold); white-space: nowrap; padding-top: 3px; }
+.service-price { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(–red-core); white-space: nowrap; padding-top: 3px; }
 
 /* PROCESS */
 #process { background: var(–red-tint); }
 .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; margin-top: 4rem; }
 .step { position: relative; }
-.step::after { content: ‘→’; position: absolute; right: -1.5rem; top: 0.3rem; color: var(–rule); font-size: 1.2rem; }
+.step::after { content: ‘→’; position: absolute; right: -1.5rem; top: 0.3rem; color: var(–red-blush); font-size: 1.2rem; }
 .step:last-child::after { display: none; }
-.step-num { font-family: ‘DM Mono’, monospace; font-size: 0.56rem; letter-spacing: 0.2em; color: var(–gold); margin-bottom: 0.8rem; }
-.step-title { font-size: 1.15rem; font-weight: 400; margin-bottom: 0.5rem; }
+.step-num { font-family: ‘DM Mono’, monospace; font-size: 0.56rem; letter-spacing: 0.2em; color: var(–red-core); margin-bottom: 0.8rem; }
+.step-title { font-size: 1.15rem; font-weight: 400; margin-bottom: 0.5rem; color: var(–ink); }
 .step-desc { font-size: 0.85rem; color: var(–muted); line-height: 1.65; }
 
-/* WHO — image background */
-#who { padding: 0; position: relative; overflow: hidden; }
-.who-image { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 0; filter: grayscale(50%) sepia(50%) saturate(80%) hue-rotate(300deg) brightness(0.45); }
-.who-overlay { position: relative; z-index: 1; background: rgba(139,26,26,0.93); padding: 6rem 5rem; }
-#who .section-label { color: rgba(255,255,255,0.65); }
+/* WHO — solid red section, no image background */
+#who { background: var(–red-core); color: var(–white); }
+#who .section-label { color: var(–red-blush); }
 #who .section-heading { color: var(–white); max-width: 30ch; }
-.who-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
-.who-card { background: rgba(255,255,255,0.12); padding: 1.8rem; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(4px); }
-.who-card-title { font-size: 1.15rem; margin-bottom: 0.5rem; color: #fff; }
-.who-card-desc { font-size: 0.85rem; opacity: 0.82; line-height: 1.65; color: #fff; }
+.who-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 4rem; }
+.who-image-col img { width: 100%; height: 420px; object-fit: cover; display: block; filter: grayscale(20%) sepia(20%) saturate(50%) hue-rotate(320deg) brightness(0.75); }
+.who-grid { display: flex; flex-direction: column; gap: 1.5rem; }
+.who-card { background: rgba(255,255,255,0.1); padding: 1.6rem; border: 1px solid rgba(255,255,255,0.18); }
+.who-card-title { font-size: 1.1rem; margin-bottom: 0.4rem; color: var(–white); font-weight: 400; }
+.who-card-desc { font-size: 0.84rem; color: rgba(255,255,255,0.72); line-height: 1.65; }
 
-/* AUDIT REQUEST SECTION */
+/* AUDIT REQUEST */
 #audit { background: var(–cream); }
 .audit-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 4rem; align-items: start; }
 .audit-intro { font-size: 1rem; color: var(–muted); line-height: 1.8; }
 .audit-intro p { margin-bottom: 1.2rem; }
-.audit-checklist { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; }
+.audit-checklist { list-style: none; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.7rem; }
 .audit-checklist li { font-size: 0.88rem; color: var(–muted); display: flex; align-items: flex-start; gap: 0.7rem; line-height: 1.5; }
-.audit-checklist li::before { content: ‘✓’; color: var(–gold); font-weight: 700; flex-shrink: 0; margin-top: 0.1rem; }
-.audit-form { background: var(–cream); border: 1px solid var(–rule); padding: 2rem; }
-.form-title { font-family: ‘Libre Baskerville’, serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; }
+.audit-checklist li::before { content: ‘✓’; color: var(–red-core); font-weight: 700; flex-shrink: 0; margin-top: 0.1rem; }
+.audit-img { width: 100%; height: 200px; object-fit: cover; display: block; margin-top: 2rem; filter: grayscale(20%) sepia(25%) saturate(70%) hue-rotate(320deg) brightness(0.82); }
+.audit-form { background: var(–white); border: 1px solid var(–rule); padding: 2rem; }
+.form-title { font-family: ‘Libre Baskerville’, serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; color: var(–ink); }
 .form-group { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 1.1rem; }
 .form-group label { font-family: ‘DM Mono’, monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(–muted); }
-.form-group input, .form-group select, .form-group textarea {
-background: var(–white); border: 1px solid var(–rule);
-padding: 0.65rem 0.9rem; font-family: ‘Cormorant Garamond’, serif;
-font-size: 1rem; color: var(–ink); outline: none;
-transition: border-color 0.2s; border-radius: 1px;
-}
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(–gold); }
+.form-group input, .form-group select, .form-group textarea { background: var(–cream); border: 1px solid var(–rule); padding: 0.65rem 0.9rem; font-family: ‘Cormorant Garamond’, serif; font-size: 1rem; color: var(–ink); outline: none; transition: border-color 0.2s; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(–red-core); }
 .form-group textarea { resize: vertical; min-height: 90px; }
-.form-submit { width: 100%; padding: 0.9rem; background: var(–gold); color: var(–white); font-family: ‘DM Mono’, monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; margin-top: 0.5rem; }
-.form-submit:hover { background: var(–gold-light); transform: translateY(-1px); }
+.form-submit { width: 100%; padding: 0.9rem; background: var(–red-core); color: var(–white); font-family: ‘DM Mono’, monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; margin-top: 0.5rem; }
+.form-submit:hover { background: var(–red-mid); transform: translateY(-1px); }
 .form-note { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.1em; color: var(–muted); text-align: center; margin-top: 0.8rem; }
 
-/* CTA */
-#contact { background: var(–ink); color: var(–cream); text-align: center; padding: 7rem 4rem; position: relative; overflow: hidden; }
-.contact-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(60%) sepia(50%) saturate(80%) hue-rotate(300deg) brightness(0.2); }
-.contact-inner { position: relative; z-index: 1; }
-#contact .section-label { color: var(–gold); }
+/* CONTACT */
+#contact { background: var(–ink); color: var(–cream); text-align: center; padding: 7rem 4rem; }
+#contact .section-label { color: var(–red-warm); }
 #contact .section-heading { color: var(–cream); margin: 0 auto 1rem; text-align: center; max-width: none; }
-.contact-tagline { font-family: ‘DM Mono’, monospace; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(–gold); margin-bottom: 1.5rem; }
+.contact-tagline { font-family: ‘DM Mono’, monospace; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(–red-warm); margin-bottom: 1.5rem; }
 .contact-sub { color: rgba(245,241,234,0.5); font-size: 1rem; margin-bottom: 2.5rem; }
-.contact-email { display: inline-block; font-family: ‘DM Mono’, monospace; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(–white); text-decoration: none; border: 1px solid var(–gold); padding: 0.9rem 2.5rem; transition: background 0.2s; }
-.contact-email:hover { background: var(–gold); }
+.contact-email { display: inline-block; font-family: ‘DM Mono’, monospace; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(–white); border: 1px solid var(–red-warm); padding: 0.9rem 2.5rem; transition: background 0.2s, color 0.2s; }
+.contact-email:hover { background: var(–red-core); border-color: var(–red-core); }
 
 /* FOOTER */
 footer { background: var(–ink); border-top: 1px solid rgba(255,255,255,0.08); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
 .footer-brand { display: flex; align-items: center; gap: 0.8rem; }
 .footer-text { display: flex; flex-direction: column; gap: 0.2rem; }
 .footer-logo { font-family: ‘Libre Baskerville’, serif; font-size: 0.7rem; font-weight: 700; color: var(–cream); white-space: nowrap; }
-.footer-slogan { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(–gold); }
+.footer-slogan { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(–red-warm); }
 .footer-copy { font-family: ‘DM Mono’, monospace; font-size: 0.52rem; letter-spacing: 0.1em; color: rgba(245,241,234,0.22); white-space: nowrap; }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
@@ -193,20 +181,19 @@ nav { padding: 1rem 1.5rem; }
 .hero { grid-template-columns: 1fr; }
 .hero-left { padding: 4rem 1.5rem 2.5rem; }
 .hero-left::after { display: none; }
-.hero-right { min-height: 400px; }
-section { padding: 4rem 1.5rem; }
+.hero-right img { min-height: 300px; }
+.stats-band { grid-template-columns: 1fr 1fr; }
+.stat-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
 .logo-band { padding: 2.5rem 1.5rem; flex-direction: column; text-align: center; }
-.problem-top, .problem-bottom { padding: 3rem 1.5rem; }
+section { padding: 4rem 1.5rem; }
+#problem { padding: 4rem 1.5rem 0; }
 .problem-grid { grid-template-columns: 1fr; }
 .problem-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 2rem 0; }
 .problem-item:last-child, .problem-item:nth-child(2) { padding-left: 0; }
-.services-split { grid-template-columns: 1fr; }
-.services-image-col { height: 280px; }
-.services-content { padding: 3rem 1.5rem; }
+.services-top { grid-template-columns: 1fr; }
 .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
 .step::after { display: none; }
-.who-overlay { padding: 4rem 1.5rem; }
-.who-grid { grid-template-columns: 1fr; }
+.who-layout { grid-template-columns: 1fr; gap: 2rem; }
 .audit-layout { grid-template-columns: 1fr; gap: 2.5rem; }
 footer { padding: 2rem 1.5rem; }
 }
@@ -219,7 +206,7 @@ footer { padding: 2rem 1.5rem; }
 
 <nav>
   <div class="nav-brand">
-    <svg class="nav-logo-svg" width="24" height="22" viewBox="0 0 58 54" fill="none">
+    <svg width="24" height="22" viewBox="0 0 58 54" fill="none">
       <rect x="27" y="5" width="3.5" height="38" fill="#0f0e0c"/>
       <circle cx="28.75" cy="5" r="3.2" fill="#8B1A1A"/>
       <rect x="2" y="16" width="54" height="2.5" fill="#A63030"/>
@@ -243,7 +230,7 @@ footer { padding: 2rem 1.5rem; }
   </ul>
 </nav>
 
-<!-- HERO -->
+<!-- HERO — text left, clean image right -->
 
 <section class="hero">
   <div class="hero-left">
@@ -256,23 +243,24 @@ footer { padding: 2rem 1.5rem; }
     </div>
   </div>
   <div class="hero-right">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=900&q=80" alt="Law firm office" loading="lazy">
-    <div class="hero-overlay">
-      <div class="stat-grid">
-        <div class="stat"><div class="stat-num">42%</div><div class="stat-label">of legal leads never get a timely follow-up</div></div>
-        <div class="stat"><div class="stat-num">67%</div><div class="stat-label">of clients choose the first firm that responds</div></div>
-        <div class="stat"><div class="stat-num">3×</div><div class="stat-label">more revenue with structured intake systems</div></div>
-        <div class="stat"><div class="stat-num">$0</div><div class="stat-label">cost to find out where your firm is leaking clients</div></div>
-      </div>
-      <p class="hero-quote">"The firms winning today aren't the best lawyers in the room — they're the most organized ones."</p>
-    </div>
+    <!-- Professional workspace — clean desk, focused work, not legal cliché -->
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80" alt="Professional workspace">
   </div>
 </section>
+
+<!-- STATS BAND -->
+
+<div class="stats-band">
+  <div class="stat-item"><div class="stat-num">42%</div><div class="stat-label">of legal leads never get a timely follow-up</div></div>
+  <div class="stat-item"><div class="stat-num">67%</div><div class="stat-label">of clients choose the first firm that responds</div></div>
+  <div class="stat-item"><div class="stat-num">3×</div><div class="stat-label">more revenue with structured intake systems</div></div>
+  <div class="stat-item"><div class="stat-num">$0</div><div class="stat-label">cost to find where your firm is leaking clients</div></div>
+</div>
 
 <!-- LOGO BAND -->
 
 <div class="logo-band">
-  <svg class="logo-band-mark" width="72" height="68" viewBox="0 0 58 54" fill="none">
+  <svg width="72" height="68" viewBox="0 0 58 54" fill="none">
     <rect x="27" y="5" width="3.5" height="38" fill="#0f0e0c"/>
     <circle cx="28.75" cy="5" r="3.2" fill="#8B1A1A"/>
     <rect x="2" y="16" width="54" height="2.5" fill="#A63030"/>
@@ -294,65 +282,66 @@ footer { padding: 2rem 1.5rem; }
 <!-- PROBLEM -->
 
 <section id="problem">
-  <div class="problem-top">
-    <p class="section-label">The Real Issue</p>
-    <h2 class="section-heading">Most firms don't have a marketing problem. They have an <em>operations</em> problem.</h2>
-  </div>
-  <img class="problem-image-strip" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1400&q=80" alt="Law office documents" loading="lazy">
-  <div class="problem-bottom">
-    <div class="problem-grid">
-      <div class="problem-item">
-        <p class="problem-num">01</p>
-        <h3 class="problem-title">Slow Response Times</h3>
-        <p class="problem-desc">Potential clients contact multiple firms at once. The one that responds first — within minutes, not days — wins the case. Most firms respond in 48+ hours.</p>
-      </div>
-      <div class="problem-item">
-        <p class="problem-num">02</p>
-        <h3 class="problem-title">Disorganized Workflows</h3>
-        <p class="problem-desc">Cases fall through the cracks. Staff use different systems. Leads go cold because no one is accountable for follow-through.</p>
-      </div>
-      <div class="problem-item">
-        <p class="problem-num">03</p>
-        <h3 class="problem-title">Underused Technology</h3>
-        <p class="problem-desc">Firms pay for powerful tools like Clio and use 20% of their features. The automation and reporting they're already paying for sits idle.</p>
-      </div>
+  <p class="section-label">The Real Issue</p>
+  <h2 class="section-heading">Most firms don't have a marketing problem. They have an <em>operations</em> problem.</h2>
+  <div class="problem-grid">
+    <div class="problem-item">
+      <p class="problem-num">01</p>
+      <h3 class="problem-title">Slow Response Times</h3>
+      <p class="problem-desc">Potential clients contact multiple firms at once. The one that responds first — within minutes, not days — wins the case. Most firms respond in 48+ hours.</p>
+    </div>
+    <div class="problem-item">
+      <p class="problem-num">02</p>
+      <h3 class="problem-title">Disorganized Workflows</h3>
+      <p class="problem-desc">Cases fall through the cracks. Staff use different systems. Leads go cold because no one is accountable for follow-through.</p>
+    </div>
+    <div class="problem-item">
+      <p class="problem-num">03</p>
+      <h3 class="problem-title">Underused Technology</h3>
+      <p class="problem-desc">Firms pay for powerful tools like Clio and use 20% of their features. The automation and reporting they're already paying for sits idle.</p>
     </div>
   </div>
 </section>
 
+<!-- IMAGE BREAK — standalone, no text -->
+
+<div class="img-block img-block-medium">
+  <!-- Modern open office, people working, warm tones -->
+  <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1400&q=80" alt="Professional office environment">
+</div>
+
 <!-- SERVICES -->
 
 <section id="services">
-  <div class="services-split">
-    <div class="services-image-col">
-      <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800&q=80" alt="Legal library" loading="lazy">
-    </div>
-    <div class="services-content">
+  <div class="services-top">
+    <div>
       <p class="section-label">What We Offer</p>
       <h2 class="section-heading">Consulting built for how <em>real</em> firms operate.</h2>
-      <p class="services-intro">Every engagement starts with your actual workflows — not a generic template. All work is delivered remotely, asynchronously, and fully documented.</p>
-      <div class="service-list">
-        <div class="service-item">
-          <span class="service-idx">01</span>
-          <div><div class="service-name">Intake Audit</div><div class="service-desc">A full review of your intake process — response times, screening, follow-up, and conversion. Delivered as an actionable report.</div></div>
-          <span class="service-price">Free</span>
-        </div>
-        <div class="service-item">
-          <span class="service-idx">02</span>
-          <div><div class="service-name">Intake System Build</div><div class="service-desc">A complete intake workflow from first contact to signed retainer, tailored to your practice area and team.</div></div>
-          <span class="service-price">From $1,500</span>
-        </div>
-        <div class="service-item">
-          <span class="service-idx">03</span>
-          <div><div class="service-name">Clio Optimization</div><div class="service-desc">Full Clio setup, automation, custom workflows, and staff training. Stop paying for features you're not using.</div></div>
-          <span class="service-price">From $1,200</span>
-        </div>
-        <div class="service-item">
-          <span class="service-idx">04</span>
-          <div><div class="service-name">Ongoing Operations Retainer</div><div class="service-desc">Monthly consulting to monitor intake performance and keep your systems scaling with your growth.</div></div>
-          <span class="service-price">From $2,500/mo</span>
-        </div>
-      </div>
+      <p class="services-intro">Every engagement starts with your actual workflows — not a generic template. All work is delivered remotely, asynchronously, and fully documented so your team owns it long-term.</p>
+    </div>
+    <!-- Clean desk / organized workspace -->
+    <img class="services-image" src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&q=80" alt="Organized professional workspace">
+  </div>
+  <div class="service-list">
+    <div class="service-item">
+      <span class="service-idx">01</span>
+      <div><div class="service-name">Intake Audit</div><div class="service-desc">A full review of your intake process — response times, screening, follow-up, and conversion. Delivered as an actionable report.</div></div>
+      <span class="service-price">Free</span>
+    </div>
+    <div class="service-item">
+      <span class="service-idx">02</span>
+      <div><div class="service-name">Intake System Build</div><div class="service-desc">A complete intake workflow from first contact to signed retainer, tailored to your practice area and team.</div></div>
+      <span class="service-price">From $1,500</span>
+    </div>
+    <div class="service-item">
+      <span class="service-idx">03</span>
+      <div><div class="service-name">Clio Optimization</div><div class="service-desc">Full Clio setup, automation, custom workflows, and staff training. Stop paying for features you're not using.</div></div>
+      <span class="service-price">From $1,200</span>
+    </div>
+    <div class="service-item">
+      <span class="service-idx">04</span>
+      <div><div class="service-name">Ongoing Operations Retainer</div><div class="service-desc">Monthly consulting to monitor intake performance and keep your systems scaling with your growth.</div></div>
+      <span class="service-price">From $2,500/mo</span>
     </div>
   </div>
 </section>
@@ -373,10 +362,14 @@ footer { padding: 2rem 1.5rem; }
 <!-- WHO -->
 
 <section id="who">
-  <img class="who-image" src="https://images.unsplash.com/photo-1664575198308-3959904fa430?w=1400&q=80" alt="Law firm" loading="lazy">
-  <div class="who-overlay">
-    <p class="section-label">Who This Is For</p>
-    <h2 class="section-heading">We work best with firms that are <em>ready to grow.</em></h2>
+  <p class="section-label">Who This Is For</p>
+  <h2 class="section-heading">We work best with firms that are <em>ready to grow.</em></h2>
+  <div class="who-layout">
+    <!-- Image sits beside the cards, not behind them -->
+    <div class="who-image-col">
+      <!-- Two people in a business meeting, focused and professional -->
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Business consultation">
+    </div>
     <div class="who-grid">
       <div class="who-card"><h3 class="who-card-title">High-Volume Practice Areas</h3><p class="who-card-desc">Personal injury, criminal defense, immigration, and family law firms where intake speed and volume directly impacts revenue.</p></div>
       <div class="who-card"><h3 class="who-card-title">Firms Scaling Quickly</h3><p class="who-card-desc">Your caseload is growing but your systems haven't kept up. Staff are overwhelmed and things are falling through the cracks.</p></div>
@@ -386,7 +379,14 @@ footer { padding: 2rem 1.5rem; }
   </div>
 </section>
 
-<!-- FREE AUDIT REQUEST -->
+<!-- IMAGE BREAK -->
+
+<div class="img-block img-block-short">
+  <!-- City skyline or modern building — professional, aspirational -->
+  <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=80" alt="Modern city buildings">
+</div>
+
+<!-- AUDIT REQUEST -->
 
 <section id="audit">
   <p class="section-label">Free Intake Audit</p>
@@ -402,12 +402,13 @@ footer { padding: 2rem 1.5rem; }
         <li>Delivered within 3–5 business days of your request</li>
       </ul>
       <p style="margin-top:1.5rem;font-size:0.88rem;">No phone call required to get started. Fill out the form and we'll handle everything from here.</p>
+      <!-- Standalone image below the copy -->
+      <img class="audit-img" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt="Professional reviewing work">
     </div>
     <div class="audit-form">
       <div class="form-title">Request Your Free Audit</div>
       <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <input type="hidden" name="_subject" value="New Free Intake Audit Request — Bridge Point">
-        <input type="hidden" name="_replyto" value="">
         <div class="form-group">
           <label>Your Name *</label>
           <input type="text" name="name" required placeholder="Jane Smith">
@@ -457,17 +458,14 @@ footer { padding: 2rem 1.5rem; }
   </div>
 </section>
 
-<!-- CTA -->
+<!-- CONTACT -->
 
 <section id="contact">
-  <img class="contact-bg-img" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1400&q=80" alt="" loading="lazy">
-  <div class="contact-inner">
-    <p class="section-label">Get In Touch</p>
-    <h2 class="section-heading" style="margin:0 auto 1rem;text-align:center;max-width:none;">Start with a free audit.<br><em>No pitch. Just findings.</em></h2>
-    <p class="contact-tagline">Bridge the Gap.</p>
-    <p class="contact-sub">Questions? Reach us directly.</p>
-    <a href="/cdn-cgi/l/email-protection#0d69687e796463744d6f7f64696a687d6264637961686a6c61236e6260" class="contact-email"><span class="__cf_email__" data-cfemail="fb9f9e888f929582bb9989929f9c9e8b9492958f979e9c9a97d5989496">[email&#160;protected]</span></a>
-  </div>
+  <p class="section-label">Get In Touch</p>
+  <h2 class="section-heading" style="margin:0 auto 1rem;text-align:center;max-width:none;">Start with a free audit.<br><em>No pitch. Just findings.</em></h2>
+  <p class="contact-tagline">Bridge the Gap.</p>
+  <p class="contact-sub">Questions? Reach us directly.</p>
+  <a href="mailto:destiny@bridgepointlegal.com" class="contact-email">destiny@bridgepointlegal.com</a>
 </section>
 
 <!-- FOOTER -->
@@ -487,4 +485,11 @@ footer { padding: 2rem 1.5rem; }
     </svg>
     <div class="footer-text">
       <div class="footer-logo">Bridge Point Legal Consulting LLC</div>
-      <div class="footer-slogan">B
+      <div class="footer-slogan">Bridge the Gap.</div>
+    </div>
+  </div>
+  <div class="footer-copy">© 2026 Bridge Point Legal Consulting LLC · Florida</div>
+</footer>
+
+</body>
+</html>
