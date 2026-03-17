@@ -4,8 +4,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'unsafe-inline'; img-src 'self' data:;">
 <title>Bridge Point Legal Consulting | Legal Operations & Intake Systems</title>
+<!-- Preconnect for faster font loading -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Fallback font stack if Google Fonts fails to load */
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap');
+</style>
 <style>
   :root {
     --rose-deep:    #3a1520;
@@ -23,9 +31,9 @@
 - { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
 body {
-background: var(–rose-pale);
-font-family: ‘Outfit’, sans-serif;
-color: var(–text-dark);
+background: #f5e6e8;
+font-family: ‘Outfit’, Georgia, ‘Times New Roman’, serif;
+color: #3a1520;
 overflow-x: hidden;
 }
 
@@ -157,7 +165,7 @@ margin-bottom: 28px;
 .pill-dot { width: 7px; height: 7px; border-radius: 50%; background: var(–rose-accent); flex-shrink: 0; }
 .pill-text { font-size: 12px; color: var(–rose-mid); letter-spacing: 0.06em; font-weight: 500; }
 h1 {
-font-family: ‘Instrument Serif’, serif;
+font-family: ‘Instrument Serif’, Georgia, ‘Times New Roman’, serif;
 font-size: 62px;
 font-weight: 400;
 line-height: 1.06;
@@ -1095,7 +1103,7 @@ h1 { font-size: 36px; }
     <a href="#services">Services</a>
     <a href="#contact">Contact</a>
   </div>
-  <div class="footer-copy">© 2025 Bridge Point Legal Consulting LLC · bridgepointlegal.com</div>
+  <div class="footer-copy">© 2026 Bridge Point Legal Consulting LLC · bridgepointlegal.com</div>
 </footer>
 
 <script>
