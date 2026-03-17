@@ -53,8 +53,8 @@ border-bottom: 1px solid var(–rule);
 
 /* HERO RIGHT */
 .hero-right { position: relative; overflow: hidden; background: var(–ink); }
-.hero-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; display: block; min-height: 500px; filter: sepia(70%) saturate(40%) hue-rotate(330deg) brightness(0.55); }
-.hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem; background: linear-gradient(to top, rgba(26,23,20,0.96) 30%, rgba(107,26,42,0.08) 100%); }
+.hero-img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 500px; }
+.hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem; background: linear-gradient(to top, rgba(26,23,20,0.92) 35%, transparent 100%); }
 .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; opacity: 0; animation: fadeUp 0.8s 1s forwards; }
 .stat { border-top: 1px solid rgba(107,26,42,0.5); padding-top: 1rem; }
 .stat-num { font-size: 2.8rem; font-weight: 300; line-height: 1; color: var(–crimson-light); }
@@ -81,7 +81,7 @@ section { padding: 6rem 5rem; }
 #problem .section-heading { color: var(–cream); max-width: 28ch; }
 #problem .section-label { color: var(–crimson-light); }
 .problem-top { padding: 5rem 5rem 3rem; }
-.problem-image-strip { width: 100%; height: 280px; object-fit: cover; object-position: center 30%; display: block; filter: sepia(70%) saturate(40%) hue-rotate(330deg) brightness(0.45); }
+.problem-image-strip { width: 100%; height: 280px; object-fit: cover; object-position: center 30%; display: block; }
 .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,0.08); }
 .problem-item { padding: 2.5rem 2.5rem 2.5rem 0; border-right: 1px solid rgba(255,255,255,0.08); }
 .problem-item:last-child { border-right: none; padding-right: 0; padding-left: 2.5rem; }
@@ -95,8 +95,8 @@ section { padding: 6rem 5rem; }
 #services { background: var(–white); padding: 0; }
 .services-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
 .services-image-col { position: relative; overflow: hidden; }
-.services-image-col img { width: 100%; height: 100%; object-fit: cover; display: block; filter: sepia(70%) saturate(40%) hue-rotate(330deg) brightness(0.5); }
-.services-image-col::after { content: ‘’; position: absolute; inset: 0; background: linear-gradient(to right, rgba(26,23,20,0.55), rgba(107,26,42,0.08)); }
+.services-image-col img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.services-image-col::after { display: none; }
 .services-content { padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; }
 .services-intro { font-size: 0.95rem; color: var(–muted); line-height: 1.8; margin-bottom: 2.5rem; }
 .service-item { display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(–rule); }
@@ -119,10 +119,11 @@ section { padding: 6rem 5rem; }
 
 /* WHO */
 #who { padding: 0; position: relative; overflow: hidden; }
-.who-image { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 0; filter: sepia(70%) saturate(40%) hue-rotate(330deg) brightness(0.45); }
+.who-image { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 0; }
 .who-overlay { position: relative; z-index: 1; background: rgba(107,26,42,0.88); padding: 6rem 5rem; }
 #who .section-label { color: rgba(255,255,255,0.65); }
 #who .section-heading { color: var(–white); max-width: 30ch; }
+#who .section-heading em { color: #1A1714; font-style: italic; }
 .who-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
 .who-card { background: rgba(255,255,255,0.10); padding: 1.8rem; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(4px); }
 .who-card-title { font-size: 1.15rem; margin-bottom: 0.5rem; color: #fff; }
@@ -154,7 +155,7 @@ transition: border-color 0.2s; border-radius: 1px;
 
 /* CTA */
 #contact { background: var(–ink); color: var(–cream); text-align: center; padding: 7rem 4rem; position: relative; overflow: hidden; }
-.contact-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: sepia(70%) saturate(40%) hue-rotate(330deg) brightness(0.2); }
+.contact-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.18; }
 .contact-inner { position: relative; z-index: 1; }
 #contact .section-label { color: var(–crimson-light); }
 #contact .section-heading { color: var(–cream); margin: 0 auto 1rem; text-align: center; max-width: none; }
@@ -242,7 +243,7 @@ footer { padding: 2rem 1.5rem; }
     </div>
   </div>
   <div class="hero-right">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=900&q=80" alt="Law firm office" loading="lazy">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1479142506502-19b3a3b7ff33?w=900&q=80" alt="Law firm office" loading="lazy">
     <div class="hero-overlay">
       <div class="stat-grid">
         <div class="stat"><div class="stat-num">42%</div><div class="stat-label">of legal leads never get a timely follow-up</div></div>
@@ -284,7 +285,7 @@ footer { padding: 2rem 1.5rem; }
     <p class="section-label">The Real Issue</p>
     <h2 class="section-heading">Most firms don't have a marketing problem. They have an <em>operations</em> problem.</h2>
   </div>
-  <img class="problem-image-strip" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1400&q=80" alt="Law office documents" loading="lazy">
+  <img class="problem-image-strip" src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=1400&q=80" alt="Law office documents" loading="lazy">
   <div class="problem-bottom">
     <div class="problem-grid">
       <div class="problem-item">
@@ -311,7 +312,7 @@ footer { padding: 2rem 1.5rem; }
 <section id="services">
   <div class="services-split">
     <div class="services-image-col">
-      <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800&q=80" alt="Legal library" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1568992688065-536aad8a12f6?w=800&q=80" alt="Legal library" loading="lazy">
     </div>
     <div class="services-content">
       <p class="section-label">What We Offer</p>
@@ -359,7 +360,7 @@ footer { padding: 2rem 1.5rem; }
 <!-- WHO -->
 
 <section id="who">
-  <img class="who-image" src="https://images.unsplash.com/photo-1664575198308-3959904fa430?w=1400&q=80" alt="Law firm" loading="lazy">
+  <img class="who-image" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80" alt="Law firm" loading="lazy">
   <div class="who-overlay">
     <p class="section-label">Who This Is For</p>
     <h2 class="section-heading">We work best with firms that are <em>ready to grow.</em></h2>
@@ -431,13 +432,13 @@ footer { padding: 2rem 1.5rem; }
 <!-- CTA -->
 
 <section id="contact">
-  <img class="contact-bg-img" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1400&q=80" alt="" loading="lazy">
+  <img class="contact-bg-img" src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1400&q=80" alt="" loading="lazy">
   <div class="contact-inner">
     <p class="section-label">Get In Touch</p>
     <h2 class="section-heading" style="margin:0 auto 1rem;text-align:center;max-width:none;">Start with a free audit.<br><em>No pitch. Just findings.</em></h2>
     <p class="contact-tagline">Bridge the Gap.</p>
     <p class="contact-sub">Questions? Reach us directly.</p>
-    <a href="mailto:destiny@bridgepointlegal.com" class="contact-email">destiny@bridgepointlegal.com</a>
+    <a href="/cdn-cgi/l/email-protection#d1b5b4a2a5b8bfa891b3a3b8b5b6b4a1beb8bfa5bdb4b6b0bdffb2bebc" class="contact-email"><span class="__cf_email__" data-cfemail="15717066617c7b6c5577677c717270657a7c7b6179707274793b767a78">[email&#160;protected]</span></a>
   </div>
 </section>
 
@@ -461,7 +462,7 @@ footer { padding: 2rem 1.5rem; }
       <div class="footer-slogan">Bridge the Gap.</div>
     </div>
   </div>
-  <div class="footer-copy">© 2026 Bridge Point Legal Consulting LLC · Florida</div>
+  <div class="footer-copy">© 2026 Bridge Point Legal Consulting LLC &nbsp;·&nbsp; Florida &nbsp;·&nbsp; All Rights Reserved</div>
 </footer>
 
 </body>
