@@ -4,155 +4,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'unsafe-inline'; img-src 'self' data:;">
 <title>Bridge Point Legal Consulting | Legal Operations & Intake Systems</title>
-<!-- Preconnect for faster font loading -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* Fallback font stack if Google Fonts fails to load */
-  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap');
-</style>
-<style>
-  :root {
-    --rose-deep:    #3a1520;
-    --rose-mid:     #6b2d3e;
-    --rose-accent:  #b06080;
-    --rose-light:   #edd5db;
-    --rose-pale:    #f5e6e8;
-    --rose-muted:   #9b7080;
-    --white:        #ffffff;
-    --text-dark:    #3a1520;
-    --text-body:    #7a4a56;
-    --text-muted:   #9b7080;
-  }
 
 - { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
 body {
 background: #f5e6e8;
-font-family: ‘Outfit’, Georgia, ‘Times New Roman’, serif;
+font-family: ‘Outfit’, Georgia, serif;
 color: #3a1520;
 overflow-x: hidden;
+min-width: 1024px;
 }
 
-/* ─── ANIMATIONS ─────────────────────────────── */
 @keyframes fadeUp {
-from { opacity: 0; transform: translateY(28px); }
+from { opacity: 0; transform: translateY(24px); }
 to   { opacity: 1; transform: translateY(0); }
 }
-@keyframes fadeIn {
-from { opacity: 0; }
-to   { opacity: 1; }
-}
-.fade-up  { animation: fadeUp  0.7s ease both; }
-.fade-in  { animation: fadeIn  0.6s ease both; }
-.delay-1  { animation-delay: 0.1s; }
-.delay-2  { animation-delay: 0.22s; }
-.delay-3  { animation-delay: 0.34s; }
-.delay-4  { animation-delay: 0.46s; }
-.delay-5  { animation-delay: 0.58s; }
+.fade-up { animation: fadeUp 0.7s ease both; }
+.d1 { animation-delay: 0.1s; }
+.d2 { animation-delay: 0.22s; }
+.d3 { animation-delay: 0.34s; }
+.d4 { animation-delay: 0.46s; }
 
-/* ─── NAV ─────────────────────────────────────── */
+/* NAV */
 nav {
-background: var(–white);
+background: #ffffff;
 display: flex;
 justify-content: space-between;
 align-items: center;
-padding: 20px 72px;
-border-bottom: 1px solid rgba(107,45,62,0.1);
+padding: 20px 80px;
+border-bottom: 1px solid #e8d0d5;
 position: sticky;
 top: 0;
 z-index: 200;
-box-shadow: 0 2px 20px rgba(107,45,62,0.05);
+box-shadow: 0 2px 20px rgba(58,21,32,0.05);
 }
 .logo {
-font-family: ‘Instrument Serif’, serif;
-font-size: 20px;
-color: var(–rose-mid);
+font-family: ‘Instrument Serif’, Georgia, serif;
+font-size: 21px;
+color: #6b2d3e;
+text-decoration: none;
 letter-spacing: 0.02em;
-text-decoration: none;
 }
-.logo em { font-style: italic; color: var(–rose-accent); }
-.navlinks {
-display: flex;
-gap: 36px;
-list-style: none;
-}
-.navlinks li a {
-font-size: 13px;
-color: var(–text-muted);
-text-decoration: none;
-letter-spacing: 0.04em;
-transition: color 0.2s;
-}
-.navlinks li a:hover { color: var(–rose-mid); }
+.logo-em { font-style: italic; color: #b06080; }
+.navlinks { display: flex; gap: 36px; list-style: none; }
+.navlinks li a { font-size: 13px; color: #9b7080; text-decoration: none; letter-spacing: 0.04em; }
+.navlinks li a:hover { color: #6b2d3e; }
 .nav-cta {
-background: var(–rose-mid);
-color: var(–white);
+background: #6b2d3e;
+color: #ffffff;
 border: none;
 padding: 11px 26px;
 border-radius: 100px;
 font-size: 13px;
 cursor: pointer;
-font-family: ‘Outfit’, sans-serif;
+font-family: ‘Outfit’, Georgia, serif;
 font-weight: 500;
 letter-spacing: 0.04em;
-transition: background 0.2s, transform 0.15s;
 text-decoration: none;
+display: inline-block;
 }
-.nav-cta:hover { background: var(–rose-deep); transform: translateY(-1px); }
+.nav-cta:hover { background: #3a1520; }
 
-/* hamburger */
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-.hamburger span { display: block; width: 22px; height: 2px; background: var(–rose-mid); border-radius: 2px; transition: all 0.3s; }
-.mobile-menu {
-display: none;
-flex-direction: column;
-background: var(–white);
-padding: 24px 24px 32px;
-border-bottom: 1px solid rgba(107,45,62,0.1);
-gap: 20px;
-}
-.mobile-menu a {
-font-size: 15px;
-color: var(–text-body);
-text-decoration: none;
-font-family: ‘Outfit’, sans-serif;
-}
-.mobile-menu.open { display: flex; }
-
-/* ─── HERO ───────────────────────────────────── */
+/* HERO */
 .hero {
-padding: 112px 72px 96px;
+padding: 100px 80px 88px;
 display: grid;
 grid-template-columns: 1.15fr 1fr;
 gap: 72px;
 align-items: center;
-background: linear-gradient(135deg, var(–rose-pale) 55%, var(–rose-light) 100%);
-position: relative;
-overflow: hidden;
+background: linear-gradient(135deg, #f5e6e8 55%, #edd5db 100%);
 }
-.hero::before {
-content: ‘’;
-position: absolute;
-top: -120px; right: -120px;
-width: 480px; height: 480px;
-border-radius: 50%;
-background: radial-gradient(circle, rgba(176,96,128,0.1) 0%, transparent 65%);
-pointer-events: none;
-}
-.hero::after {
-content: ‘’;
-position: absolute;
-bottom: -80px; left: 25%;
-width: 320px; height: 320px;
-border-radius: 50%;
-background: radial-gradient(circle, rgba(107,45,62,0.06) 0%, transparent 65%);
-pointer-events: none;
-}
-.hero-left { position: relative; z-index: 2; }
 .pill {
 display: inline-flex;
 align-items: center;
@@ -162,276 +88,170 @@ border-radius: 100px;
 padding: 7px 16px 7px 10px;
 margin-bottom: 28px;
 }
-.pill-dot { width: 7px; height: 7px; border-radius: 50%; background: var(–rose-accent); flex-shrink: 0; }
-.pill-text { font-size: 12px; color: var(–rose-mid); letter-spacing: 0.06em; font-weight: 500; }
+.pill-dot { width: 7px; height: 7px; border-radius: 50%; background: #b06080; flex-shrink: 0; }
+.pill-text { font-size: 12px; color: #6b2d3e; letter-spacing: 0.06em; font-weight: 500; }
 h1 {
-font-family: ‘Instrument Serif’, Georgia, ‘Times New Roman’, serif;
-font-size: 62px;
+font-family: ‘Instrument Serif’, Georgia, serif;
+font-size: 60px;
 font-weight: 400;
 line-height: 1.06;
-color: var(–rose-deep);
-margin-bottom: 26px;
+color: #3a1520;
+margin-bottom: 24px;
 }
-h1 em { font-style: italic; color: var(–rose-mid); }
+h1 em { font-style: italic; color: #6b2d3e; }
 .hero-body {
 font-size: 16px;
 line-height: 1.8;
-color: var(–text-body);
+color: #7a4a56;
 margin-bottom: 40px;
 font-weight: 300;
 max-width: 480px;
 }
-.btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.btns { display: flex; gap: 14px; }
 .btn-primary {
-background: var(–rose-mid);
-color: var(–white);
+background: #6b2d3e;
+color: #ffffff;
 padding: 15px 32px;
 border-radius: 100px;
 font-size: 14px;
 border: none;
 cursor: pointer;
-font-family: ‘Outfit’, sans-serif;
+font-family: ‘Outfit’, Georgia, serif;
 font-weight: 500;
 letter-spacing: 0.04em;
-transition: background 0.2s, transform 0.15s;
 text-decoration: none;
 display: inline-block;
 }
-.btn-primary:hover { background: var(–rose-deep); transform: translateY(-2px); }
+.btn-primary:hover { background: #3a1520; }
 .btn-ghost {
 background: transparent;
-color: var(–rose-mid);
+color: #6b2d3e;
 padding: 15px 32px;
 border-radius: 100px;
 font-size: 14px;
-border: 1.5px solid rgba(107,45,62,0.35);
+border: 1.5px solid #b06080;
 cursor: pointer;
-font-family: ‘Outfit’, sans-serif;
+font-family: ‘Outfit’, Georgia, serif;
 font-weight: 500;
-transition: border-color 0.2s, transform 0.15s;
 text-decoration: none;
 display: inline-block;
 }
-.btn-ghost:hover { border-color: var(–rose-mid); transform: translateY(-2px); }
+.btn-ghost:hover { border-color: #6b2d3e; }
 
-/* hero cards */
-.hero-cards { display: flex; flex-direction: column; gap: 14px; position: relative; z-index: 2; }
+.hero-cards { display: flex; flex-direction: column; gap: 14px; }
 .hero-card {
-background: var(–white);
+background: #ffffff;
 border-radius: 14px;
 padding: 22px 26px;
-box-shadow: 0 2px 24px rgba(107,45,62,0.07);
-border-left: 3px solid var(–rose-accent);
-transition: transform 0.2s, box-shadow 0.2s;
-cursor: default;
+box-shadow: 0 2px 24px rgba(107,45,62,0.08);
+border-left: 3px solid #b06080;
+transition: transform 0.2s;
 }
-.hero-card:hover { transform: translateX(5px); box-shadow: 0 4px 36px rgba(107,45,62,0.12); }
-.hero-card:nth-child(2) { border-left-color: var(–rose-mid); }
+.hero-card:nth-child(2) { border-left-color: #6b2d3e; }
 .hero-card:nth-child(3) { border-left-color: #d4a0b0; }
+.hero-card:hover { transform: translateX(4px); }
 .hero-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
-.hero-card-title { font-family: ‘Instrument Serif’, serif; font-size: 17px; color: var(–rose-deep); }
+.hero-card-title { font-family: ‘Instrument Serif’, Georgia, serif; font-size: 17px; color: #3a1520; }
 .tag {
 display: inline-block;
 background: rgba(107,45,62,0.08);
-color: var(–rose-mid);
+color: #6b2d3e;
 padding: 3px 10px;
 border-radius: 100px;
 font-size: 10px;
-font-family: ‘Outfit’, sans-serif;
-font-weight: 500;
+font-weight: 600;
 letter-spacing: 0.07em;
 white-space: nowrap;
 }
-.hero-card-desc { font-size: 13px; color: var(–text-muted); line-height: 1.55; }
+.hero-card-desc { font-size: 13px; color: #9b7080; line-height: 1.55; }
 
-/* ─── TRUST BAR ───────────────────────────────── */
+/* TRUST BAR */
 .trust-bar {
-background: var(–white);
-border-top: 1px solid rgba(107,45,62,0.08);
-border-bottom: 1px solid rgba(107,45,62,0.08);
-padding: 22px 72px;
+background: #ffffff;
+border-top: 1px solid #e8d0d5;
+border-bottom: 1px solid #e8d0d5;
+padding: 22px 80px;
 display: flex;
 justify-content: center;
 gap: 56px;
 align-items: center;
-flex-wrap: wrap;
 }
-.trust-item { display: flex; align-items: center; gap: 10px; color: var(–text-muted); font-size: 13px; letter-spacing: 0.03em; }
+.trust-item { display: flex; align-items: center; gap: 10px; color: #9b7080; font-size: 13px; }
 .trust-icon {
 width: 30px; height: 30px;
 border-radius: 50%;
 background: rgba(107,45,62,0.07);
 display: flex; align-items: center; justify-content: center;
-font-size: 13px; color: var(–rose-mid); flex-shrink: 0;
+font-size: 13px; color: #6b2d3e; flex-shrink: 0;
 }
 
-/* ─── SECTION BASE ────────────────────────────── */
-section { padding: 96px 72px; }
+/* SECTIONS */
+section { padding: 96px 80px; }
 .section-label {
 font-size: 11px;
 letter-spacing: 0.18em;
 text-transform: uppercase;
-color: var(–rose-accent);
+color: #b06080;
 font-weight: 600;
 margin-bottom: 14px;
 display: flex;
 align-items: center;
 gap: 10px;
 }
-.section-label::before { content: ‘’; display: block; width: 24px; height: 1px; background: var(–rose-accent); }
+.section-label::before { content: ‘’; display: block; width: 24px; height: 1px; background: #b06080; }
 .section-title {
-font-family: ‘Instrument Serif’, serif;
+font-family: ‘Instrument Serif’, Georgia, serif;
 font-size: 44px;
 font-weight: 400;
 line-height: 1.12;
-color: var(–rose-deep);
+color: #3a1520;
 margin-bottom: 16px;
 }
-.section-title em { font-style: italic; color: var(–rose-mid); }
-.section-subtitle {
-font-size: 16px;
-color: var(–text-body);
-font-weight: 300;
-line-height: 1.75;
-max-width: 560px;
-}
+.section-title em { font-style: italic; color: #6b2d3e; }
+.section-subtitle { font-size: 16px; color: #7a4a56; font-weight: 300; line-height: 1.75; max-width: 560px; }
 
-/* ─── ABOUT ───────────────────────────────────── */
+/* ABOUT */
 #about {
-background: linear-gradient(125deg, var(–rose-light), var(–rose-pale));
+background: linear-gradient(125deg, #edd5db, #f5e6e8);
 display: grid;
 grid-template-columns: 1fr 1fr;
 gap: 72px;
 align-items: center;
 }
-.about-body { font-size: 15px; color: var(–text-body); line-height: 1.85; font-weight: 300; margin-bottom: 18px; }
+.about-body { font-size: 15px; color: #7a4a56; line-height: 1.85; font-weight: 300; margin-bottom: 18px; }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .about-stat {
-background: var(–white);
+background: #ffffff;
 border-radius: 14px;
 padding: 26px 22px;
 box-shadow: 0 2px 18px rgba(107,45,62,0.06);
 }
-.about-stat-n { font-family: ‘Instrument Serif’, serif; font-size: 34px; color: var(–rose-mid); margin-bottom: 6px; }
-.about-stat-l { font-size: 12px; color: var(–text-muted); line-height: 1.45; }
+.about-stat-n { font-family: ‘Instrument Serif’, Georgia, serif; font-size: 34px; color: #6b2d3e; margin-bottom: 6px; }
+.about-stat-l { font-size: 12px; color: #9b7080; line-height: 1.45; }
 
-/* ─── HOW IT WORKS ────────────────────────────── */
-#process { background: var(–white); }
+/* PROCESS */
+#process { background: #ffffff; }
 .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; }
 .process-step {
-position: relative;
 padding: 32px 24px 28px;
 border-radius: 16px;
-background: var(–rose-pale);
-border-top: 3px solid transparent;
+background: #f5e6e8;
+border-top: 3px solid #d4a0b0;
 transition: transform 0.2s, box-shadow 0.2s;
 }
+.process-step:nth-child(2) { border-top-color: #b06080; }
+.process-step:nth-child(3) { border-top-color: #6b2d3e; }
+.process-step:nth-child(4) { border-top-color: #3a1520; }
 .process-step:hover { transform: translateY(-4px); box-shadow: 0 8px 36px rgba(107,45,62,0.1); }
-.process-step:nth-child(1) { border-top-color: #d4a0b0; }
-.process-step:nth-child(2) { border-top-color: var(–rose-accent); }
-.process-step:nth-child(3) { border-top-color: var(–rose-mid); }
-.process-step:nth-child(4) { border-top-color: var(–rose-deep); }
-.step-num {
-font-family: ‘Instrument Serif’, serif;
-font-size: 48px;
-font-style: italic;
-color: rgba(107,45,62,0.12);
-line-height: 1;
-margin-bottom: 14px;
-}
-.step-title { font-family: ‘Instrument Serif’, serif; font-size: 20px; color: var(–rose-deep); margin-bottom: 10px; }
-.step-desc { font-size: 13px; color: var(–text-muted); line-height: 1.65; }
+.step-num { font-family: ‘Instrument Serif’, Georgia, serif; font-size: 48px; font-style: italic; color: rgba(107,45,62,0.12); line-height: 1; margin-bottom: 14px; }
+.step-title { font-family: ‘Instrument Serif’, Georgia, serif; font-size: 20px; color: #3a1520; margin-bottom: 10px; }
+.step-desc { font-size: 13px; color: #9b7080; line-height: 1.65; }
 
-/* ─── SERVICES / PRICING ─────────────────────── */
-#services { background: linear-gradient(140deg, var(–rose-pale), var(–rose-light)); }
-.pricing-intro { max-width: 600px; margin-bottom: 56px; }
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 20px; }
-.pricing-card {
-background: var(–white);
-border-radius: 18px;
-padding: 36px 30px;
-box-shadow: 0 2px 24px rgba(107,45,62,0.07);
-display: flex;
-flex-direction: column;
-transition: transform 0.2s, box-shadow 0.2s;
-position: relative;
-overflow: hidden;
-}
-.pricing-card::before {
-content: ‘’;
-position: absolute;
-top: 0; left: 0; right: 0;
-height: 3px;
-background: var(–rose-accent);
-}
-.pricing-card:hover { transform: translateY(-5px); box-shadow: 0 12px 48px rgba(107,45,62,0.13); }
-.pricing-card.featured {
-background: var(–rose-mid);
-color: var(–white);
-}
-.pricing-card.featured::before { background: rgba(255,255,255,0.4); }
-.featured-badge {
-position: absolute;
-top: 20px; right: 20px;
-background: rgba(255,255,255,0.2);
-color: var(–white);
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.1em;
-padding: 4px 10px;
-border-radius: 100px;
-text-transform: uppercase;
-}
-.pricing-icon { font-size: 28px; margin-bottom: 18px; }
-.pricing-name {
-font-family: ‘Instrument Serif’, serif;
-font-size: 22px;
-color: var(–rose-deep);
-margin-bottom: 6px;
-}
-.pricing-card.featured .pricing-name { color: var(–white); }
-.pricing-tag { font-size: 11px; letter-spacing: 0.08em; color: var(–rose-accent); font-weight: 600; text-transform: uppercase; margin-bottom: 20px; }
-.pricing-card.featured .pricing-tag { color: rgba(255,255,255,0.65); }
-.pricing-price {
-font-family: ‘Instrument Serif’, serif;
-font-size: 48px;
-font-weight: 400;
-color: var(–rose-mid);
-line-height: 1;
-margin-bottom: 4px;
-}
-.pricing-card.featured .pricing-price { color: var(–white); }
-.pricing-price sup { font-size: 22px; vertical-align: super; }
-.pricing-price-note { font-size: 12px; color: var(–text-muted); margin-bottom: 28px; }
-.pricing-card.featured .pricing-price-note { color: rgba(255,255,255,0.55); }
-.pricing-divider { height: 1px; background: rgba(107,45,62,0.08); margin-bottom: 24px; }
-.pricing-card.featured .pricing-divider { background: rgba(255,255,255,0.15); }
-.pricing-features { list-style: none; display: flex; flex-direction: column; gap: 11px; flex: 1; margin-bottom: 32px; }
-.pricing-features li { font-size: 13px; color: var(–text-body); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
-.pricing-card.featured .pricing-features li { color: rgba(255,255,255,0.85); }
-.pricing-features li::before { content: ‘✓’; color: var(–rose-accent); font-weight: 700; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
-.pricing-card.featured .pricing-features li::before { color: rgba(255,255,255,0.7); }
-.pricing-btn {
-background: var(–rose-pale);
-color: var(–rose-mid);
-border: none;
-padding: 13px 24px;
-border-radius: 100px;
-font-size: 13px;
-font-weight: 600;
-cursor: pointer;
-font-family: ‘Outfit’, sans-serif;
-transition: background 0.2s, transform 0.15s;
-letter-spacing: 0.03em;
-text-align: center;
-}
-.pricing-btn:hover { background: var(–rose-light); transform: translateY(-1px); }
-.pricing-card.featured .pricing-btn { background: var(–white); color: var(–rose-mid); }
-.pricing-card.featured .pricing-btn:hover { background: var(–rose-pale); }
-
-/* free audit card */
+/* PRICING */
+#services { background: linear-gradient(140deg, #f5e6e8, #edd5db); }
+.pricing-intro { max-width: 600px; margin-bottom: 48px; }
 .free-audit-card {
-background: var(–rose-deep);
+background: #3a1520;
 border-radius: 18px;
 padding: 36px 40px;
 display: flex;
@@ -440,73 +260,111 @@ align-items: center;
 gap: 32px;
 margin-bottom: 20px;
 }
-.fac-left h3 {
-font-family: ‘Instrument Serif’, serif;
-font-size: 28px;
-font-style: italic;
-color: var(–rose-pale);
-margin-bottom: 8px;
-}
+.fac-left h3 { font-family: ‘Instrument Serif’, Georgia, serif; font-size: 28px; font-style: italic; color: #f5e6e8; margin-bottom: 8px; }
 .fac-left p { font-size: 14px; color: rgba(245,230,232,0.65); font-weight: 300; line-height: 1.6; }
-.fac-price {
-font-family: ‘Instrument Serif’, serif;
-font-size: 52px;
-color: var(–white);
-white-space: nowrap;
-flex-shrink: 0;
-}
+.fac-price { font-family: ‘Instrument Serif’, Georgia, serif; font-size: 52px; color: #ffffff; white-space: nowrap; flex-shrink: 0; }
 .fac-cta {
-background: var(–rose-pale);
-color: var(–rose-deep);
+background: #f5e6e8;
+color: #3a1520;
 border: none;
 padding: 14px 28px;
 border-radius: 100px;
 font-size: 13px;
 font-weight: 600;
 cursor: pointer;
-font-family: ‘Outfit’, sans-serif;
+font-family: ‘Outfit’, Georgia, serif;
 white-space: nowrap;
 flex-shrink: 0;
-transition: background 0.2s, transform 0.15s;
 }
-.fac-cta:hover { background: var(–white); transform: translateY(-1px); }
+.fac-cta:hover { background: #ffffff; }
 
-/* addon card */
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 20px; }
+.pricing-card {
+background: #ffffff;
+border-radius: 18px;
+padding: 36px 30px;
+box-shadow: 0 2px 24px rgba(107,45,62,0.07);
+display: flex;
+flex-direction: column;
+position: relative;
+border-top: 3px solid #b06080;
+transition: transform 0.2s, box-shadow 0.2s;
+}
+.pricing-card:hover { transform: translateY(-5px); box-shadow: 0 12px 48px rgba(107,45,62,0.13); }
+.pricing-card.featured { background: #6b2d3e; border-top-color: rgba(255,255,255,0.3); }
+.featured-badge {
+position: absolute;
+top: 20px; right: 20px;
+background: rgba(255,255,255,0.2);
+color: #ffffff;
+font-size: 10px;
+font-weight: 600;
+letter-spacing: 0.1em;
+padding: 4px 10px;
+border-radius: 100px;
+text-transform: uppercase;
+}
+.pricing-icon { font-size: 28px; margin-bottom: 18px; }
+.pricing-name { font-family: ‘Instrument Serif’, Georgia, serif; font-size: 22px; color: #3a1520; margin-bottom: 6px; }
+.pricing-card.featured .pricing-name { color: #ffffff; }
+.pricing-tag { font-size: 11px; letter-spacing: 0.08em; color: #b06080; font-weight: 600; text-transform: uppercase; margin-bottom: 20px; }
+.pricing-card.featured .pricing-tag { color: rgba(255,255,255,0.6); }
+.pricing-price { font-family: ‘Instrument Serif’, Georgia, serif; font-size: 48px; font-weight: 400; color: #6b2d3e; line-height: 1; margin-bottom: 4px; }
+.pricing-card.featured .pricing-price { color: #ffffff; }
+.pricing-price sup { font-size: 22px; vertical-align: super; }
+.pricing-price-note { font-size: 12px; color: #9b7080; margin-bottom: 28px; }
+.pricing-card.featured .pricing-price-note { color: rgba(255,255,255,0.55); }
+.pricing-divider { height: 1px; background: rgba(107,45,62,0.08); margin-bottom: 24px; }
+.pricing-card.featured .pricing-divider { background: rgba(255,255,255,0.15); }
+.pricing-features { list-style: none; display: flex; flex-direction: column; gap: 11px; flex: 1; margin-bottom: 32px; }
+.pricing-features li { font-size: 13px; color: #7a4a56; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+.pricing-card.featured .pricing-features li { color: rgba(255,255,255,0.85); }
+.pricing-features li::before { content: ‘✓’; color: #b06080; font-weight: 700; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+.pricing-card.featured .pricing-features li::before { color: rgba(255,255,255,0.7); }
+.pricing-btn {
+background: #f5e6e8;
+color: #6b2d3e;
+border: none;
+padding: 13px 24px;
+border-radius: 100px;
+font-size: 13px;
+font-weight: 600;
+cursor: pointer;
+font-family: ‘Outfit’, Georgia, serif;
+letter-spacing: 0.03em;
+text-align: center;
+}
+.pricing-btn:hover { background: #edd5db; }
+.pricing-card.featured .pricing-btn { background: #ffffff; color: #6b2d3e; }
+
 .addon-card {
-background: var(–white);
+background: #ffffff;
 border-radius: 18px;
 padding: 28px 32px;
 display: flex;
 align-items: center;
 gap: 24px;
 box-shadow: 0 2px 20px rgba(107,45,62,0.07);
-border: 1.5px dashed rgba(107,45,62,0.18);
+border: 1.5px dashed #d4a0b0;
 }
 .addon-icon { font-size: 32px; flex-shrink: 0; }
 .addon-info { flex: 1; }
-.addon-name { font-family: ‘Instrument Serif’, serif; font-size: 20px; color: var(–rose-deep); margin-bottom: 5px; }
-.addon-desc { font-size: 13px; color: var(–text-muted); line-height: 1.55; }
-.addon-price { font-family: ‘Instrument Serif’, serif; font-size: 30px; color: var(–rose-mid); white-space: nowrap; flex-shrink: 0; }
-.addon-note { font-size: 11px; color: var(–text-muted); text-align: right; margin-top: 2px; }
+.addon-name { font-family: ‘Instrument Serif’, Georgia, serif; font-size: 20px; color: #3a1520; margin-bottom: 5px; }
+.addon-desc { font-size: 13px; color: #9b7080; line-height: 1.55; }
+.addon-price { font-family: ‘Instrument Serif’, Georgia, serif; font-size: 30px; color: #6b2d3e; white-space: nowrap; flex-shrink: 0; }
+.addon-note { font-size: 11px; color: #9b7080; text-align: right; margin-top: 2px; }
 
-/* ─── TESTIMONIAL / TRUST ─────────────────────── */
-#trust {
-background: var(–white);
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 72px;
-align-items: start;
-}
-.trust-left {}
+/* TRUST */
+#trust { background: #ffffff; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
 .trust-quote {
-font-family: ‘Instrument Serif’, serif;
-font-size: 26px;
+font-family: ‘Instrument Serif’, Georgia, serif;
+font-size: 24px;
 font-style: italic;
-color: var(–rose-deep);
-line-height: 1.5;
+color: #3a1520;
+line-height: 1.55;
 margin-bottom: 32px;
 padding-left: 24px;
-border-left: 3px solid var(–rose-accent);
+border-left: 3px solid #b06080;
 }
 .trust-list { display: flex; flex-direction: column; gap: 16px; }
 .trust-row { display: flex; align-items: flex-start; gap: 14px; }
@@ -515,341 +373,236 @@ width: 28px; height: 28px;
 border-radius: 50%;
 background: rgba(107,45,62,0.08);
 display: flex; align-items: center; justify-content: center;
-font-size: 12px; color: var(–rose-mid); flex-shrink: 0;
-margin-top: 2px;
+font-size: 12px; color: #6b2d3e; flex-shrink: 0; margin-top: 2px;
 }
-.trust-row-text strong { display: block; font-size: 14px; color: var(–rose-deep); margin-bottom: 2px; font-weight: 600; }
-.trust-row-text span { font-size: 13px; color: var(–text-muted); line-height: 1.55; }
+.trust-row-text strong { display: block; font-size: 14px; color: #3a1520; margin-bottom: 2px; font-weight: 600; }
+.trust-row-text span { font-size: 13px; color: #9b7080; line-height: 1.55; }
 .who-grid { display: flex; flex-direction: column; gap: 12px; }
-.who-item {
-background: var(–rose-pale);
-border-radius: 12px;
-padding: 18px 20px;
-display: flex;
-align-items: center;
-gap: 14px;
-}
+.who-item { background: #f5e6e8; border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 14px; }
 .who-icon { font-size: 20px; flex-shrink: 0; }
-.who-text strong { display: block; font-size: 14px; color: var(–rose-deep); font-weight: 600; margin-bottom: 2px; }
-.who-text span { font-size: 12px; color: var(–text-muted); }
+.who-text strong { display: block; font-size: 14px; color: #3a1520; font-weight: 600; margin-bottom: 2px; }
+.who-text span { font-size: 12px; color: #9b7080; }
 
-/* ─── CONTACT ─────────────────────────────────── */
-#contact {
-background: linear-gradient(135deg, var(–rose-light), var(–rose-pale));
-display: grid;
-grid-template-columns: 1fr 1.3fr;
-gap: 72px;
-align-items: start;
-}
-.contact-info {}
-.contact-info .section-title { font-size: 38px; }
-.contact-info p { font-size: 15px; color: var(–text-body); line-height: 1.8; font-weight: 300; margin: 20px 0 36px; }
+/* CONTACT */
+#contact { background: linear-gradient(135deg, #edd5db, #f5e6e8); display: grid; grid-template-columns: 1fr 1.3fr; gap: 72px; align-items: start; }
+.contact-info p { font-size: 15px; color: #7a4a56; line-height: 1.8; font-weight: 300; margin: 20px 0 36px; }
 .contact-details { display: flex; flex-direction: column; gap: 14px; }
-.contact-detail { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(–text-body); }
+.contact-detail { display: flex; align-items: center; gap: 12px; font-size: 14px; color: #7a4a56; }
 .contact-detail-icon {
-width: 36px; height: 36px;
-border-radius: 50%;
+width: 36px; height: 36px; border-radius: 50%;
 background: rgba(107,45,62,0.08);
 display: flex; align-items: center; justify-content: center;
 font-size: 15px; flex-shrink: 0;
 }
-
-/* form */
-.contact-form {
-background: var(–white);
-border-radius: 20px;
-padding: 44px 40px;
-box-shadow: 0 4px 40px rgba(107,45,62,0.09);
-}
-.form-title { font-family: ‘Instrument Serif’, serif; font-size: 26px; color: var(–rose-deep); margin-bottom: 6px; }
-.form-subtitle { font-size: 13px; color: var(–text-muted); margin-bottom: 28px; line-height: 1.5; }
+.contact-form { background: #ffffff; border-radius: 20px; padding: 44px 40px; box-shadow: 0 4px 40px rgba(107,45,62,0.09); }
+.form-title { font-family: ‘Instrument Serif’, Georgia, serif; font-size: 26px; color: #3a1520; margin-bottom: 6px; }
+.form-subtitle { font-size: 13px; color: #9b7080; margin-bottom: 28px; line-height: 1.5; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .form-group { display: flex; flex-direction: column; gap: 6px; }
 .form-group.full { grid-column: 1 / -1; }
-label { font-size: 12px; color: var(–rose-mid); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+label { font-size: 12px; color: #6b2d3e; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
 input, select, textarea {
-font-family: ‘Outfit’, sans-serif;
+font-family: ‘Outfit’, Georgia, serif;
 font-size: 14px;
-color: var(–rose-deep);
-background: var(–rose-pale);
+color: #3a1520;
+background: #f5e6e8;
 border: 1.5px solid transparent;
 border-radius: 10px;
 padding: 13px 16px;
 outline: none;
-transition: border-color 0.2s, background 0.2s;
 width: 100%;
+-webkit-appearance: none;
 appearance: none;
 }
 input::placeholder, textarea::placeholder { color: rgba(107,45,62,0.35); }
-input:focus, select:focus, textarea:focus {
-border-color: var(–rose-accent);
-background: var(–white);
-}
+input:focus, select:focus, textarea:focus { border-color: #b06080; background: #ffffff; }
 textarea { resize: vertical; min-height: 110px; }
-select { cursor: pointer; }
 .form-submit {
-background: var(–rose-mid);
-color: var(–white);
+background: #6b2d3e;
+color: #ffffff;
 border: none;
 padding: 16px 32px;
 border-radius: 100px;
 font-size: 14px;
 font-weight: 600;
 cursor: pointer;
-font-family: ‘Outfit’, sans-serif;
+font-family: ‘Outfit’, Georgia, serif;
 letter-spacing: 0.04em;
 width: 100%;
 margin-top: 8px;
-transition: background 0.2s, transform 0.15s;
 }
-.form-submit:hover { background: var(–rose-deep); transform: translateY(-1px); }
-.form-note { font-size: 11px; color: var(–text-muted); text-align: center; margin-top: 12px; line-height: 1.5; }
-.form-success {
-display: none;
-text-align: center;
-padding: 32px 20px;
-}
+.form-submit:hover { background: #3a1520; }
+.form-note { font-size: 11px; color: #9b7080; text-align: center; margin-top: 12px; line-height: 1.5; }
+.form-success { display: none; text-align: center; padding: 40px 20px; }
 .form-success-icon { font-size: 48px; margin-bottom: 16px; }
-.form-success h3 { font-family: ‘Instrument Serif’, serif; font-size: 26px; color: var(–rose-deep); margin-bottom: 8px; font-style: italic; }
-.form-success p { font-size: 14px; color: var(–text-muted); line-height: 1.6; }
+.form-success h3 { font-family: ‘Instrument Serif’, Georgia, serif; font-size: 26px; color: #3a1520; margin-bottom: 8px; font-style: italic; }
+.form-success p { font-size: 14px; color: #9b7080; line-height: 1.6; }
 
-/* ─── FOOTER ──────────────────────────────────── */
+/* FOOTER CTA */
 .footer-cta-bar {
-background: var(–rose-mid);
-padding: 64px 72px;
+background: #6b2d3e;
+padding: 64px 80px;
 display: flex;
 justify-content: space-between;
 align-items: center;
 gap: 40px;
 }
-.fcb-left h3 { font-family: ‘Instrument Serif’, serif; font-size: 34px; font-style: italic; color: var(–rose-pale); margin-bottom: 8px; }
+.fcb-left h3 { font-family: ‘Instrument Serif’, Georgia, serif; font-size: 34px; font-style: italic; color: #f5e6e8; margin-bottom: 8px; }
 .fcb-left p { font-size: 14px; color: rgba(245,230,232,0.6); font-weight: 300; }
 .fcb-btn {
-background: var(–rose-pale);
-color: var(–rose-mid);
+background: #f5e6e8;
+color: #6b2d3e;
 padding: 16px 36px;
 border-radius: 100px;
 font-size: 14px;
 font-weight: 600;
 border: none;
 cursor: pointer;
-font-family: ‘Outfit’, sans-serif;
+font-family: ‘Outfit’, Georgia, serif;
 white-space: nowrap;
 flex-shrink: 0;
-transition: background 0.2s, transform 0.15s;
 text-decoration: none;
+display: inline-block;
 }
-.fcb-btn:hover { background: var(–white); transform: translateY(-1px); }
+.fcb-btn:hover { background: #ffffff; }
 
 footer {
-background: var(–rose-deep);
-padding: 32px 72px;
+background: #3a1520;
+padding: 32px 80px;
 display: flex;
 justify-content: space-between;
 align-items: center;
-flex-wrap: wrap;
-gap: 16px;
 }
-.footer-logo { font-family: ‘Instrument Serif’, serif; font-size: 18px; color: rgba(245,230,232,0.7); text-decoration: none; }
-.footer-logo em { font-style: italic; color: rgba(176,96,128,0.8); }
+.footer-logo { font-family: ‘Instrument Serif’, Georgia, serif; font-size: 18px; color: rgba(245,230,232,0.7); text-decoration: none; }
+.footer-logo-em { font-style: italic; color: rgba(176,96,128,0.8); }
 .footer-links { display: flex; gap: 28px; }
-.footer-links a { font-size: 12px; color: rgba(245,230,232,0.4); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+.footer-links a { font-size: 12px; color: rgba(245,230,232,0.4); text-decoration: none; letter-spacing: 0.04em; }
 .footer-links a:hover { color: rgba(245,230,232,0.8); }
 .footer-copy { font-size: 11px; color: rgba(245,230,232,0.3); letter-spacing: 0.04em; }
 
-/* ─── RESPONSIVE ─────────────────────────────── */
-@media (max-width: 960px) {
-nav { padding: 18px 28px; }
-.navlinks { display: none; }
-.hamburger { display: flex; }
-.hero { grid-template-columns: 1fr; padding: 64px 28px 56px; gap: 40px; }
-h1 { font-size: 44px; }
-.hero::before, .hero::after { display: none; }
-.trust-bar { padding: 20px 28px; gap: 20px; }
-section { padding: 72px 28px; }
-#about { grid-template-columns: 1fr; gap: 40px; }
-.process-grid { grid-template-columns: 1fr 1fr; }
-.pricing-grid { grid-template-columns: 1fr; }
-.free-audit-card { flex-direction: column; text-align: center; padding: 28px; }
-.addon-card { flex-wrap: wrap; }
-#trust { grid-template-columns: 1fr; gap: 48px; }
-#contact { grid-template-columns: 1fr; gap: 40px; }
-.contact-form { padding: 32px 24px; }
-.form-grid { grid-template-columns: 1fr; }
-.footer-cta-bar { flex-direction: column; text-align: center; padding: 48px 28px; }
-footer { padding: 24px 28px; flex-direction: column; text-align: center; }
-.footer-links { flex-wrap: wrap; justify-content: center; }
-}
-@media (max-width: 600px) {
-h1 { font-size: 36px; }
-.section-title { font-size: 32px; }
-.process-grid { grid-template-columns: 1fr; }
-.about-grid { grid-template-columns: 1fr 1fr; }
-.fac-price { font-size: 38px; }
-}
 </style>
-
 </head>
 <body>
 
-<!-- NAV -->
-
 <nav>
-  <a href="#" class="logo">Bridge<em>Point</em> Legal Consulting</a>
+  <a href="#" class="logo">Bridge<span class="logo-em">Point</span> Legal Consulting</a>
   <ul class="navlinks">
     <li><a href="#about">About</a></li>
     <li><a href="#process">How It Works</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </div>
-  <a href="#contact" class="nav-cta" style="display:none;" id="nav-cta-desktop">Free Audit</a>
+  <a href="#contact" class="nav-cta">Free Audit</a>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="toggleMenu()">About</a>
-  <a href="#process" onclick="toggleMenu()">How It Works</a>
-  <a href="#services" onclick="toggleMenu()">Services & Pricing</a>
-  <a href="#contact" onclick="toggleMenu()">Contact</a>
-  <a href="#contact" class="btn-primary" onclick="toggleMenu()" style="text-align:center;margin-top:8px;">Get Free Intake Audit</a>
-</div>
 
-<!-- HERO -->
-
-<section class="hero" style="padding-top:112px;">
+<div class="hero">
   <div class="hero-left">
-    <div class="pill fade-in">
+    <div class="pill fade-up d1">
       <div class="pill-dot"></div>
-      <span class="pill-text">Remote Legal Ops · Florida-Based · Nationwide</span>
+      <span class="pill-text">Remote Legal Ops &nbsp;&middot;&nbsp; Florida-Based &nbsp;&middot;&nbsp; Nationwide</span>
     </div>
-    <h1 class="fade-up delay-1">Intake that <em>converts.</em><br>Operations that scale.</h1>
-    <p class="hero-body fade-up delay-2">Bridge Point Legal Consulting helps law firms fix broken intake systems and master Clio — so you capture every potential client and run leaner, without adding overhead.</p>
-    <div class="btns fade-up delay-3">
+    <h1 class="fade-up d2">Intake that <em>converts.</em><br>Operations that scale.</h1>
+    <p class="hero-body fade-up d3">Bridge Point Legal Consulting helps law firms fix broken intake systems and master Clio &mdash; so you capture every potential client and run leaner, without adding overhead.</p>
+    <div class="btns fade-up d4">
       <a href="#contact" class="btn-primary">Get Free Intake Audit</a>
-      <a href="#services" class="btn-ghost">View Services & Pricing</a>
+      <a href="#services" class="btn-ghost">View Services &amp; Pricing</a>
     </div>
   </div>
   <div class="hero-cards">
-    <div class="hero-card fade-up delay-2">
+    <div class="hero-card fade-up d2">
       <div class="hero-card-top">
         <div class="hero-card-title">Intake System Build</div>
         <span class="tag">From $1,500</span>
       </div>
-      <div class="hero-card-desc">End-to-end intake redesign — from first contact to signed retainer.</div>
+      <div class="hero-card-desc">End-to-end intake redesign &mdash; from first contact to signed retainer.</div>
     </div>
-    <div class="hero-card fade-up delay-3">
+    <div class="hero-card fade-up d3">
       <div class="hero-card-top">
         <div class="hero-card-title">Clio Optimization</div>
         <span class="tag">From $1,200</span>
       </div>
       <div class="hero-card-desc">Custom workflows, automations, and training built around your firm.</div>
     </div>
-    <div class="hero-card fade-up delay-4">
+    <div class="hero-card fade-up d4">
       <div class="hero-card-top">
         <div class="hero-card-title">Monthly Retainer</div>
         <span class="tag">$2,500 / mo</span>
       </div>
-      <div class="hero-card-desc">Your part-time legal ops director — fully remote, always on.</div>
+      <div class="hero-card-desc">Your part-time legal ops director &mdash; fully remote, always on.</div>
     </div>
   </div>
-</section>
-
-<!-- TRUST BAR -->
-
-<div class="trust-bar">
-  <div class="trust-item"><div class="trust-icon">✓</div> 100% Remote &amp; Async</div>
-  <div class="trust-item"><div class="trust-icon">◆</div> Clio Certified</div>
-  <div class="trust-item"><div class="trust-icon">⊙</div> Any Practice Area</div>
-  <div class="trust-item"><div class="trust-icon">→</div> Nationwide</div>
-  <div class="trust-item"><div class="trust-icon">$</div> Free Audit to Start</div>
 </div>
 
-<!-- ABOUT -->
+<div class="trust-bar">
+  <div class="trust-item"><div class="trust-icon">&#10003;</div> 100% Remote &amp; Async</div>
+  <div class="trust-item"><div class="trust-icon">&#9670;</div> Clio Certified</div>
+  <div class="trust-item"><div class="trust-icon">&#9737;</div> Any Practice Area</div>
+  <div class="trust-item"><div class="trust-icon">&#8594;</div> Nationwide</div>
+  <div class="trust-item"><div class="trust-icon">$</div> Free Audit to Start</div>
+</div>
 
 <section id="about">
   <div>
     <div class="section-label">About Bridge Point</div>
     <h2 class="section-title">Legal ops expertise,<br><em>without the overhead.</em></h2>
-    <p class="about-body">Bridge Point Legal Consulting was built for law firms that know something's broken — leads going cold, intake falling apart, Clio sitting underused — but don't have the time or budget to hire a full-time ops director.</p>
+    <p class="about-body">Bridge Point Legal Consulting was built for law firms that know something&rsquo;s broken &mdash; leads going cold, intake falling apart, Clio sitting underused &mdash; but don&rsquo;t have the time or budget to hire a full-time ops director.</p>
     <p class="about-body">We step in remotely, identify exactly where your firm is leaking clients and efficiency, and build the systems that keep everything running at its best. No phone tag. No in-person meetings. Just results.</p>
     <p class="about-body">Based in Florida, serving law firms of all sizes and practice areas across the country.</p>
   </div>
   <div class="about-grid">
-    <div class="about-stat">
-      <div class="about-stat-n">Free</div>
-      <div class="about-stat-l">Intake audit — no commitment needed to get started</div>
-    </div>
-    <div class="about-stat">
-      <div class="about-stat-n">Clio</div>
-      <div class="about-stat-l">Certified specialist with deep platform expertise</div>
-    </div>
-    <div class="about-stat">
-      <div class="about-stat-n">100%</div>
-      <div class="about-stat-l">Remote and fully async — on your schedule</div>
-    </div>
-    <div class="about-stat">
-      <div class="about-stat-n">Any</div>
-      <div class="about-stat-l">Practice area and firm size — all are welcome</div>
-    </div>
+    <div class="about-stat"><div class="about-stat-n">Free</div><div class="about-stat-l">Intake audit &mdash; no commitment needed to get started</div></div>
+    <div class="about-stat"><div class="about-stat-n">Clio</div><div class="about-stat-l">Certified specialist with deep platform expertise</div></div>
+    <div class="about-stat"><div class="about-stat-n">100%</div><div class="about-stat-l">Remote and fully async &mdash; on your schedule</div></div>
+    <div class="about-stat"><div class="about-stat-n">Any</div><div class="about-stat-l">Practice area and firm size &mdash; all welcome</div></div>
   </div>
 </section>
-
-<!-- HOW IT WORKS -->
 
 <section id="process">
   <div class="section-label">The Process</div>
   <h2 class="section-title">How it <em>works.</em></h2>
-  <p class="section-subtitle">A simple, structured process that gets your firm to better operations — with no surprises along the way.</p>
+  <p class="section-subtitle">A simple, structured process that gets your firm to better operations &mdash; with no surprises along the way.</p>
   <div class="process-grid">
     <div class="process-step">
       <div class="step-num">01</div>
       <div class="step-title">Free Intake Audit</div>
-      <div class="step-desc">We review your current intake process, identify where leads are falling through the cracks, and deliver a clear findings report — at no cost.</div>
+      <div class="step-desc">We review your current intake process, identify where leads are falling through the cracks, and deliver a clear findings report &mdash; at no cost.</div>
     </div>
     <div class="process-step">
       <div class="step-num">02</div>
-      <div class="step-title">Strategy & Proposal</div>
-      <div class="step-desc">Based on the audit, we put together a focused proposal outlining exactly what we'll fix, how we'll do it, and what it will cost.</div>
+      <div class="step-title">Strategy &amp; Proposal</div>
+      <div class="step-desc">Based on the audit, we put together a focused proposal outlining exactly what we&rsquo;ll fix, how we&rsquo;ll do it, and what it will cost.</div>
     </div>
     <div class="process-step">
       <div class="step-num">03</div>
-      <div class="step-title">Build & Optimize</div>
-      <div class="step-desc">We get to work — building your intake system, optimizing your Clio setup, or both. Fully remote, with clear milestones and async updates.</div>
+      <div class="step-title">Build &amp; Optimize</div>
+      <div class="step-desc">We get to work &mdash; building your intake system, optimizing your Clio setup, or both. Fully remote, with clear milestones and async updates.</div>
     </div>
     <div class="process-step">
       <div class="step-num">04</div>
       <div class="step-title">Ongoing Support</div>
-      <div class="step-desc">Stay supported with a monthly retainer or add-on strategy calls whenever you need a focused session to work through new challenges.</div>
+      <div class="step-desc">Stay supported with a monthly retainer or add-on strategy calls whenever you need focused time to work through new challenges.</div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES & PRICING -->
-
 <section id="services">
   <div class="pricing-intro">
-    <div class="section-label">Services & Pricing</div>
+    <div class="section-label">Services &amp; Pricing</div>
     <h2 class="section-title">Transparent pricing,<br><em>real results.</em></h2>
-    <p class="section-subtitle">Every engagement starts with a free audit. From there, choose the service that fits your firm's needs — no surprise fees, no hourly billing.</p>
+    <p class="section-subtitle">Every engagement starts with a free audit. From there, choose the service that fits your firm&rsquo;s needs &mdash; no surprise fees, no hourly billing.</p>
   </div>
-
-  <!-- Free audit highlight -->
 
   <div class="free-audit-card">
     <div class="fac-left">
       <h3>Free Intake Audit</h3>
-      <p>The best place to start. We review your entire intake process and show you exactly where clients are slipping through — with zero commitment required.</p>
+      <p>The best place to start. We review your entire intake process and show you exactly where clients are slipping through &mdash; with zero commitment required.</p>
     </div>
     <div class="fac-price">$0</div>
-    <button class="fac-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Claim Your Free Audit →</button>
+    <button class="fac-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Claim Your Free Audit &rarr;</button>
   </div>
-
-  <!-- 3 paid tiers -->
 
   <div class="pricing-grid">
     <div class="pricing-card">
-      <div class="pricing-icon">⚙️</div>
       <div class="pricing-name">Intake System Build</div>
       <div class="pricing-tag">One-Time Project</div>
       <div class="pricing-price"><sup>$</sup>1,500</div>
@@ -863,54 +616,44 @@ h1 { font-size: 36px; }
         <li>Handoff documentation &amp; training</li>
         <li>30-day post-launch check-in</li>
       </ul>
-      <button class="pricing-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started →</button>
+      <button class="pricing-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started &rarr;</button>
     </div>
-
-```
-<div class="pricing-card featured">
-  <div class="featured-badge">Popular</div>
-  <div class="pricing-icon">📋</div>
-  <div class="pricing-name">Clio Optimization</div>
-  <div class="pricing-tag">One-Time Project</div>
-  <div class="pricing-price"><sup>$</sup>1,200</div>
-  <div class="pricing-price-note">flat project rate</div>
-  <div class="pricing-divider"></div>
-  <ul class="pricing-features">
-    <li>Full Clio account audit</li>
-    <li>Custom workflow &amp; automation builds</li>
-    <li>Matter type and pipeline setup</li>
-    <li>Document template optimization</li>
-    <li>Staff training session (async)</li>
-    <li>30-day post-project support</li>
-  </ul>
-  <button class="pricing-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started →</button>
-</div>
-
-<div class="pricing-card">
-  <div class="pricing-icon">🔄</div>
-  <div class="pricing-name">Monthly Retainer</div>
-  <div class="pricing-tag">Ongoing Support</div>
-  <div class="pricing-price"><sup>$</sup>2,500</div>
-  <div class="pricing-price-note">per month</div>
-  <div class="pricing-divider"></div>
-  <ul class="pricing-features">
-    <li>Dedicated legal ops support each month</li>
-    <li>Ongoing Clio management &amp; optimization</li>
-    <li>Intake monitoring &amp; continuous improvement</li>
-    <li>Priority async communication</li>
-    <li>Monthly ops report &amp; recommendations</li>
-    <li>Cancel anytime — no long-term contract</li>
-  </ul>
-  <button class="pricing-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started →</button>
-</div>
-```
-
+    <div class="pricing-card featured">
+      <div class="featured-badge">Popular</div>
+      <div class="pricing-name">Clio Optimization</div>
+      <div class="pricing-tag">One-Time Project</div>
+      <div class="pricing-price"><sup>$</sup>1,200</div>
+      <div class="pricing-price-note">flat project rate</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li>Full Clio account audit</li>
+        <li>Custom workflow &amp; automation builds</li>
+        <li>Matter type and pipeline setup</li>
+        <li>Document template optimization</li>
+        <li>Staff training session (async)</li>
+        <li>30-day post-project support</li>
+      </ul>
+      <button class="pricing-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started &rarr;</button>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-name">Monthly Retainer</div>
+      <div class="pricing-tag">Ongoing Support</div>
+      <div class="pricing-price"><sup>$</sup>2,500</div>
+      <div class="pricing-price-note">per month</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li>Dedicated legal ops support each month</li>
+        <li>Ongoing Clio management &amp; optimization</li>
+        <li>Intake monitoring &amp; continuous improvement</li>
+        <li>Priority async communication</li>
+        <li>Monthly ops report &amp; recommendations</li>
+        <li>Cancel anytime &mdash; no long-term contract</li>
+      </ul>
+      <button class="pricing-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started &rarr;</button>
+    </div>
   </div>
 
-  <!-- Add-on -->
-
   <div class="addon-card">
-    <div class="addon-icon">📞</div>
     <div class="addon-info">
       <div class="addon-name">Strategy Call Add-On</div>
       <div class="addon-desc">Need to talk through a specific challenge, plan a new workflow, or get focused consulting time? Add a dedicated strategy call to any service or retainer.</div>
@@ -922,237 +665,159 @@ h1 { font-size: 36px; }
   </div>
 </section>
 
-<!-- WHO IT'S FOR / TRUST -->
-
 <section id="trust">
-  <div class="trust-left">
+  <div>
     <div class="section-label">Why Bridge Point</div>
     <h2 class="section-title">Built for firms<br><em>ready to grow.</em></h2>
-    <blockquote class="trust-quote">"Your intake process is the front door of your firm. If it's broken, you're losing clients before they ever meet you."</blockquote>
+    <blockquote class="trust-quote">&ldquo;Your intake process is the front door of your firm. If it&rsquo;s broken, you&rsquo;re losing clients before they ever meet you.&rdquo;</blockquote>
     <div class="trust-list">
       <div class="trust-row">
-        <div class="trust-check">✓</div>
+        <div class="trust-check">&#10003;</div>
         <div class="trust-row-text">
           <strong>Fully remote &amp; async</strong>
-          <span>No phone calls required. All communication is handled via email or your preferred async tool — on your schedule.</span>
+          <span>No phone calls required. All communication handled via email or your preferred async tool &mdash; on your schedule.</span>
         </div>
       </div>
       <div class="trust-row">
-        <div class="trust-check">✓</div>
+        <div class="trust-check">&#10003;</div>
         <div class="trust-row-text">
           <strong>Clio-certified expertise</strong>
-          <span>Deep, hands-on experience with Clio's full feature set — from workflows to billing to client portal setup.</span>
+          <span>Deep, hands-on experience with Clio&rsquo;s full feature set &mdash; from workflows to billing to client portal setup.</span>
         </div>
       </div>
       <div class="trust-row">
-        <div class="trust-check">✓</div>
+        <div class="trust-check">&#10003;</div>
         <div class="trust-row-text">
           <strong>No fluff, just results</strong>
-          <span>Clear deliverables, defined timelines, and systems that actually work — not 80-page strategy decks.</span>
+          <span>Clear deliverables, defined timelines, and systems that actually work &mdash; not 80-page strategy decks.</span>
         </div>
       </div>
     </div>
   </div>
   <div>
     <div class="section-label">Who We Work With</div>
-    <h2 class="section-title" style="font-size:32px;margin-bottom:28px;">This is for you <em>if…</em></h2>
+    <h2 class="section-title" style="font-size:32px;margin-bottom:28px;">This is for you <em>if&hellip;</em></h2>
     <div class="who-grid">
       <div class="who-item">
-        <div class="who-icon">📉</div>
-        <div class="who-text">
-          <strong>Leads are going cold</strong>
-          <span>Prospects reach out and never hear back — or fall through the cracks before signing.</span>
-        </div>
+        <div class="who-text"><strong>Leads are going cold</strong><span>Prospects reach out and never hear back &mdash; or fall through the cracks before signing.</span></div>
       </div>
       <div class="who-item">
-        <div class="who-icon">🔀</div>
-        <div class="who-text">
-          <strong>Clio is underutilized</strong>
-          <span>You're paying for Clio but only scratching the surface of what it can do for your firm.</span>
-        </div>
+        <div class="who-text"><strong>Clio is underutilized</strong><span>You&rsquo;re paying for Clio but only scratching the surface of what it can do for your firm.</span></div>
       </div>
       <div class="who-item">
-        <div class="who-icon">🏃</div>
-        <div class="who-text">
-          <strong>Operations feel chaotic</strong>
-          <span>Your team is busy but workflows are inconsistent, manual, or rely on one person's memory.</span>
-        </div>
+        <div class="who-text"><strong>Operations feel chaotic</strong><span>Your team is busy but workflows are inconsistent, manual, or rely on one person&rsquo;s memory.</span></div>
       </div>
       <div class="who-item">
-        <div class="who-icon">📈</div>
-        <div class="who-text">
-          <strong>You're ready to scale</strong>
-          <span>Growth is happening — or you want it to — but your current systems can't keep up.</span>
-        </div>
+        <div class="who-text"><strong>You&rsquo;re ready to scale</strong><span>Growth is happening &mdash; or you want it to &mdash; but your current systems can&rsquo;t keep up.</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-
 <section id="contact">
   <div class="contact-info">
     <div class="section-label">Get In Touch</div>
-    <h2 class="section-title">Let's fix your<br><em>intake.</em></h2>
-    <p>Fill out the form and we'll be in touch within one business day. Not sure where to start? Just request the free intake audit — there's no commitment and no cost.</p>
+    <h2 class="section-title">Let&rsquo;s fix your<br><em>intake.</em></h2>
+    <p>Fill out the form and we&rsquo;ll be in touch within one business day. Not sure where to start? Just request the free intake audit &mdash; there&rsquo;s no commitment and no cost.</p>
     <div class="contact-details">
-      <div class="contact-detail">
-        <div class="contact-detail-icon">📍</div>
-        Florida-based · Serving firms nationwide
-      </div>
-      <div class="contact-detail">
-        <div class="contact-detail-icon">💬</div>
-        All communication handled async
-      </div>
-      <div class="contact-detail">
-        <div class="contact-detail-icon">⚡</div>
-        Response within 1 business day
-      </div>
-      <div class="contact-detail">
-        <div class="contact-detail-icon">🔒</div>
-        Your information is kept confidential
-      </div>
+      <div class="contact-detail"><div class="contact-detail-icon">&#128205;</div>Florida-based &nbsp;&middot;&nbsp; Serving firms nationwide</div>
+      <div class="contact-detail"><div class="contact-detail-icon">&#128172;</div>All communication handled async</div>
+      <div class="contact-detail"><div class="contact-detail-icon">&#9889;</div>Response within 1 business day</div>
+      <div class="contact-detail"><div class="contact-detail-icon">&#128274;</div>Your information is kept confidential</div>
     </div>
   </div>
-
   <div class="contact-form">
     <div id="formContent">
       <div class="form-title">Start the conversation</div>
-      <div class="form-subtitle">Tell us a bit about your firm and what you're dealing with. We'll take it from there.</div>
-      <div class="form-grid" id="contactForm">
-        <div class="form-group">
-          <label for="fname">Your Name *</label>
-          <input type="text" id="fname" placeholder="Jane Smith" required>
-        </div>
-        <div class="form-group">
-          <label for="ffirm">Firm Name *</label>
-          <input type="text" id="ffirm" placeholder="Smith Law Group" required>
-        </div>
-        <div class="form-group">
-          <label for="femail">Email Address *</label>
-          <input type="email" id="femail" placeholder="jane@smithlawgroup.com" required>
-        </div>
-        <div class="form-group">
-          <label for="fphone">Phone Number</label>
-          <input type="tel" id="fphone" placeholder="(555) 555-5555">
-        </div>
+      <div class="form-subtitle">Tell us a bit about your firm and what you&rsquo;re dealing with. We&rsquo;ll take it from there.</div>
+      <div class="form-grid">
+        <div class="form-group"><label for="fname">Your Name *</label><input type="text" id="fname" placeholder="Jane Smith"></div>
+        <div class="form-group"><label for="ffirm">Firm Name *</label><input type="text" id="ffirm" placeholder="Smith Law Group"></div>
+        <div class="form-group"><label for="femail">Email Address *</label><input type="email" id="femail" placeholder="jane@smithlawgroup.com"></div>
+        <div class="form-group"><label for="fphone">Phone Number</label><input type="tel" id="fphone" placeholder="(555) 555-5555"></div>
         <div class="form-group full">
           <label for="fpractice">Practice Area</label>
           <select id="fpractice">
             <option value="" disabled selected>Select your practice area</option>
-            <option>Personal Injury</option>
-            <option>Family Law</option>
-            <option>Criminal Defense</option>
-            <option>Immigration</option>
-            <option>Estate Planning</option>
-            <option>Business / Corporate</option>
-            <option>Real Estate</option>
-            <option>Employment Law</option>
-            <option>Bankruptcy</option>
-            <option>Other / Multiple</option>
+            <option>Personal Injury</option><option>Family Law</option><option>Criminal Defense</option>
+            <option>Immigration</option><option>Estate Planning</option><option>Business / Corporate</option>
+            <option>Real Estate</option><option>Employment Law</option><option>Bankruptcy</option><option>Other / Multiple</option>
           </select>
         </div>
         <div class="form-group full">
-          <label for="fmessage">What's going on with your firm? *</label>
-          <textarea id="fmessage" placeholder="Tell us what's not working — intake issues, Clio challenges, general ops chaos, or all of the above. We want to hear it." required></textarea>
+          <label for="fmessage">What&rsquo;s going on with your firm? *</label>
+          <textarea id="fmessage" placeholder="Tell us what's not working — intake issues, Clio challenges, general ops chaos, or all of the above."></textarea>
         </div>
         <div class="form-group full">
-          <label for="fservice">I'm interested in…</label>
+          <label for="fservice">I&rsquo;m interested in&hellip;</label>
           <select id="fservice">
             <option value="" disabled selected>Select a service (optional)</option>
             <option>Free Intake Audit (start here!)</option>
-            <option>Intake System Build — $1,500</option>
-            <option>Clio Optimization — $1,200</option>
-            <option>Monthly Retainer — $2,500/mo</option>
-            <option>Strategy Call Add-On — $250</option>
+            <option>Intake System Build &mdash; $1,500</option>
+            <option>Clio Optimization &mdash; $1,200</option>
+            <option>Monthly Retainer &mdash; $2,500/mo</option>
+            <option>Strategy Call Add-On &mdash; $250</option>
             <option>Not sure yet</option>
           </select>
         </div>
         <div class="form-group full">
-          <button class="form-submit" onclick="submitForm()">Send Message →</button>
+          <button class="form-submit" onclick="submitForm()">Send Message &rarr;</button>
           <p class="form-note">No spam, no cold outreach. Just a response from Destiny at Bridge Point Legal Consulting.</p>
         </div>
       </div>
     </div>
     <div class="form-success" id="formSuccess">
-      <div class="form-success-icon">🌸</div>
+      <div class="form-success-icon">&#127800;</div>
       <h3>Message received!</h3>
       <p>Thank you for reaching out. Destiny will be in touch within one business day to follow up on your inquiry.</p>
     </div>
   </div>
 </section>
 
-<!-- FOOTER CTA BAR -->
-
 <div class="footer-cta-bar">
   <div class="fcb-left">
     <h3>Start with a free intake audit.</h3>
-    <p>No commitment. No cost. Just clarity on where your firm is losing clients — and how to fix it.</p>
+    <p>No commitment. No cost. Just clarity on where your firm is losing clients &mdash; and how to fix it.</p>
   </div>
-  <a href="#contact" class="fcb-btn">Book Free Audit →</a>
+  <a href="#contact" class="fcb-btn">Book Free Audit &rarr;</a>
 </div>
 
-<!-- FOOTER -->
-
 <footer>
-  <a href="#" class="footer-logo">Bridge<em>Point</em> Legal Consulting LLC</a>
+  <a href="#" class="footer-logo">Bridge<span class="footer-logo-em">Point</span> Legal Consulting LLC</a>
   <div class="footer-links">
     <a href="#about">About</a>
     <a href="#process">How It Works</a>
     <a href="#services">Services</a>
     <a href="#contact">Contact</a>
   </div>
-  <div class="footer-copy">© 2026 Bridge Point Legal Consulting LLC · bridgepointlegal.com</div>
+  <div class="footer-copy">&copy; 2026 Bridge Point Legal Consulting LLC &nbsp;&middot;&nbsp; bridgepointlegal.com</div>
 </footer>
 
 <script>
-  // Show desktop CTA after page loads
-  document.getElementById('nav-cta-desktop').style.display = 'inline-block';
-
-  function toggleMenu() {
-    const m = document.getElementById('mobileMenu');
-    m.classList.toggle('open');
+function submitForm() {
+  var name    = document.getElementById('fname').value.trim();
+  var firm    = document.getElementById('ffirm').value.trim();
+  var email   = document.getElementById('femail').value.trim();
+  var message = document.getElementById('fmessage').value.trim();
+  if (!name || !firm || !email || !message) {
+    alert('Please fill in your name, firm name, email, and a brief description before submitting.');
+    return;
   }
-
-  // Close mobile menu on outside click
-  document.addEventListener('click', function(e) {
-    const menu = document.getElementById('mobileMenu');
-    const hamburger = document.querySelector('.hamburger');
-    if (menu.classList.contains('open') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
-      menu.classList.remove('open');
-    }
-  });
-
-  function submitForm() {
-    const name    = document.getElementById('fname').value.trim();
-    const firm    = document.getElementById('ffirm').value.trim();
-    const email   = document.getElementById('femail').value.trim();
-    const message = document.getElementById('fmessage').value.trim();
-
-    if (!name || !firm || !email || !message) {
-      alert('Please fill in your name, firm name, email, and a brief description before submitting.');
-      return;
-    }
-    if (!email.includes('@')) {
-      alert('Please enter a valid email address.');
-      return;
-    }
-
-    document.getElementById('formContent').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
+  if (email.indexOf('@') === -1) {
+    alert('Please enter a valid email address.');
+    return;
   }
-
-  // Smooth scroll for nav links
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', function(e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
+  document.getElementById('formContent').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var href = this.getAttribute('href');
+    if (href === '#') return;
+    var target = document.querySelector(href);
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
   });
+});
 </script>
 
 </body>
