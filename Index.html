@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -8,210 +9,212 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --ink: #0f0e0c; --cream: #f5f1ea; --gold: #b8954a;
-    --gold-light: #d4b06a; --muted: #7a7168; --rule: #d8d0c4; --white: #fdfcf9;
+    --ink: #1A1714;
+    --cream: #F5F0EB;
+    --crimson: #6B1A2A;
+    --crimson-light: #9B3A4A;
+    --muted: #5C5450;
+    --rule: #EDE6DD;
+    --white: #FAF8F5;
   }
   html { scroll-behavior: smooth; }
   body { background: var(--cream); color: var(--ink); font-family: 'Cormorant Garamond', serif; font-size: 18px; line-height: 1.6; overflow-x: hidden; }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1rem 3rem; gap: 1rem;
-    background: rgba(245,241,234,0.96); backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--rule);
-  }
-  .nav-brand { display: flex; align-items: center; gap: 0.9rem; flex-shrink: 0; }
-  .nav-logo-svg { flex-shrink: 0; }
-  .nav-text { display: flex; flex-direction: column; }
-  .nav-name { font-family: 'Libre Baskerville', serif; font-size: 0.78rem; font-weight: 700; color: var(--ink); white-space: nowrap; letter-spacing: 0.02em; }
-  .nav-slogan { font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
-  .nav-links { display: flex; gap: 2rem; list-style: none; flex-shrink: 0; }
-  .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; color: var(--muted); transition: color 0.2s; white-space: nowrap; }
-  .nav-links a:hover { color: var(--gold); }
+/* NAV */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+display: flex; align-items: center; justify-content: space-between;
+padding: 1rem 3rem; gap: 1rem;
+background: rgba(245,240,235,0.96); backdrop-filter: blur(10px);
+border-bottom: 1px solid var(–rule);
+}
+.nav-brand { display: flex; align-items: center; gap: 0.9rem; flex-shrink: 0; }
+.nav-logo-svg { flex-shrink: 0; }
+.nav-text { display: flex; flex-direction: column; }
+.nav-name { font-family: ‘Libre Baskerville’, serif; font-size: 0.78rem; font-weight: 700; color: var(–ink); white-space: nowrap; letter-spacing: 0.02em; }
+.nav-slogan { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(–crimson); }
+.nav-links { display: flex; gap: 2rem; list-style: none; flex-shrink: 0; }
+.nav-links a { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; color: var(–muted); transition: color 0.2s; white-space: nowrap; }
+.nav-links a:hover { color: var(–crimson); }
 
-  /* HERO */
-  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 4.5rem; }
-  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 5rem 4rem 5rem 5rem; position: relative; }
-  .hero-left::after { content: ''; position: absolute; right: 0; top: 15%; bottom: 15%; width: 1px; background: var(--rule); }
-  .eyebrow { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
-  .hero-headline { font-size: clamp(2.8rem, 4.5vw, 5rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.01em; opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
-  .hero-headline em { font-style: italic; color: var(--gold); }
-  .hero-sub { margin-top: 1.8rem; font-size: 1.05rem; font-weight: 300; color: var(--muted); max-width: 42ch; line-height: 1.7; opacity: 0; animation: fadeUp 0.8s 0.6s forwards; }
-  .hero-cta { margin-top: 2.5rem; display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
-  .btn-primary { display: inline-block; padding: 0.85rem 2rem; background: var(--gold); color: var(--white); font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, transform 0.2s; }
-  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
-  .btn-ghost { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
-  .btn-ghost:hover { color: var(--gold); border-color: var(--gold); }
+/* HERO */
+.hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 4.5rem; }
+.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 5rem 4rem 5rem 5rem; position: relative; }
+.hero-left::after { content: ‘’; position: absolute; right: 0; top: 15%; bottom: 15%; width: 1px; background: var(–rule); }
+.eyebrow { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(–crimson); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
+.hero-headline { font-size: clamp(2.8rem, 4.5vw, 5rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.01em; opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
+.hero-headline em { font-style: italic; color: var(–crimson); }
+.hero-sub { margin-top: 1.8rem; font-size: 1.05rem; font-weight: 300; color: var(–muted); max-width: 42ch; line-height: 1.7; opacity: 0; animation: fadeUp 0.8s 0.6s forwards; }
+.hero-cta { margin-top: 2.5rem; display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
+.btn-primary { display: inline-block; padding: 0.85rem 2rem; background: var(–crimson); color: var(–white); font-family: ‘DM Mono’, monospace; font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+.btn-primary:hover { background: var(–crimson-light); transform: translateY(-1px); }
+.btn-ghost { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(–muted); text-decoration: none; border-bottom: 1px solid var(–rule); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+.btn-ghost:hover { color: var(–crimson); border-color: var(–crimson); }
 
-  /* COHESIVE IMAGE TREATMENT — warm gold/sepia tone across all photos */
-  .brand-img {
-    filter: sepia(60%) saturate(80%) hue-rotate(5deg) brightness(0.75);
-  }
+/* HERO RIGHT */
+.hero-right { position: relative; overflow: hidden; background: var(–ink); }
+.hero-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; display: block; min-height: 500px; filter: sepia(70%) saturate(40%) hue-rotate(330deg) brightness(0.55); }
+.hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem; background: linear-gradient(to top, rgba(26,23,20,0.96) 30%, rgba(107,26,42,0.08) 100%); }
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; opacity: 0; animation: fadeUp 0.8s 1s forwards; }
+.stat { border-top: 1px solid rgba(107,26,42,0.5); padding-top: 1rem; }
+.stat-num { font-size: 2.8rem; font-weight: 300; line-height: 1; color: var(–crimson-light); }
+.stat-label { font-family: ‘DM Mono’, monospace; font-size: 0.54rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,240,235,0.55); margin-top: 0.3rem; }
+.hero-quote { margin-top: 2rem; padding-left: 1.2rem; border-left: 2px solid var(–crimson); font-style: italic; font-size: 1rem; color: rgba(245,240,235,0.7); line-height: 1.7; opacity: 0; animation: fadeUp 0.8s 1.2s forwards; }
 
-  /* HERO RIGHT — image + stats overlay */
-  .hero-right { position: relative; overflow: hidden; background: var(--ink); }
-  .hero-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; display: block; min-height: 500px; filter: sepia(70%) saturate(60%) hue-rotate(5deg) brightness(0.65); }
-  .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem; background: linear-gradient(to top, rgba(15,14,12,0.96) 30%, rgba(184,149,74,0.08) 100%); }
-  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; opacity: 0; animation: fadeUp 0.8s 1s forwards; }
-  .stat { border-top: 1px solid rgba(184,149,74,0.4); padding-top: 1rem; }
-  .stat-num { font-size: 2.8rem; font-weight: 300; line-height: 1; color: var(--gold); }
-  .stat-label { font-family: 'DM Mono', monospace; font-size: 0.54rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,241,234,0.55); margin-top: 0.3rem; }
-  .hero-quote { margin-top: 2rem; padding-left: 1.2rem; border-left: 2px solid var(--gold); font-style: italic; font-size: 1rem; color: rgba(245,241,234,0.7); line-height: 1.7; opacity: 0; animation: fadeUp 0.8s 1.2s forwards; }
+/* LOGO BAND */
+.logo-band { background: var(–white); border-top: 1px solid var(–rule); border-bottom: 1px solid var(–rule); padding: 3rem 5rem; display: flex; align-items: center; justify-content: center; gap: 2.5rem; }
+.logo-band-mark { flex-shrink: 0; }
+.logo-band-text { display: flex; flex-direction: column; }
+.logo-band-name { font-family: ‘Libre Baskerville’, serif; font-size: 1.8rem; font-weight: 700; color: var(–ink); letter-spacing: 0.02em; line-height: 1.1; }
+.logo-band-rule { width: 100%; height: 2px; background: var(–crimson); margin: 0.5rem 0; }
+.logo-band-tag { font-family: ‘DM Mono’, monospace; font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(–crimson); }
+.logo-band-sub { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(–muted); margin-top: 0.15rem; }
 
-  /* LOGO HERO BAND */
-  .logo-band { background: var(--white); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 3rem 5rem; display: flex; align-items: center; justify-content: center; gap: 2.5rem; }
-  .logo-band-mark { flex-shrink: 0; }
-  .logo-band-text { display: flex; flex-direction: column; }
-  .logo-band-name { font-family: 'Libre Baskerville', serif; font-size: 1.8rem; font-weight: 700; color: var(--ink); letter-spacing: 0.02em; line-height: 1.1; }
-  .logo-band-rule { width: 100%; height: 2px; background: var(--gold); margin: 0.5rem 0; }
-  .logo-band-tag { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); }
-  .logo-band-sub { font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 0.15rem; }
+/* SECTIONS */
+section { padding: 6rem 5rem; }
+.section-label { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(–crimson); margin-bottom: 1rem; }
+.section-heading { font-size: clamp(1.8rem, 3vw, 3rem); font-weight: 300; line-height: 1.1; max-width: 22ch; }
+.section-heading em { font-style: italic; color: var(–crimson); }
 
-  /* SECTIONS */
-  section { padding: 6rem 5rem; }
-  .section-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-  .section-heading { font-size: clamp(1.8rem, 3vw, 3rem); font-weight: 300; line-height: 1.1; max-width: 22ch; }
-  .section-heading em { font-style: italic; color: var(--gold); }
+/* PROBLEM */
+#problem { background: var(–ink); color: var(–cream); padding: 0; }
+#problem .section-heading { color: var(–cream); max-width: 28ch; }
+#problem .section-label { color: var(–crimson-light); }
+.problem-top { padding: 5rem 5rem 3rem; }
+.problem-image-strip { width: 100%; height: 280px; object-fit: cover; object-position: center 30%; display: block; filter: sepia(70%) saturate(40%) hue-rotate(330deg) brightness(0.45); }
+.problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,0.08); }
+.problem-item { padding: 2.5rem 2.5rem 2.5rem 0; border-right: 1px solid rgba(255,255,255,0.08); }
+.problem-item:last-child { border-right: none; padding-right: 0; padding-left: 2.5rem; }
+.problem-item:nth-child(2) { padding-left: 2.5rem; }
+.problem-num { font-family: ‘DM Mono’, monospace; font-size: 0.56rem; letter-spacing: 0.18em; color: var(–crimson-light); margin-bottom: 0.8rem; }
+.problem-title { font-size: 1.3rem; font-weight: 400; margin-bottom: 0.7rem; color: var(–cream); }
+.problem-desc { font-size: 0.88rem; color: rgba(245,240,235,0.5); line-height: 1.7; }
+.problem-bottom { padding: 0 5rem 5rem; }
 
-  /* PROBLEM — with image strip */
-  #problem { background: var(--ink); color: var(--cream); padding: 0; }
-  #problem .section-heading { color: var(--cream); max-width: 28ch; }
-  #problem .section-label { color: var(--gold); }
-  .problem-top { padding: 5rem 5rem 3rem; }
-  .problem-image-strip { width: 100%; height: 280px; object-fit: cover; object-position: center 30%; display: block; filter: sepia(70%) saturate(60%) hue-rotate(5deg) brightness(0.5); }
-  .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,0.08); }
-  .problem-item { padding: 2.5rem 2.5rem 2.5rem 0; border-right: 1px solid rgba(255,255,255,0.08); }
-  .problem-item:last-child { border-right: none; padding-right: 0; padding-left: 2.5rem; }
-  .problem-item:nth-child(2) { padding-left: 2.5rem; }
-  .problem-num { font-family: 'DM Mono', monospace; font-size: 0.56rem; letter-spacing: 0.18em; color: var(--gold); margin-bottom: 0.8rem; }
-  .problem-title { font-size: 1.3rem; font-weight: 400; margin-bottom: 0.7rem; color: var(--cream); }
-  .problem-desc { font-size: 0.88rem; color: rgba(245,241,234,0.5); line-height: 1.7; }
-  .problem-bottom { padding: 0 5rem 5rem; }
+/* SERVICES */
+#services { background: var(–white); padding: 0; }
+.services-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+.services-image-col { position: relative; overflow: hidden; }
+.services-image-col img { width: 100%; height: 100%; object-fit: cover; display: block; filter: sepia(70%) saturate(40%) hue-rotate(330deg) brightness(0.5); }
+.services-image-col::after { content: ‘’; position: absolute; inset: 0; background: linear-gradient(to right, rgba(26,23,20,0.55), rgba(107,26,42,0.08)); }
+.services-content { padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; }
+.services-intro { font-size: 0.95rem; color: var(–muted); line-height: 1.8; margin-bottom: 2.5rem; }
+.service-item { display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(–rule); }
+.service-item:first-child { border-top: 1px solid var(–rule); }
+.service-item:hover .service-name { color: var(–crimson); }
+.service-idx { font-family: ‘DM Mono’, monospace; font-size: 0.56rem; letter-spacing: 0.1em; color: var(–muted); padding-top: 3px; }
+.service-name { font-size: 1.2rem; font-weight: 400; transition: color 0.2s; }
+.service-desc { font-size: 0.84rem; color: var(–muted); margin-top: 0.3rem; line-height: 1.6; }
+.service-price { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(–crimson); white-space: nowrap; padding-top: 3px; }
 
-  /* SERVICES — split with image */
-  #services { background: var(--white); padding: 0; }
-  .services-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
-  .services-image-col { position: relative; overflow: hidden; }
-  .services-image-col img { width: 100%; height: 100%; object-fit: cover; display: block; filter: sepia(65%) saturate(70%) hue-rotate(5deg) brightness(0.6); }
-  .services-image-col::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(15,14,12,0.55), rgba(184,149,74,0.08)); }
-  .services-content { padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; }
-  .services-intro { font-size: 0.95rem; color: var(--muted); line-height: 1.8; margin-bottom: 2.5rem; }
-  .service-item { display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--rule); }
-  .service-item:first-child { border-top: 1px solid var(--rule); }
-  .service-item:hover .service-name { color: var(--gold); }
-  .service-idx { font-family: 'DM Mono', monospace; font-size: 0.56rem; letter-spacing: 0.1em; color: var(--muted); padding-top: 3px; }
-  .service-name { font-size: 1.2rem; font-weight: 400; transition: color 0.2s; }
-  .service-desc { font-size: 0.84rem; color: var(--muted); margin-top: 0.3rem; line-height: 1.6; }
-  .service-price { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--gold); white-space: nowrap; padding-top: 3px; }
+/* PROCESS */
+#process { background: var(–cream); }
+.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; margin-top: 4rem; }
+.step { position: relative; }
+.step::after { content: ‘→’; position: absolute; right: -1.5rem; top: 0.3rem; color: var(–rule); font-size: 1.2rem; }
+.step:last-child::after { display: none; }
+.step-num { font-family: ‘DM Mono’, monospace; font-size: 0.56rem; letter-spacing: 0.2em; color: var(–crimson); margin-bottom: 0.8rem; }
+.step-title { font-size: 1.15rem; font-weight: 400; margin-bottom: 0.5rem; }
+.step-desc { font-size: 0.85rem; color: var(–muted); line-height: 1.65; }
 
-  /* PROCESS */
-  #process { background: var(--cream); }
-  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; margin-top: 4rem; }
-  .step { position: relative; }
-  .step::after { content: '→'; position: absolute; right: -1.5rem; top: 0.3rem; color: var(--rule); font-size: 1.2rem; }
-  .step:last-child::after { display: none; }
-  .step-num { font-family: 'DM Mono', monospace; font-size: 0.56rem; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 0.8rem; }
-  .step-title { font-size: 1.15rem; font-weight: 400; margin-bottom: 0.5rem; }
-  .step-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+/* WHO */
+#who { padding: 0; position: relative; overflow: hidden; }
+.who-image { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 0; filter: sepia(70%) saturate(40%) hue-rotate(330deg) brightness(0.45); }
+.who-overlay { position: relative; z-index: 1; background: rgba(107,26,42,0.88); padding: 6rem 5rem; }
+#who .section-label { color: rgba(255,255,255,0.65); }
+#who .section-heading { color: var(–white); max-width: 30ch; }
+.who-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+.who-card { background: rgba(255,255,255,0.10); padding: 1.8rem; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(4px); }
+.who-card-title { font-size: 1.15rem; margin-bottom: 0.5rem; color: #fff; }
+.who-card-desc { font-size: 0.85rem; opacity: 0.8; line-height: 1.65; color: #fff; }
 
-  /* WHO — image background */
-  #who { padding: 0; position: relative; overflow: hidden; }
-  .who-image { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 0; filter: sepia(70%) saturate(60%) hue-rotate(5deg) brightness(0.55); }
-  .who-overlay { position: relative; z-index: 1; background: rgba(184,149,74,0.9); padding: 6rem 5rem; }
-  #who .section-label { color: rgba(255,255,255,0.65); }
-  #who .section-heading { color: var(--white); max-width: 30ch; }
-  .who-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
-  .who-card { background: rgba(255,255,255,0.14); padding: 1.8rem; border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(4px); }
-  .who-card-title { font-size: 1.15rem; margin-bottom: 0.5rem; color: #fff; }
-  .who-card-desc { font-size: 0.85rem; opacity: 0.8; line-height: 1.65; color: #fff; }
+/* AUDIT */
+#audit { background: var(–white); }
+.audit-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 4rem; align-items: start; }
+.audit-intro { font-size: 1rem; color: var(–muted); line-height: 1.8; }
+.audit-intro p { margin-bottom: 1.2rem; }
+.audit-checklist { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; }
+.audit-checklist li { font-size: 0.88rem; color: var(–muted); display: flex; align-items: flex-start; gap: 0.7rem; line-height: 1.5; }
+.audit-checklist li::before { content: ‘✓’; color: var(–crimson); font-weight: 700; flex-shrink: 0; margin-top: 0.1rem; }
+.audit-form { background: var(–cream); border: 1px solid var(–rule); padding: 2rem; }
+.form-title { font-family: ‘Libre Baskerville’, serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 1.1rem; }
+.form-group label { font-family: ‘DM Mono’, monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(–muted); }
+.form-group input, .form-group select, .form-group textarea {
+background: var(–white); border: 1px solid var(–rule);
+padding: 0.65rem 0.9rem; font-family: ‘Cormorant Garamond’, serif;
+font-size: 1rem; color: var(–ink); outline: none;
+transition: border-color 0.2s; border-radius: 1px;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(–crimson); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-submit { width: 100%; padding: 0.9rem; background: var(–crimson); color: var(–white); font-family: ‘DM Mono’, monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; margin-top: 0.5rem; }
+.form-submit:hover { background: var(–crimson-light); transform: translateY(-1px); }
+.form-note { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.1em; color: var(–muted); text-align: center; margin-top: 0.8rem; }
 
-  /* AUDIT REQUEST SECTION */
-  #audit { background: var(--white); }
-  .audit-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 4rem; align-items: start; }
-  .audit-intro { font-size: 1rem; color: var(--muted); line-height: 1.8; }
-  .audit-intro p { margin-bottom: 1.2rem; }
-  .audit-checklist { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; }
-  .audit-checklist li { font-size: 0.88rem; color: var(--muted); display: flex; align-items: flex-start; gap: 0.7rem; line-height: 1.5; }
-  .audit-checklist li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 0.1rem; }
-  .audit-form { background: var(--cream); border: 1px solid var(--rule); padding: 2rem; }
-  .form-title { font-family: 'Libre Baskerville', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; }
-  .form-group { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 1.1rem; }
-  .form-group label { font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
-  .form-group input, .form-group select, .form-group textarea {
-    background: var(--white); border: 1px solid var(--rule);
-    padding: 0.65rem 0.9rem; font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem; color: var(--ink); outline: none;
-    transition: border-color 0.2s; border-radius: 1px;
-  }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
-  .form-group textarea { resize: vertical; min-height: 90px; }
-  .form-submit { width: 100%; padding: 0.9rem; background: var(--gold); color: var(--white); font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; margin-top: 0.5rem; }
-  .form-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
-  .form-note { font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.1em; color: var(--muted); text-align: center; margin-top: 0.8rem; }
+/* CTA */
+#contact { background: var(–ink); color: var(–cream); text-align: center; padding: 7rem 4rem; position: relative; overflow: hidden; }
+.contact-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: sepia(70%) saturate(40%) hue-rotate(330deg) brightness(0.2); }
+.contact-inner { position: relative; z-index: 1; }
+#contact .section-label { color: var(–crimson-light); }
+#contact .section-heading { color: var(–cream); margin: 0 auto 1rem; text-align: center; max-width: none; }
+.contact-tagline { font-family: ‘DM Mono’, monospace; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(–crimson-light); margin-bottom: 1.5rem; }
+.contact-sub { color: rgba(245,240,235,0.5); font-size: 1rem; margin-bottom: 2.5rem; }
+.contact-email { display: inline-block; font-family: ‘DM Mono’, monospace; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(–white); text-decoration: none; border: 1px solid var(–crimson); padding: 0.9rem 2.5rem; transition: background 0.2s; }
+.contact-email:hover { background: var(–crimson); }
 
-  /* CTA */
-  #contact { background: var(--ink); color: var(--cream); text-align: center; padding: 7rem 4rem; position: relative; overflow: hidden; }
-  .contact-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: sepia(70%) saturate(60%) hue-rotate(5deg) brightness(0.25); }
-  .contact-inner { position: relative; z-index: 1; }
-  #contact .section-label { color: var(--gold); }
-  #contact .section-heading { color: var(--cream); margin: 0 auto 1rem; text-align: center; max-width: none; }
-  .contact-tagline { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
-  .contact-sub { color: rgba(245,241,234,0.5); font-size: 1rem; margin-bottom: 2.5rem; }
-  .contact-email { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--white); text-decoration: none; border: 1px solid var(--gold); padding: 0.9rem 2.5rem; transition: background 0.2s; }
-  .contact-email:hover { background: var(--gold); }
+/* FOOTER */
+footer { background: var(–ink); border-top: 1px solid rgba(255,255,255,0.08); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-brand { display: flex; align-items: center; gap: 0.8rem; }
+.footer-text { display: flex; flex-direction: column; gap: 0.2rem; }
+.footer-logo { font-family: ‘Libre Baskerville’, serif; font-size: 0.7rem; font-weight: 700; color: var(–cream); white-space: nowrap; }
+.footer-slogan { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(–crimson-light); }
+.footer-copy { font-family: ‘DM Mono’, monospace; font-size: 0.52rem; letter-spacing: 0.1em; color: rgba(245,240,235,0.22); white-space: nowrap; }
 
-  /* FOOTER */
-  footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.08); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-  .footer-brand { display: flex; align-items: center; gap: 0.8rem; }
-  .footer-text { display: flex; flex-direction: column; gap: 0.2rem; }
-  .footer-logo { font-family: 'Libre Baskerville', serif; font-size: 0.7rem; font-weight: 700; color: var(--cream); white-space: nowrap; }
-  .footer-slogan { font-family: 'DM Mono', monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
-  .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 0.1em; color: rgba(245,241,234,0.22); white-space: nowrap; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-
-  @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; }
-    .hero-left { padding: 4rem 1.5rem 2.5rem; }
-    .hero-left::after { display: none; }
-    .hero-right { min-height: 400px; }
-    section { padding: 4rem 1.5rem; }
-    .logo-band { padding: 2.5rem 1.5rem; flex-direction: column; text-align: center; }
-    .problem-top, .problem-bottom { padding: 3rem 1.5rem; }
-    .problem-grid { grid-template-columns: 1fr; }
-    .problem-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 2rem 0; }
-    .problem-item:last-child, .problem-item:nth-child(2) { padding-left: 0; }
-    .services-split { grid-template-columns: 1fr; }
-    .services-image-col { height: 280px; }
-    .services-content { padding: 3rem 1.5rem; }
-    .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .step::after { display: none; }
-    .who-overlay { padding: 4rem 1.5rem; }
-    .who-grid { grid-template-columns: 1fr; }
-    .audit-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-    footer { padding: 2rem 1.5rem; }
-  }
+@media (max-width: 900px) {
+nav { padding: 1rem 1.5rem; }
+.nav-links { display: none; }
+.hero { grid-template-columns: 1fr; }
+.hero-left { padding: 4rem 1.5rem 2.5rem; }
+.hero-left::after { display: none; }
+.hero-right { min-height: 400px; }
+section { padding: 4rem 1.5rem; }
+.logo-band { padding: 2.5rem 1.5rem; flex-direction: column; text-align: center; }
+.problem-top, .problem-bottom { padding: 3rem 1.5rem; }
+.problem-grid { grid-template-columns: 1fr; }
+.problem-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 2rem 0; }
+.problem-item:last-child, .problem-item:nth-child(2) { padding-left: 0; }
+.services-split { grid-template-columns: 1fr; }
+.services-image-col { height: 280px; }
+.services-content { padding: 3rem 1.5rem; }
+.process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+.step::after { display: none; }
+.who-overlay { padding: 4rem 1.5rem; }
+.who-grid { grid-template-columns: 1fr; }
+.audit-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+footer { padding: 2rem 1.5rem; }
+}
 </style>
+
 </head>
 <body>
 
 <!-- NAV -->
+
 <nav>
   <div class="nav-brand">
     <svg class="nav-logo-svg" width="24" height="22" viewBox="0 0 58 54" fill="none">
-      <rect x="27" y="5" width="3.5" height="38" fill="#0f0e0c"/>
-      <circle cx="28.75" cy="5" r="3.2" fill="#b8954a"/>
-      <rect x="2" y="16" width="54" height="2.5" fill="#b8954a"/>
-      <line x1="7.5" y1="18.5" x2="7.5" y2="33" stroke="#0f0e0c" stroke-width="1.4"/>
-      <line x1="49.5" y1="18.5" x2="49.5" y2="33" stroke="#0f0e0c" stroke-width="1.4"/>
-      <path d="M 1 33 Q 7.5 40 14 33" stroke="#0f0e0c" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-      <path d="M 43 33 Q 49.5 40 56 33" stroke="#0f0e0c" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-      <rect x="20" y="43" width="17" height="3" fill="#b8954a"/>
-      <rect x="23" y="40" width="11" height="3.5" fill="#0f0e0c"/>
+      <rect x="27" y="5" width="3.5" height="38" fill="#1A1714"/>
+      <circle cx="28.75" cy="5" r="3.2" fill="#6B1A2A"/>
+      <rect x="2" y="16" width="54" height="2.5" fill="#6B1A2A"/>
+      <line x1="7.5" y1="18.5" x2="7.5" y2="33" stroke="#1A1714" stroke-width="1.4"/>
+      <line x1="49.5" y1="18.5" x2="49.5" y2="33" stroke="#1A1714" stroke-width="1.4"/>
+      <path d="M 1 33 Q 7.5 40 14 33" stroke="#1A1714" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <path d="M 43 33 Q 49.5 40 56 33" stroke="#1A1714" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <rect x="20" y="43" width="17" height="3" fill="#6B1A2A"/>
+      <rect x="23" y="40" width="11" height="3.5" fill="#1A1714"/>
     </svg>
     <div class="nav-text">
       <div class="nav-name">Bridge Point</div>
@@ -227,6 +230,7 @@
 </nav>
 
 <!-- HERO -->
+
 <section class="hero">
   <div class="hero-left">
     <p class="eyebrow">Legal Intake & Practice Operations &nbsp;·&nbsp; Bridge the Gap.</p>
@@ -252,17 +256,18 @@
 </section>
 
 <!-- LOGO BAND -->
+
 <div class="logo-band">
   <svg class="logo-band-mark" width="72" height="68" viewBox="0 0 58 54" fill="none">
-    <rect x="27" y="5" width="3.5" height="38" fill="#0f0e0c"/>
-    <circle cx="28.75" cy="5" r="3.2" fill="#b8954a"/>
-    <rect x="2" y="16" width="54" height="2.5" fill="#b8954a"/>
-    <line x1="7.5" y1="18.5" x2="7.5" y2="33" stroke="#0f0e0c" stroke-width="1.4"/>
-    <line x1="49.5" y1="18.5" x2="49.5" y2="33" stroke="#0f0e0c" stroke-width="1.4"/>
-    <path d="M 1 33 Q 7.5 40 14 33" stroke="#0f0e0c" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-    <path d="M 43 33 Q 49.5 40 56 33" stroke="#0f0e0c" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-    <rect x="20" y="43" width="17" height="3" fill="#b8954a"/>
-    <rect x="23" y="40" width="11" height="3.5" fill="#0f0e0c"/>
+    <rect x="27" y="5" width="3.5" height="38" fill="#1A1714"/>
+    <circle cx="28.75" cy="5" r="3.2" fill="#6B1A2A"/>
+    <rect x="2" y="16" width="54" height="2.5" fill="#6B1A2A"/>
+    <line x1="7.5" y1="18.5" x2="7.5" y2="33" stroke="#1A1714" stroke-width="1.4"/>
+    <line x1="49.5" y1="18.5" x2="49.5" y2="33" stroke="#1A1714" stroke-width="1.4"/>
+    <path d="M 1 33 Q 7.5 40 14 33" stroke="#1A1714" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <path d="M 43 33 Q 49.5 40 56 33" stroke="#1A1714" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <rect x="20" y="43" width="17" height="3" fill="#6B1A2A"/>
+    <rect x="23" y="40" width="11" height="3.5" fill="#1A1714"/>
   </svg>
   <div class="logo-band-text">
     <div class="logo-band-name">Bridge Point Legal Consulting</div>
@@ -273,6 +278,7 @@
 </div>
 
 <!-- PROBLEM -->
+
 <section id="problem">
   <div class="problem-top">
     <p class="section-label">The Real Issue</p>
@@ -301,6 +307,7 @@
 </section>
 
 <!-- SERVICES -->
+
 <section id="services">
   <div class="services-split">
     <div class="services-image-col">
@@ -337,6 +344,7 @@
 </section>
 
 <!-- PROCESS -->
+
 <section id="process">
   <p class="section-label">How It Works</p>
   <h2 class="section-heading">Simple by design. <em>Thorough</em> by execution.</h2>
@@ -349,6 +357,7 @@
 </section>
 
 <!-- WHO -->
+
 <section id="who">
   <img class="who-image" src="https://images.unsplash.com/photo-1664575198308-3959904fa430?w=1400&q=80" alt="Law firm" loading="lazy">
   <div class="who-overlay">
@@ -363,7 +372,8 @@
   </div>
 </section>
 
-<!-- FREE AUDIT REQUEST -->
+<!-- AUDIT -->
+
 <section id="audit">
   <p class="section-label">Free Intake Audit</p>
   <h2 class="section-heading">Find out where your firm is losing clients. <em>At no cost.</em></h2>
@@ -384,22 +394,10 @@
       <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <input type="hidden" name="_subject" value="New Free Intake Audit Request — Bridge Point">
         <input type="hidden" name="_replyto" value="">
-        <div class="form-group">
-          <label>Your Name *</label>
-          <input type="text" name="name" required placeholder="Jane Smith">
-        </div>
-        <div class="form-group">
-          <label>Firm Name *</label>
-          <input type="text" name="firm_name" required placeholder="Smith & Associates">
-        </div>
-        <div class="form-group">
-          <label>Email Address *</label>
-          <input type="email" name="email" required placeholder="jane@yourfirm.com">
-        </div>
-        <div class="form-group">
-          <label>Phone Number *</label>
-          <input type="tel" name="phone" required placeholder="(555) 000-0000">
-        </div>
+        <div class="form-group"><label>Your Name *</label><input type="text" name="name" required placeholder="Jane Smith"></div>
+        <div class="form-group"><label>Firm Name *</label><input type="text" name="firm_name" required placeholder="Smith & Associates"></div>
+        <div class="form-group"><label>Email Address *</label><input type="email" name="email" required placeholder="jane@yourfirm.com"></div>
+        <div class="form-group"><label>Phone Number *</label><input type="tel" name="phone" required placeholder="(555) 000-0000"></div>
         <div class="form-group">
           <label>Practice Area</label>
           <select name="practice_area">
@@ -422,10 +420,7 @@
             <option>Late Afternoon (3pm – 5pm)</option>
           </select>
         </div>
-        <div class="form-group">
-          <label>What's your biggest intake challenge? *</label>
-          <textarea name="biggest_challenge" required placeholder="e.g. We're not following up fast enough, leads go cold, staff don't know what to ask…"></textarea>
-        </div>
+        <div class="form-group"><label>What's your biggest intake challenge? *</label><textarea name="biggest_challenge" required placeholder="e.g. We're not following up fast enough, leads go cold, staff don't know what to ask…"></textarea></div>
         <button type="submit" class="form-submit">Submit Audit Request →</button>
         <p class="form-note">We'll confirm your request within 1 business day. Your information is never shared.</p>
       </form>
@@ -434,6 +429,7 @@
 </section>
 
 <!-- CTA -->
+
 <section id="contact">
   <img class="contact-bg-img" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1400&q=80" alt="" loading="lazy">
   <div class="contact-inner">
@@ -441,31 +437,32 @@
     <h2 class="section-heading" style="margin:0 auto 1rem;text-align:center;max-width:none;">Start with a free audit.<br><em>No pitch. Just findings.</em></h2>
     <p class="contact-tagline">Bridge the Gap.</p>
     <p class="contact-sub">Questions? Reach us directly.</p>
-    <a href="/cdn-cgi/l/email-protection#5034352324393e2910322239343735203f393e243c3537313c7e333f3d" class="contact-email"><span class="__cf_email__" data-cfemail="86e2e3f5f2efe8ffc6e4f4efe2e1e3f6e9efe8f2eae3e1e7eaa8e5e9eb">[email&#160;protected]</span></a>
+    <a href="mailto:destiny@bridgepointlegal.com" class="contact-email">destiny@bridgepointlegal.com</a>
   </div>
 </section>
 
 <!-- FOOTER -->
+
 <footer>
   <div class="footer-brand">
     <svg width="22" height="20" viewBox="0 0 58 54" fill="none">
-      <rect x="27" y="5" width="3.5" height="38" fill="#f5f1ea"/>
-      <circle cx="28.75" cy="5" r="3.2" fill="#b8954a"/>
-      <rect x="2" y="16" width="54" height="2.5" fill="#b8954a"/>
-      <line x1="7.5" y1="18.5" x2="7.5" y2="33" stroke="#f5f1ea" stroke-width="1.4"/>
-      <line x1="49.5" y1="18.5" x2="49.5" y2="33" stroke="#f5f1ea" stroke-width="1.4"/>
-      <path d="M 1 33 Q 7.5 40 14 33" stroke="#f5f1ea" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-      <path d="M 43 33 Q 49.5 40 56 33" stroke="#f5f1ea" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-      <rect x="20" y="43" width="17" height="3" fill="#b8954a"/>
-      <rect x="23" y="40" width="11" height="3.5" fill="#f5f1ea"/>
+      <rect x="27" y="5" width="3.5" height="38" fill="#F5F0EB"/>
+      <circle cx="28.75" cy="5" r="3.2" fill="#6B1A2A"/>
+      <rect x="2" y="16" width="54" height="2.5" fill="#6B1A2A"/>
+      <line x1="7.5" y1="18.5" x2="7.5" y2="33" stroke="#F5F0EB" stroke-width="1.4"/>
+      <line x1="49.5" y1="18.5" x2="49.5" y2="33" stroke="#F5F0EB" stroke-width="1.4"/>
+      <path d="M 1 33 Q 7.5 40 14 33" stroke="#F5F0EB" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <path d="M 43 33 Q 49.5 40 56 33" stroke="#F5F0EB" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <rect x="20" y="43" width="17" height="3" fill="#6B1A2A"/>
+      <rect x="23" y="40" width="11" height="3.5" fill="#F5F0EB"/>
     </svg>
     <div class="footer-text">
       <div class="footer-logo">Bridge Point Legal Consulting LLC</div>
-       <div class="footer-slogan">Bridge the Gap.</div>
+      <div class="footer-slogan">Bridge the Gap.</div>
     </div>
   </div>
   <div class="footer-copy">© 2026 Bridge Point Legal Consulting LLC · Florida</div>
 </footer>
- 
+
 </body>
 </html>
