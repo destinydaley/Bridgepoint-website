@@ -4,198 +4,680 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bridge Point Legal Consulting — Bridge the Gap.</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<title>Bridge Point Legal Consulting | Legal Operations & Intake Systems</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --ink:       #0f0e0c;
-    --cream:     #f5f1ea;
-    --white:     #fdfcf9;
-    --rule:      #ddd0d0;
-    --muted:     #7a6868;
-    --red-deep:  #6B0000;
-    --red-core:  #8B1A1A;
-    --red-mid:   #A63030;
-    --red-warm:  #C0504A;
-    --red-blush: #E8C5C0;
-    --red-tint:  #F7EEEC;
+    --rose-deep:    #3a1520;
+    --rose-mid:     #6b2d3e;
+    --rose-accent:  #b06080;
+    --rose-light:   #edd5db;
+    --rose-pale:    #f5e6e8;
+    --rose-muted:   #9b7080;
+    --white:        #ffffff;
+    --text-dark:    #3a1520;
+    --text-body:    #7a4a56;
+    --text-muted:   #9b7080;
   }
-  html { scroll-behavior: smooth; }
-  body { background: var(--cream); color: var(--ink); font-family: 'Cormorant Garamond', serif; font-size: 18px; line-height: 1.65; overflow-x: hidden; }
-  a { color: inherit; text-decoration: none; }
 
-/* ── NAV ── */
-nav {
-position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-display: flex; align-items: center; justify-content: space-between;
-padding: 1rem 4rem; gap: 1rem;
-background: rgba(245,241,234,0.97); backdrop-filter: blur(12px);
-border-bottom: 1px solid var(–rule);
+- { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+body {
+background: var(–rose-pale);
+font-family: ‘Outfit’, sans-serif;
+color: var(–text-dark);
+overflow-x: hidden;
 }
-.nav-brand { display: flex; align-items: center; gap: 0.85rem; flex-shrink: 0; }
-.nav-text { display: flex; flex-direction: column; line-height: 1.2; }
-.nav-name { font-family: ‘Libre Baskerville’, serif; font-size: 0.82rem; font-weight: 700; color: var(–ink); letter-spacing: 0.02em; }
-.nav-slogan { font-family: ‘DM Mono’, monospace; font-size: 0.48rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(–red-warm); margin-top: 0.1rem; }
-.nav-links { display: flex; gap: 2.2rem; list-style: none; }
-.nav-links a { font-family: ‘DM Mono’, monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(–muted); transition: color 0.2s; }
-.nav-links a:hover { color: var(–red-core); }
 
-/* ── HERO ── */
-.hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; padding-top: 4rem; }
-.hero-text { display: flex; flex-direction: column; justify-content: center; padding: 6rem 5rem 6rem 4rem; background: var(–white); }
-.eyebrow { font-family: ‘DM Mono’, monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(–red-core); margin-bottom: 1.8rem; opacity: 0; animation: rise 0.9s 0.2s forwards; }
-.hero-headline { font-size: clamp(2.6rem, 3.8vw, 4.8rem); font-weight: 300; line-height: 1.04; opacity: 0; animation: rise 0.9s 0.4s forwards; }
-.hero-headline em { font-style: italic; color: var(–red-core); }
-.hero-sub { margin-top: 2rem; font-size: 1.05rem; font-weight: 300; color: var(–muted); line-height: 1.75; max-width: 40ch; opacity: 0; animation: rise 0.9s 0.6s forwards; }
-.hero-actions { margin-top: 3rem; display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; opacity: 0; animation: rise 0.9s 0.8s forwards; }
-.btn-fill { display: inline-block; padding: 0.85rem 2.2rem; background: var(–red-core); color: var(–white); font-family: ‘DM Mono’, monospace; font-size: 0.63rem; letter-spacing: 0.18em; text-transform: uppercase; transition: background 0.2s, transform 0.15s; }
-.btn-fill:hover { background: var(–red-mid); transform: translateY(-1px); }
-.btn-line { font-family: ‘DM Mono’, monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(–muted); border-bottom: 1px solid var(–rule); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
-.btn-line:hover { color: var(–red-core); border-color: var(–red-core); }
-.hero-visual { overflow: hidden; position: relative; }
-.hero-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; min-height: 580px; }
+/* ─── ANIMATIONS ─────────────────────────────── */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(28px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+from { opacity: 0; }
+to   { opacity: 1; }
+}
+.fade-up  { animation: fadeUp  0.7s ease both; }
+.fade-in  { animation: fadeIn  0.6s ease both; }
+.delay-1  { animation-delay: 0.1s; }
+.delay-2  { animation-delay: 0.22s; }
+.delay-3  { animation-delay: 0.34s; }
+.delay-4  { animation-delay: 0.46s; }
+.delay-5  { animation-delay: 0.58s; }
 
-/* ── STATS BAND — law books background ── */
-.stats { display: grid; grid-template-columns: repeat(4,1fr); position: relative; overflow: hidden; }
-.stats-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0; }
-.stats-overlay { position: absolute; inset: 0; background: rgba(60,0,0,0.82); z-index: 1; }
-.stat { padding: 2.8rem 2.2rem; border-right: 1px solid rgba(245,241,234,0.12); position: relative; z-index: 2; }
-.stat:last-child { border-right: none; }
-.stat-n { font-family: ‘Cormorant Garamond’, serif; font-size: 3.2rem; font-weight: 300; color: var(–red-blush); line-height: 1; }
-.stat-l { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(245,241,234,0.6); margin-top: 0.5rem; line-height: 1.5; }
+/* ─── NAV ─────────────────────────────────────── */
+nav {
+background: var(–white);
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 20px 72px;
+border-bottom: 1px solid rgba(107,45,62,0.1);
+position: sticky;
+top: 0;
+z-index: 200;
+box-shadow: 0 2px 20px rgba(107,45,62,0.05);
+}
+.logo {
+font-family: ‘Instrument Serif’, serif;
+font-size: 20px;
+color: var(–rose-mid);
+letter-spacing: 0.02em;
+text-decoration: none;
+}
+.logo em { font-style: italic; color: var(–rose-accent); }
+.navlinks {
+display: flex;
+gap: 36px;
+list-style: none;
+}
+.navlinks li a {
+font-size: 13px;
+color: var(–text-muted);
+text-decoration: none;
+letter-spacing: 0.04em;
+transition: color 0.2s;
+}
+.navlinks li a:hover { color: var(–rose-mid); }
+.nav-cta {
+background: var(–rose-mid);
+color: var(–white);
+border: none;
+padding: 11px 26px;
+border-radius: 100px;
+font-size: 13px;
+cursor: pointer;
+font-family: ‘Outfit’, sans-serif;
+font-weight: 500;
+letter-spacing: 0.04em;
+transition: background 0.2s, transform 0.15s;
+text-decoration: none;
+}
+.nav-cta:hover { background: var(–rose-deep); transform: translateY(-1px); }
 
-/* ── PROBLEM — courtroom image left, content right ── */
-.problem-sec { display: grid; grid-template-columns: 1fr 1fr; }
-.problem-img { position: relative; overflow: hidden; min-height: 580px; }
-.problem-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; position: absolute; inset: 0; }
-/* dark tint so the image isn’t washed out but still visible */
-.problem-img::after { content: ‘’; position: absolute; inset: 0; background: rgba(30,0,0,0.35); }
-.problem-content { padding: 6rem 5rem; background: var(–red-deep); display: flex; flex-direction: column; justify-content: center; }
-.sec-label { font-family: ‘DM Mono’, monospace; font-size: 0.58rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(–red-core); margin-bottom: 1rem; }
-.sec-heading { font-size: clamp(1.9rem, 2.8vw, 3rem); font-weight: 300; line-height: 1.1; max-width: 22ch; }
-.sec-heading em { font-style: italic; color: var(–red-core); }
-.problem-content .sec-label { color: var(–red-blush); }
-.problem-content .sec-heading { color: var(–cream); max-width: 26ch; }
-.problem-list { margin-top: 3rem; display: flex; flex-direction: column; }
-.problem-row { display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid rgba(245,241,234,0.12); align-items: start; }
-.problem-row:first-child { border-top: 1px solid rgba(245,241,234,0.12); }
-.p-num { font-family: ‘DM Mono’, monospace; font-size: 0.55rem; letter-spacing: 0.18em; color: var(–red-blush); padding-top: 4px; }
-.p-title { font-family: ‘Libre Baskerville’, serif; font-size: 1rem; font-weight: 700; color: var(–cream); margin-bottom: 0.3rem; }
-.p-desc  { font-size: 0.88rem; color: rgba(245,241,234,0.6); line-height: 1.7; }
+/* hamburger */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(–rose-mid); border-radius: 2px; transition: all 0.3s; }
+.mobile-menu {
+display: none;
+flex-direction: column;
+background: var(–white);
+padding: 24px 24px 32px;
+border-bottom: 1px solid rgba(107,45,62,0.1);
+gap: 20px;
+}
+.mobile-menu a {
+font-size: 15px;
+color: var(–text-body);
+text-decoration: none;
+font-family: ‘Outfit’, sans-serif;
+}
+.mobile-menu.open { display: flex; }
 
-/* ── SERVICES — content left, brass scales image right ── */
-.services-sec { display: grid; grid-template-columns: 5fr 4fr; background: var(–white); }
-.services-content { padding: 6rem 5rem; }
-.services-intro { font-size: 0.95rem; color: var(–muted); line-height: 1.8; margin: 1.5rem 0 3rem; max-width: 46ch; }
-.svc { display: grid; grid-template-columns: auto 1fr auto; gap: 1.8rem; padding: 1.8rem 0; border-bottom: 1px solid var(–rule); align-items: start; }
-.svc:first-of-type { border-top: 1px solid var(–rule); }
-.svc:hover .svc-name { color: var(–red-core); }
-.svc-idx   { font-family: ‘DM Mono’, monospace; font-size: 0.54rem; letter-spacing: 0.1em; color: var(–muted); padding-top: 3px; }
-.svc-name  { font-size: 1.2rem; font-weight: 400; transition: color 0.2s; line-height: 1.2; }
-.svc-desc  { font-size: 0.84rem; color: var(–muted); margin-top: 0.35rem; line-height: 1.6; }
-.svc-price { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(–red-core); white-space: nowrap; padding-top: 3px; }
-.services-visual { overflow: hidden; }
-.services-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+/* ─── HERO ───────────────────────────────────── */
+.hero {
+padding: 112px 72px 96px;
+display: grid;
+grid-template-columns: 1.15fr 1fr;
+gap: 72px;
+align-items: center;
+background: linear-gradient(135deg, var(–rose-pale) 55%, var(–rose-light) 100%);
+position: relative;
+overflow: hidden;
+}
+.hero::before {
+content: ‘’;
+position: absolute;
+top: -120px; right: -120px;
+width: 480px; height: 480px;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(176,96,128,0.1) 0%, transparent 65%);
+pointer-events: none;
+}
+.hero::after {
+content: ‘’;
+position: absolute;
+bottom: -80px; left: 25%;
+width: 320px; height: 320px;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(107,45,62,0.06) 0%, transparent 65%);
+pointer-events: none;
+}
+.hero-left { position: relative; z-index: 2; }
+.pill {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+background: rgba(107,45,62,0.1);
+border-radius: 100px;
+padding: 7px 16px 7px 10px;
+margin-bottom: 28px;
+}
+.pill-dot { width: 7px; height: 7px; border-radius: 50%; background: var(–rose-accent); flex-shrink: 0; }
+.pill-text { font-size: 12px; color: var(–rose-mid); letter-spacing: 0.06em; font-weight: 500; }
+h1 {
+font-family: ‘Instrument Serif’, serif;
+font-size: 62px;
+font-weight: 400;
+line-height: 1.06;
+color: var(–rose-deep);
+margin-bottom: 26px;
+}
+h1 em { font-style: italic; color: var(–rose-mid); }
+.hero-body {
+font-size: 16px;
+line-height: 1.8;
+color: var(–text-body);
+margin-bottom: 40px;
+font-weight: 300;
+max-width: 480px;
+}
+.btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+background: var(–rose-mid);
+color: var(–white);
+padding: 15px 32px;
+border-radius: 100px;
+font-size: 14px;
+border: none;
+cursor: pointer;
+font-family: ‘Outfit’, sans-serif;
+font-weight: 500;
+letter-spacing: 0.04em;
+transition: background 0.2s, transform 0.15s;
+text-decoration: none;
+display: inline-block;
+}
+.btn-primary:hover { background: var(–rose-deep); transform: translateY(-2px); }
+.btn-ghost {
+background: transparent;
+color: var(–rose-mid);
+padding: 15px 32px;
+border-radius: 100px;
+font-size: 14px;
+border: 1.5px solid rgba(107,45,62,0.35);
+cursor: pointer;
+font-family: ‘Outfit’, sans-serif;
+font-weight: 500;
+transition: border-color 0.2s, transform 0.15s;
+text-decoration: none;
+display: inline-block;
+}
+.btn-ghost:hover { border-color: var(–rose-mid); transform: translateY(-2px); }
 
-/* ── LIBRARY BREAK — grand library, cinematic ── */
-.library-break { position: relative; height: 480px; overflow: hidden; }
-.library-break img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
-/* dark vignette at edges only — no center overlay so image stays vivid */
-.library-break::after { content: ‘’; position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 40%, rgba(15,5,5,0.55) 100%); }
+/* hero cards */
+.hero-cards { display: flex; flex-direction: column; gap: 14px; position: relative; z-index: 2; }
+.hero-card {
+background: var(–white);
+border-radius: 14px;
+padding: 22px 26px;
+box-shadow: 0 2px 24px rgba(107,45,62,0.07);
+border-left: 3px solid var(–rose-accent);
+transition: transform 0.2s, box-shadow 0.2s;
+cursor: default;
+}
+.hero-card:hover { transform: translateX(5px); box-shadow: 0 4px 36px rgba(107,45,62,0.12); }
+.hero-card:nth-child(2) { border-left-color: var(–rose-mid); }
+.hero-card:nth-child(3) { border-left-color: #d4a0b0; }
+.hero-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+.hero-card-title { font-family: ‘Instrument Serif’, serif; font-size: 17px; color: var(–rose-deep); }
+.tag {
+display: inline-block;
+background: rgba(107,45,62,0.08);
+color: var(–rose-mid);
+padding: 3px 10px;
+border-radius: 100px;
+font-size: 10px;
+font-family: ‘Outfit’, sans-serif;
+font-weight: 500;
+letter-spacing: 0.07em;
+white-space: nowrap;
+}
+.hero-card-desc { font-size: 13px; color: var(–text-muted); line-height: 1.55; }
 
-/* ── PROCESS — red tint, watermark logo ── */
-.process-sec { background: var(–red-tint); padding: 7rem 4rem; position: relative; overflow: hidden; }
-/* watermark logo */
-.process-watermark { position: absolute; right: 4rem; top: 50%; transform: translateY(-50%); opacity: 0.06; pointer-events: none; }
-.process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem; margin-top: 4rem; position: relative; z-index: 1; }
-.step-rule  { width: 2.5rem; height: 2px; background: var(–red-warm); margin-bottom: 1.2rem; }
-.step-num   { font-family: ‘DM Mono’, monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(–red-core); margin-bottom: 0.8rem; }
-.step-title { font-family: ‘Libre Baskerville’, serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.6rem; color: var(–ink); }
-.step-desc  { font-size: 0.86rem; color: var(–muted); line-height: 1.65; }
+/* ─── TRUST BAR ───────────────────────────────── */
+.trust-bar {
+background: var(–white);
+border-top: 1px solid rgba(107,45,62,0.08);
+border-bottom: 1px solid rgba(107,45,62,0.08);
+padding: 22px 72px;
+display: flex;
+justify-content: center;
+gap: 56px;
+align-items: center;
+flex-wrap: wrap;
+}
+.trust-item { display: flex; align-items: center; gap: 10px; color: var(–text-muted); font-size: 13px; letter-spacing: 0.03em; }
+.trust-icon {
+width: 30px; height: 30px;
+border-radius: 50%;
+background: rgba(107,45,62,0.07);
+display: flex; align-items: center; justify-content: center;
+font-size: 13px; color: var(–rose-mid); flex-shrink: 0;
+}
 
-/* ── WHO — chrome scales image right, cards left ── */
-.who-sec { display: grid; grid-template-columns: 5fr 4fr; }
-.who-content { padding: 6rem 5rem; background: var(–red-core); display: flex; flex-direction: column; justify-content: center; }
-.who-content .sec-label { color: var(–red-blush); }
-.who-content .sec-heading { color: var(–white); max-width: 28ch; }
-.who-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 3rem; }
-.who-card { background: rgba(245,241,234,0.1); padding: 1.6rem; border: 1px solid rgba(245,241,234,0.2); }
-.who-card-title { font-family: ‘Libre Baskerville’, serif; font-size: 0.95rem; font-weight: 700; color: var(–white); margin-bottom: 0.4rem; }
-.who-card-desc  { font-size: 0.84rem; color: rgba(245,241,234,0.7); line-height: 1.65; }
-.who-visual { overflow: hidden; }
-.who-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+/* ─── SECTION BASE ────────────────────────────── */
+section { padding: 96px 72px; }
+.section-label {
+font-size: 11px;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: var(–rose-accent);
+font-weight: 600;
+margin-bottom: 14px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.section-label::before { content: ‘’; display: block; width: 24px; height: 1px; background: var(–rose-accent); }
+.section-title {
+font-family: ‘Instrument Serif’, serif;
+font-size: 44px;
+font-weight: 400;
+line-height: 1.12;
+color: var(–rose-deep);
+margin-bottom: 16px;
+}
+.section-title em { font-style: italic; color: var(–rose-mid); }
+.section-subtitle {
+font-size: 16px;
+color: var(–text-body);
+font-weight: 300;
+line-height: 1.75;
+max-width: 560px;
+}
 
-/* ── AUDIT — sunlit desk image top-left, form right ── */
-.audit-sec { display: grid; grid-template-columns: 1fr 1fr; }
-.audit-left { display: flex; flex-direction: column; }
-.audit-left img { width: 100%; height: 340px; object-fit: cover; object-position: center 40%; display: block; }
-.audit-copy { padding: 4rem; background: var(–white); flex: 1; display: flex; flex-direction: column; justify-content: center; }
-.audit-copy .sec-label { color: var(–red-core); }
-.audit-copy .sec-heading { font-size: clamp(1.6rem, 2.2vw, 2.4rem); }
-.audit-intro-text { font-size: 0.95rem; color: var(–muted); line-height: 1.8; margin: 1.5rem 0; }
-.audit-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
-.audit-list li { font-size: 0.88rem; color: var(–muted); display: flex; gap: 0.8rem; align-items: flex-start; line-height: 1.55; }
-.audit-list li::before { content: ‘—’; color: var(–red-warm); flex-shrink: 0; }
+/* ─── ABOUT ───────────────────────────────────── */
+#about {
+background: linear-gradient(125deg, var(–rose-light), var(–rose-pale));
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 72px;
+align-items: center;
+}
+.about-body { font-size: 15px; color: var(–text-body); line-height: 1.85; font-weight: 300; margin-bottom: 18px; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.about-stat {
+background: var(–white);
+border-radius: 14px;
+padding: 26px 22px;
+box-shadow: 0 2px 18px rgba(107,45,62,0.06);
+}
+.about-stat-n { font-family: ‘Instrument Serif’, serif; font-size: 34px; color: var(–rose-mid); margin-bottom: 6px; }
+.about-stat-l { font-size: 12px; color: var(–text-muted); line-height: 1.45; }
 
-/* form on dark red */
-.audit-form { background: var(–red-deep); padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; }
-.form-head { font-family: ‘Libre Baskerville’, serif; font-size: 1.5rem; font-weight: 700; color: var(–cream); margin-bottom: 0.4rem; }
-.form-sub  { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(–red-blush); margin-bottom: 2rem; }
-.fg { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 1rem; }
-.fg label { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(245,241,234,0.5); }
-.fg input, .fg select, .fg textarea { background: rgba(245,241,234,0.08); border: 1px solid rgba(245,241,234,0.2); padding: 0.65rem 0.85rem; font-family: ‘Cormorant Garamond’, serif; font-size: 1rem; color: var(–cream); outline: none; transition: border-color 0.2s; width: 100%; }
-.fg input::placeholder, .fg textarea::placeholder { color: rgba(245,241,234,0.3); }
-.fg select option { background: var(–red-deep); color: var(–cream); }
-.fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(–red-blush); }
-.fg textarea { resize: vertical; min-height: 80px; }
-.form-btn { width: 100%; padding: 0.9rem; background: var(–red-warm); color: var(–white); font-family: ‘DM Mono’, monospace; font-size: 0.63rem; letter-spacing: 0.18em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem; }
-.form-btn:hover { background: var(–red-mid); }
-.form-note { font-family: ‘DM Mono’, monospace; font-size: 0.48rem; letter-spacing: 0.1em; color: rgba(245,241,234,0.35); text-align: center; margin-top: 0.9rem; }
+/* ─── HOW IT WORKS ────────────────────────────── */
+#process { background: var(–white); }
+.process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; }
+.process-step {
+position: relative;
+padding: 32px 24px 28px;
+border-radius: 16px;
+background: var(–rose-pale);
+border-top: 3px solid transparent;
+transition: transform 0.2s, box-shadow 0.2s;
+}
+.process-step:hover { transform: translateY(-4px); box-shadow: 0 8px 36px rgba(107,45,62,0.1); }
+.process-step:nth-child(1) { border-top-color: #d4a0b0; }
+.process-step:nth-child(2) { border-top-color: var(–rose-accent); }
+.process-step:nth-child(3) { border-top-color: var(–rose-mid); }
+.process-step:nth-child(4) { border-top-color: var(–rose-deep); }
+.step-num {
+font-family: ‘Instrument Serif’, serif;
+font-size: 48px;
+font-style: italic;
+color: rgba(107,45,62,0.12);
+line-height: 1;
+margin-bottom: 14px;
+}
+.step-title { font-family: ‘Instrument Serif’, serif; font-size: 20px; color: var(–rose-deep); margin-bottom: 10px; }
+.step-desc { font-size: 13px; color: var(–text-muted); line-height: 1.65; }
 
-/* ── CONTACT — gavel/books image with readable text overlay ── */
-.contact-sec { position: relative; overflow: hidden; text-align: center; padding: 9rem 4rem; }
-.contact-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; z-index: 0; }
-/* strong dark red overlay so white text pops cleanly */
-.contact-overlay { position: absolute; inset: 0; background: rgba(50,0,0,0.78); z-index: 1; }
-.contact-inner { position: relative; z-index: 2; }
-.contact-sec .sec-label { color: var(–red-blush); }
-.contact-heading { font-size: clamp(2.2rem, 3.5vw, 3.8rem); font-weight: 300; color: var(–white); margin: 0 auto 1rem; line-height: 1.1; }
-.contact-heading em { font-style: italic; color: var(–red-blush); }
-.contact-tag { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(–red-blush); margin-bottom: 1.5rem; }
-.contact-note { font-size: 1.05rem; color: rgba(245,241,234,0.6); margin-bottom: 2.5rem; }
-.contact-link { display: inline-block; font-family: ‘DM Mono’, monospace; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(–white); border: 1px solid var(–red-blush); padding: 1rem 3rem; transition: background 0.2s, border-color 0.2s; }
-.contact-link:hover { background: var(–red-core); border-color: var(–red-core); }
+/* ─── SERVICES / PRICING ─────────────────────── */
+#services { background: linear-gradient(140deg, var(–rose-pale), var(–rose-light)); }
+.pricing-intro { max-width: 600px; margin-bottom: 56px; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 20px; }
+.pricing-card {
+background: var(–white);
+border-radius: 18px;
+padding: 36px 30px;
+box-shadow: 0 2px 24px rgba(107,45,62,0.07);
+display: flex;
+flex-direction: column;
+transition: transform 0.2s, box-shadow 0.2s;
+position: relative;
+overflow: hidden;
+}
+.pricing-card::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 3px;
+background: var(–rose-accent);
+}
+.pricing-card:hover { transform: translateY(-5px); box-shadow: 0 12px 48px rgba(107,45,62,0.13); }
+.pricing-card.featured {
+background: var(–rose-mid);
+color: var(–white);
+}
+.pricing-card.featured::before { background: rgba(255,255,255,0.4); }
+.featured-badge {
+position: absolute;
+top: 20px; right: 20px;
+background: rgba(255,255,255,0.2);
+color: var(–white);
+font-size: 10px;
+font-weight: 600;
+letter-spacing: 0.1em;
+padding: 4px 10px;
+border-radius: 100px;
+text-transform: uppercase;
+}
+.pricing-icon { font-size: 28px; margin-bottom: 18px; }
+.pricing-name {
+font-family: ‘Instrument Serif’, serif;
+font-size: 22px;
+color: var(–rose-deep);
+margin-bottom: 6px;
+}
+.pricing-card.featured .pricing-name { color: var(–white); }
+.pricing-tag { font-size: 11px; letter-spacing: 0.08em; color: var(–rose-accent); font-weight: 600; text-transform: uppercase; margin-bottom: 20px; }
+.pricing-card.featured .pricing-tag { color: rgba(255,255,255,0.65); }
+.pricing-price {
+font-family: ‘Instrument Serif’, serif;
+font-size: 48px;
+font-weight: 400;
+color: var(–rose-mid);
+line-height: 1;
+margin-bottom: 4px;
+}
+.pricing-card.featured .pricing-price { color: var(–white); }
+.pricing-price sup { font-size: 22px; vertical-align: super; }
+.pricing-price-note { font-size: 12px; color: var(–text-muted); margin-bottom: 28px; }
+.pricing-card.featured .pricing-price-note { color: rgba(255,255,255,0.55); }
+.pricing-divider { height: 1px; background: rgba(107,45,62,0.08); margin-bottom: 24px; }
+.pricing-card.featured .pricing-divider { background: rgba(255,255,255,0.15); }
+.pricing-features { list-style: none; display: flex; flex-direction: column; gap: 11px; flex: 1; margin-bottom: 32px; }
+.pricing-features li { font-size: 13px; color: var(–text-body); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+.pricing-card.featured .pricing-features li { color: rgba(255,255,255,0.85); }
+.pricing-features li::before { content: ‘✓’; color: var(–rose-accent); font-weight: 700; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+.pricing-card.featured .pricing-features li::before { color: rgba(255,255,255,0.7); }
+.pricing-btn {
+background: var(–rose-pale);
+color: var(–rose-mid);
+border: none;
+padding: 13px 24px;
+border-radius: 100px;
+font-size: 13px;
+font-weight: 600;
+cursor: pointer;
+font-family: ‘Outfit’, sans-serif;
+transition: background 0.2s, transform 0.15s;
+letter-spacing: 0.03em;
+text-align: center;
+}
+.pricing-btn:hover { background: var(–rose-light); transform: translateY(-1px); }
+.pricing-card.featured .pricing-btn { background: var(–white); color: var(–rose-mid); }
+.pricing-card.featured .pricing-btn:hover { background: var(–rose-pale); }
 
-/* ── FOOTER ── */
-footer { background: var(–ink); border-top: 1px solid rgba(245,241,234,0.08); padding: 2.2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-.ft-brand { display: flex; align-items: center; gap: 0.8rem; }
-.ft-text { display: flex; flex-direction: column; gap: 0.2rem; }
-.ft-name { font-family: ‘Libre Baskerville’, serif; font-size: 0.72rem; font-weight: 700; color: var(–cream); }
-.ft-tag  { font-family: ‘DM Mono’, monospace; font-size: 0.48rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(–red-warm); }
-.ft-copy { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.1em; color: rgba(245,241,234,0.28); }
+/* free audit card */
+.free-audit-card {
+background: var(–rose-deep);
+border-radius: 18px;
+padding: 36px 40px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 32px;
+margin-bottom: 20px;
+}
+.fac-left h3 {
+font-family: ‘Instrument Serif’, serif;
+font-size: 28px;
+font-style: italic;
+color: var(–rose-pale);
+margin-bottom: 8px;
+}
+.fac-left p { font-size: 14px; color: rgba(245,230,232,0.65); font-weight: 300; line-height: 1.6; }
+.fac-price {
+font-family: ‘Instrument Serif’, serif;
+font-size: 52px;
+color: var(–white);
+white-space: nowrap;
+flex-shrink: 0;
+}
+.fac-cta {
+background: var(–rose-pale);
+color: var(–rose-deep);
+border: none;
+padding: 14px 28px;
+border-radius: 100px;
+font-size: 13px;
+font-weight: 600;
+cursor: pointer;
+font-family: ‘Outfit’, sans-serif;
+white-space: nowrap;
+flex-shrink: 0;
+transition: background 0.2s, transform 0.15s;
+}
+.fac-cta:hover { background: var(–white); transform: translateY(-1px); }
 
-@keyframes rise { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+/* addon card */
+.addon-card {
+background: var(–white);
+border-radius: 18px;
+padding: 28px 32px;
+display: flex;
+align-items: center;
+gap: 24px;
+box-shadow: 0 2px 20px rgba(107,45,62,0.07);
+border: 1.5px dashed rgba(107,45,62,0.18);
+}
+.addon-icon { font-size: 32px; flex-shrink: 0; }
+.addon-info { flex: 1; }
+.addon-name { font-family: ‘Instrument Serif’, serif; font-size: 20px; color: var(–rose-deep); margin-bottom: 5px; }
+.addon-desc { font-size: 13px; color: var(–text-muted); line-height: 1.55; }
+.addon-price { font-family: ‘Instrument Serif’, serif; font-size: 30px; color: var(–rose-mid); white-space: nowrap; flex-shrink: 0; }
+.addon-note { font-size: 11px; color: var(–text-muted); text-align: right; margin-top: 2px; }
 
+/* ─── TESTIMONIAL / TRUST ─────────────────────── */
+#trust {
+background: var(–white);
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 72px;
+align-items: start;
+}
+.trust-left {}
+.trust-quote {
+font-family: ‘Instrument Serif’, serif;
+font-size: 26px;
+font-style: italic;
+color: var(–rose-deep);
+line-height: 1.5;
+margin-bottom: 32px;
+padding-left: 24px;
+border-left: 3px solid var(–rose-accent);
+}
+.trust-list { display: flex; flex-direction: column; gap: 16px; }
+.trust-row { display: flex; align-items: flex-start; gap: 14px; }
+.trust-check {
+width: 28px; height: 28px;
+border-radius: 50%;
+background: rgba(107,45,62,0.08);
+display: flex; align-items: center; justify-content: center;
+font-size: 12px; color: var(–rose-mid); flex-shrink: 0;
+margin-top: 2px;
+}
+.trust-row-text strong { display: block; font-size: 14px; color: var(–rose-deep); margin-bottom: 2px; font-weight: 600; }
+.trust-row-text span { font-size: 13px; color: var(–text-muted); line-height: 1.55; }
+.who-grid { display: flex; flex-direction: column; gap: 12px; }
+.who-item {
+background: var(–rose-pale);
+border-radius: 12px;
+padding: 18px 20px;
+display: flex;
+align-items: center;
+gap: 14px;
+}
+.who-icon { font-size: 20px; flex-shrink: 0; }
+.who-text strong { display: block; font-size: 14px; color: var(–rose-deep); font-weight: 600; margin-bottom: 2px; }
+.who-text span { font-size: 12px; color: var(–text-muted); }
+
+/* ─── CONTACT ─────────────────────────────────── */
+#contact {
+background: linear-gradient(135deg, var(–rose-light), var(–rose-pale));
+display: grid;
+grid-template-columns: 1fr 1.3fr;
+gap: 72px;
+align-items: start;
+}
+.contact-info {}
+.contact-info .section-title { font-size: 38px; }
+.contact-info p { font-size: 15px; color: var(–text-body); line-height: 1.8; font-weight: 300; margin: 20px 0 36px; }
+.contact-details { display: flex; flex-direction: column; gap: 14px; }
+.contact-detail { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(–text-body); }
+.contact-detail-icon {
+width: 36px; height: 36px;
+border-radius: 50%;
+background: rgba(107,45,62,0.08);
+display: flex; align-items: center; justify-content: center;
+font-size: 15px; flex-shrink: 0;
+}
+
+/* form */
+.contact-form {
+background: var(–white);
+border-radius: 20px;
+padding: 44px 40px;
+box-shadow: 0 4px 40px rgba(107,45,62,0.09);
+}
+.form-title { font-family: ‘Instrument Serif’, serif; font-size: 26px; color: var(–rose-deep); margin-bottom: 6px; }
+.form-subtitle { font-size: 13px; color: var(–text-muted); margin-bottom: 28px; line-height: 1.5; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group.full { grid-column: 1 / -1; }
+label { font-size: 12px; color: var(–rose-mid); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+input, select, textarea {
+font-family: ‘Outfit’, sans-serif;
+font-size: 14px;
+color: var(–rose-deep);
+background: var(–rose-pale);
+border: 1.5px solid transparent;
+border-radius: 10px;
+padding: 13px 16px;
+outline: none;
+transition: border-color 0.2s, background 0.2s;
+width: 100%;
+appearance: none;
+}
+input::placeholder, textarea::placeholder { color: rgba(107,45,62,0.35); }
+input:focus, select:focus, textarea:focus {
+border-color: var(–rose-accent);
+background: var(–white);
+}
+textarea { resize: vertical; min-height: 110px; }
+select { cursor: pointer; }
+.form-submit {
+background: var(–rose-mid);
+color: var(–white);
+border: none;
+padding: 16px 32px;
+border-radius: 100px;
+font-size: 14px;
+font-weight: 600;
+cursor: pointer;
+font-family: ‘Outfit’, sans-serif;
+letter-spacing: 0.04em;
+width: 100%;
+margin-top: 8px;
+transition: background 0.2s, transform 0.15s;
+}
+.form-submit:hover { background: var(–rose-deep); transform: translateY(-1px); }
+.form-note { font-size: 11px; color: var(–text-muted); text-align: center; margin-top: 12px; line-height: 1.5; }
+.form-success {
+display: none;
+text-align: center;
+padding: 32px 20px;
+}
+.form-success-icon { font-size: 48px; margin-bottom: 16px; }
+.form-success h3 { font-family: ‘Instrument Serif’, serif; font-size: 26px; color: var(–rose-deep); margin-bottom: 8px; font-style: italic; }
+.form-success p { font-size: 14px; color: var(–text-muted); line-height: 1.6; }
+
+/* ─── FOOTER ──────────────────────────────────── */
+.footer-cta-bar {
+background: var(–rose-mid);
+padding: 64px 72px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 40px;
+}
+.fcb-left h3 { font-family: ‘Instrument Serif’, serif; font-size: 34px; font-style: italic; color: var(–rose-pale); margin-bottom: 8px; }
+.fcb-left p { font-size: 14px; color: rgba(245,230,232,0.6); font-weight: 300; }
+.fcb-btn {
+background: var(–rose-pale);
+color: var(–rose-mid);
+padding: 16px 36px;
+border-radius: 100px;
+font-size: 14px;
+font-weight: 600;
+border: none;
+cursor: pointer;
+font-family: ‘Outfit’, sans-serif;
+white-space: nowrap;
+flex-shrink: 0;
+transition: background 0.2s, transform 0.15s;
+text-decoration: none;
+}
+.fcb-btn:hover { background: var(–white); transform: translateY(-1px); }
+
+footer {
+background: var(–rose-deep);
+padding: 32px 72px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 16px;
+}
+.footer-logo { font-family: ‘Instrument Serif’, serif; font-size: 18px; color: rgba(245,230,232,0.7); text-decoration: none; }
+.footer-logo em { font-style: italic; color: rgba(176,96,128,0.8); }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { font-size: 12px; color: rgba(245,230,232,0.4); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+.footer-links a:hover { color: rgba(245,230,232,0.8); }
+.footer-copy { font-size: 11px; color: rgba(245,230,232,0.3); letter-spacing: 0.04em; }
+
+/* ─── RESPONSIVE ─────────────────────────────── */
 @media (max-width: 960px) {
-nav { padding: 1rem 1.5rem; }
-.nav-links { display: none; }
-.hero, .problem-sec, .services-sec, .who-sec, .audit-sec { grid-template-columns: 1fr; }
-.hero-text { padding: 5rem 1.5rem 3rem; }
-.hero-visual img { min-height: 340px; }
-.stats { grid-template-columns: 1fr 1fr; }
-.stat { border-bottom: 1px solid rgba(245,241,234,0.12); }
-.problem-img { min-height: 300px; }
-.problem-content, .services-content, .who-content, .audit-form { padding: 4rem 1.5rem; }
-.services-visual img, .who-visual img { height: 300px; }
-.library-break { height: 300px; }
-.process-sec { padding: 5rem 1.5rem; }
-.process-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-.who-cards { grid-template-columns: 1fr; }
-.audit-left img { height: 260px; }
-.audit-copy { padding: 3rem 1.5rem; }
-.process-watermark { display: none; }
-footer { padding: 2rem 1.5rem; }
+nav { padding: 18px 28px; }
+.navlinks { display: none; }
+.hamburger { display: flex; }
+.hero { grid-template-columns: 1fr; padding: 64px 28px 56px; gap: 40px; }
+h1 { font-size: 44px; }
+.hero::before, .hero::after { display: none; }
+.trust-bar { padding: 20px 28px; gap: 20px; }
+section { padding: 72px 28px; }
+#about { grid-template-columns: 1fr; gap: 40px; }
+.process-grid { grid-template-columns: 1fr 1fr; }
+.pricing-grid { grid-template-columns: 1fr; }
+.free-audit-card { flex-direction: column; text-align: center; padding: 28px; }
+.addon-card { flex-wrap: wrap; }
+#trust { grid-template-columns: 1fr; gap: 48px; }
+#contact { grid-template-columns: 1fr; gap: 40px; }
+.contact-form { padding: 32px 24px; }
+.form-grid { grid-template-columns: 1fr; }
+.footer-cta-bar { flex-direction: column; text-align: center; padding: 48px 28px; }
+footer { padding: 24px 28px; flex-direction: column; text-align: center; }
+.footer-links { flex-wrap: wrap; justify-content: center; }
+}
+@media (max-width: 600px) {
+h1 { font-size: 36px; }
+.section-title { font-size: 32px; }
+.process-grid { grid-template-columns: 1fr; }
+.about-grid { grid-template-columns: 1fr 1fr; }
+.fac-price { font-size: 38px; }
 }
 </style>
 
@@ -205,260 +687,465 @@ footer { padding: 2rem 1.5rem; }
 <!-- NAV -->
 
 <nav>
-  <div class="nav-brand">
-    <svg width="24" height="22" viewBox="0 0 58 54" fill="none">
-      <rect x="27" y="5" width="3.5" height="38" fill="#0f0e0c"/>
-      <circle cx="28.75" cy="5" r="3.2" fill="#8B1A1A"/>
-      <rect x="2" y="16" width="54" height="2.5" fill="#A63030"/>
-      <line x1="7.5" y1="18.5" x2="7.5" y2="33" stroke="#0f0e0c" stroke-width="1.4"/>
-      <line x1="49.5" y1="18.5" x2="49.5" y2="33" stroke="#0f0e0c" stroke-width="1.4"/>
-      <path d="M 1 33 Q 7.5 40 14 33" stroke="#0f0e0c" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-      <path d="M 43 33 Q 49.5 40 56 33" stroke="#0f0e0c" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-      <rect x="20" y="43" width="17" height="3" fill="#A63030"/>
-      <rect x="23" y="40" width="11" height="3.5" fill="#0f0e0c"/>
-    </svg>
-    <div class="nav-text">
-      <div class="nav-name">Bridge Point</div>
-      <div class="nav-slogan">Bridge the Gap.</div>
-    </div>
-  </div>
-  <ul class="nav-links">
-    <li><a href="#problem">The Problem</a></li>
-    <li><a href="#services">Services</a></li>
+  <a href="#" class="logo">Bridge<em>Point</em> Legal Consulting</a>
+  <ul class="navlinks">
+    <li><a href="#about">About</a></li>
     <li><a href="#process">How It Works</a></li>
-    <li><a href="#audit">Free Audit</a></li>
+    <li><a href="#services">Services</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+  <a href="#contact" class="nav-cta" style="display:none;" id="nav-cta-desktop">Free Audit</a>
 </nav>
-
-<!-- HERO — text left, Lady Justice image right -->
-
-<section class="hero">
-  <div class="hero-text">
-    <p class="eyebrow">Legal Intake & Practice Operations &nbsp;·&nbsp; Bridge the Gap.</p>
-    <h1 class="hero-headline">Your firm is losing clients <em>before</em> they ever sign.</h1>
-    <p class="hero-sub">Bridge Point Legal Consulting helps law firms fix the intake and workflow gaps that quietly cost them cases, revenue, and reputation.</p>
-    <div class="hero-actions">
-      <a href="#audit" class="btn-fill">Request a Free Audit</a>
-      <a href="#services" class="btn-line">See What We Do</a>
-    </div>
-  </div>
-  <div class="hero-visual">
-    <img src="img1.jpeg" alt="Lady Justice with gavel and laptop">
-  </div>
-</section>
-
-<!-- STATS — law books background -->
-
-<div class="stats">
-  <img class="stats-bg" src="img5.jpeg" alt="">
-  <div class="stats-overlay"></div>
-  <div class="stat"><div class="stat-n">42%</div><div class="stat-l">of legal leads never receive a timely follow-up</div></div>
-  <div class="stat"><div class="stat-n">67%</div><div class="stat-l">of clients choose the first firm that responds</div></div>
-  <div class="stat"><div class="stat-n">3×</div><div class="stat-l">more revenue with a structured intake system</div></div>
-  <div class="stat"><div class="stat-n">$0</div><div class="stat-l">cost to find where your firm is leaking clients</div></div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#process" onclick="toggleMenu()">How It Works</a>
+  <a href="#services" onclick="toggleMenu()">Services & Pricing</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="#contact" class="btn-primary" onclick="toggleMenu()" style="text-align:center;margin-top:8px;">Get Free Intake Audit</a>
 </div>
 
-<!-- PROBLEM — courtroom image left, content right -->
+<!-- HERO -->
 
-<section class="problem-sec" id="problem">
-  <div class="problem-img">
-    <img src="img3.jpeg" alt="Courtroom">
+<section class="hero" style="padding-top:112px;">
+  <div class="hero-left">
+    <div class="pill fade-in">
+      <div class="pill-dot"></div>
+      <span class="pill-text">Remote Legal Ops · Florida-Based · Nationwide</span>
+    </div>
+    <h1 class="fade-up delay-1">Intake that <em>converts.</em><br>Operations that scale.</h1>
+    <p class="hero-body fade-up delay-2">Bridge Point Legal Consulting helps law firms fix broken intake systems and master Clio — so you capture every potential client and run leaner, without adding overhead.</p>
+    <div class="btns fade-up delay-3">
+      <a href="#contact" class="btn-primary">Get Free Intake Audit</a>
+      <a href="#services" class="btn-ghost">View Services & Pricing</a>
+    </div>
   </div>
-  <div class="problem-content">
-    <p class="sec-label">The Real Issue</p>
-    <h2 class="sec-heading">Most firms don't have a marketing problem. They have an <em>operations</em> problem.</h2>
-    <div class="problem-list">
-      <div class="problem-row">
-        <span class="p-num">01</span>
-        <div><div class="p-title">Slow Response Times</div><div class="p-desc">Potential clients contact multiple firms at once. The firm that responds first — within minutes — wins the case. Most respond in 48+ hours.</div></div>
+  <div class="hero-cards">
+    <div class="hero-card fade-up delay-2">
+      <div class="hero-card-top">
+        <div class="hero-card-title">Intake System Build</div>
+        <span class="tag">From $1,500</span>
       </div>
-      <div class="problem-row">
-        <span class="p-num">02</span>
-        <div><div class="p-title">Disorganized Workflows</div><div class="p-desc">Cases fall through the cracks. Staff use different systems. Leads go cold because no one is accountable for follow-through.</div></div>
+      <div class="hero-card-desc">End-to-end intake redesign — from first contact to signed retainer.</div>
+    </div>
+    <div class="hero-card fade-up delay-3">
+      <div class="hero-card-top">
+        <div class="hero-card-title">Clio Optimization</div>
+        <span class="tag">From $1,200</span>
       </div>
-      <div class="problem-row">
-        <span class="p-num">03</span>
-        <div><div class="p-title">Underused Technology</div><div class="p-desc">Firms pay for powerful tools like Clio and use 20% of their features. The automation they're already paying for sits idle.</div></div>
+      <div class="hero-card-desc">Custom workflows, automations, and training built around your firm.</div>
+    </div>
+    <div class="hero-card fade-up delay-4">
+      <div class="hero-card-top">
+        <div class="hero-card-title">Monthly Retainer</div>
+        <span class="tag">$2,500 / mo</span>
       </div>
+      <div class="hero-card-desc">Your part-time legal ops director — fully remote, always on.</div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES — content left, brass scales right -->
+<!-- TRUST BAR -->
 
-<section class="services-sec" id="services">
-  <div class="services-content">
-    <p class="sec-label">What We Offer</p>
-    <h2 class="sec-heading">Consulting built for how <em>real</em> firms operate.</h2>
-    <p class="services-intro">Every engagement starts with your actual workflows — not a generic template. All work is delivered remotely, documented, and built so your team owns it long-term.</p>
-    <div class="svc">
-      <span class="svc-idx">01</span>
-      <div><div class="svc-name">Intake Audit</div><div class="svc-desc">A full review of your intake process — response times, screening, follow-up, and conversion. Delivered as an actionable report.</div></div>
-      <span class="svc-price">Free</span>
-    </div>
-    <div class="svc">
-      <span class="svc-idx">02</span>
-      <div><div class="svc-name">Intake System Build</div><div class="svc-desc">A complete intake workflow from first contact to signed retainer, tailored to your practice area and team.</div></div>
-      <span class="svc-price">From $1,500</span>
-    </div>
-    <div class="svc">
-      <span class="svc-idx">03</span>
-      <div><div class="svc-name">Clio Optimization</div><div class="svc-desc">Full Clio setup, automation, custom workflows, and staff training. Stop paying for features you're not using.</div></div>
-      <span class="svc-price">From $1,200</span>
-    </div>
-    <div class="svc">
-      <span class="svc-idx">04</span>
-      <div><div class="svc-name">Ongoing Operations Retainer</div><div class="svc-desc">Monthly consulting to monitor intake performance and keep your systems scaling as your firm grows.</div></div>
-      <span class="svc-price">From $2,500/mo</span>
-    </div>
-  </div>
-  <div class="services-visual">
-    <img src="img2.jpeg" alt="Scales of justice">
-  </div>
-</section>
-
-<!-- GRAND LIBRARY BREAK -->
-
-<div class="library-break">
-  <img src="img9.jpeg" alt="Grand law library">
+<div class="trust-bar">
+  <div class="trust-item"><div class="trust-icon">✓</div> 100% Remote &amp; Async</div>
+  <div class="trust-item"><div class="trust-icon">◆</div> Clio Certified</div>
+  <div class="trust-item"><div class="trust-icon">⊙</div> Any Practice Area</div>
+  <div class="trust-item"><div class="trust-icon">→</div> Nationwide</div>
+  <div class="trust-item"><div class="trust-icon">$</div> Free Audit to Start</div>
 </div>
 
-<!-- PROCESS — watermark logo here -->
+<!-- ABOUT -->
 
-<section class="process-sec" id="process">
-  <!-- watermark logo SVG -->
-  <svg class="process-watermark" width="420" height="400" viewBox="0 0 58 54" fill="none">
-    <rect x="27" y="5" width="3.5" height="38" fill="#8B1A1A"/>
-    <circle cx="28.75" cy="5" r="3.2" fill="#8B1A1A"/>
-    <rect x="2" y="16" width="54" height="2.5" fill="#A63030"/>
-    <line x1="7.5" y1="18.5" x2="7.5" y2="33" stroke="#8B1A1A" stroke-width="1.4"/>
-    <line x1="49.5" y1="18.5" x2="49.5" y2="33" stroke="#8B1A1A" stroke-width="1.4"/>
-    <path d="M 1 33 Q 7.5 40 14 33" stroke="#8B1A1A" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-    <path d="M 43 33 Q 49.5 40 56 33" stroke="#8B1A1A" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-    <rect x="20" y="43" width="17" height="3" fill="#A63030"/>
-    <rect x="23" y="40" width="11" height="3.5" fill="#8B1A1A"/>
-  </svg>
-  <p class="sec-label">How It Works</p>
-  <h2 class="sec-heading">Simple by design. <em>Thorough</em> by execution.</h2>
+<section id="about">
+  <div>
+    <div class="section-label">About Bridge Point</div>
+    <h2 class="section-title">Legal ops expertise,<br><em>without the overhead.</em></h2>
+    <p class="about-body">Bridge Point Legal Consulting was built for law firms that know something's broken — leads going cold, intake falling apart, Clio sitting underused — but don't have the time or budget to hire a full-time ops director.</p>
+    <p class="about-body">We step in remotely, identify exactly where your firm is leaking clients and efficiency, and build the systems that keep everything running at its best. No phone tag. No in-person meetings. Just results.</p>
+    <p class="about-body">Based in Florida, serving law firms of all sizes and practice areas across the country.</p>
+  </div>
+  <div class="about-grid">
+    <div class="about-stat">
+      <div class="about-stat-n">Free</div>
+      <div class="about-stat-l">Intake audit — no commitment needed to get started</div>
+    </div>
+    <div class="about-stat">
+      <div class="about-stat-n">Clio</div>
+      <div class="about-stat-l">Certified specialist with deep platform expertise</div>
+    </div>
+    <div class="about-stat">
+      <div class="about-stat-n">100%</div>
+      <div class="about-stat-l">Remote and fully async — on your schedule</div>
+    </div>
+    <div class="about-stat">
+      <div class="about-stat-n">Any</div>
+      <div class="about-stat-l">Practice area and firm size — all are welcome</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+
+<section id="process">
+  <div class="section-label">The Process</div>
+  <h2 class="section-title">How it <em>works.</em></h2>
+  <p class="section-subtitle">A simple, structured process that gets your firm to better operations — with no surprises along the way.</p>
   <div class="process-grid">
-    <div class="step"><div class="step-rule"></div><p class="step-num">Step 01</p><h3 class="step-title">Request Your Audit</h3><p class="step-desc">Fill out the form below. No calls required — just your firm details and biggest intake challenge.</p></div>
-    <div class="step"><div class="step-rule"></div><p class="step-num">Step 02</p><h3 class="step-title">We Audit Your Intake</h3><p class="step-desc">We conduct a full review of your intake process and identify exactly where clients are being lost.</p></div>
-    <div class="step"><div class="step-rule"></div><p class="step-num">Step 03</p><h3 class="step-title">You Get a Report</h3><p class="step-desc">A clear, prioritized findings report with specific gaps and actionable recommendations — no jargon.</p></div>
-    <div class="step"><div class="step-rule"></div><p class="step-num">Step 04</p><h3 class="step-title">We Build & You Own It</h3><p class="step-desc">We implement fixes remotely on your timeline. Everything is documented so your staff runs it independently.</p></div>
-  </div>
-</section>
-
-<!-- WHO — cards left on red, chrome scales right -->
-
-<section class="who-sec" id="who">
-  <div class="who-content">
-    <p class="sec-label">Who This Is For</p>
-    <h2 class="sec-heading">Built for firms that are <em>ready to grow.</em></h2>
-    <div class="who-cards">
-      <div class="who-card"><div class="who-card-title">High-Volume Practice Areas</div><div class="who-card-desc">Personal injury, criminal defense, immigration, and family law firms where intake speed directly impacts revenue.</div></div>
-      <div class="who-card"><div class="who-card-title">Firms Scaling Quickly</div><div class="who-card-desc">Your caseload is growing but your systems haven't kept up. Things are falling through the cracks.</div></div>
-      <div class="who-card"><div class="who-card-title">Clio Users</div><div class="who-card-desc">Already on Clio but not getting full value? We turn underutilized platforms into automated systems.</div></div>
-      <div class="who-card"><div class="who-card-title">Firms Investing in Marketing</div><div class="who-card-desc">Running ads but conversions are low? Your intake system isn't capturing what marketing brings in.</div></div>
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-title">Free Intake Audit</div>
+      <div class="step-desc">We review your current intake process, identify where leads are falling through the cracks, and deliver a clear findings report — at no cost.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-title">Strategy & Proposal</div>
+      <div class="step-desc">Based on the audit, we put together a focused proposal outlining exactly what we'll fix, how we'll do it, and what it will cost.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-title">Build & Optimize</div>
+      <div class="step-desc">We get to work — building your intake system, optimizing your Clio setup, or both. Fully remote, with clear milestones and async updates.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-title">Ongoing Support</div>
+      <div class="step-desc">Stay supported with a monthly retainer or add-on strategy calls whenever you need a focused session to work through new challenges.</div>
     </div>
   </div>
-  <div class="who-visual">
-    <img src="img4.jpeg" alt="Scales of justice on glass">
-  </div>
 </section>
 
-<!-- AUDIT REQUEST — sunlit desk image + form -->
+<!-- SERVICES & PRICING -->
 
-<section class="audit-sec" id="audit">
-  <div class="audit-left">
-    <img src="img8.jpeg" alt="Sunlit professional desk">
-    <div class="audit-copy">
-      <p class="sec-label">Free Intake Audit</p>
-      <h2 class="sec-heading">Find out exactly where your firm is losing clients.</h2>
-      <p class="audit-intro-text">We conduct a real-world audit of your intake process and deliver a detailed findings report — completely free, no obligation.</p>
-      <ul class="audit-list">
-        <li>Scored assessment across response time, tone, intake questions, and follow-up</li>
-        <li>Specific findings on where potential clients are being lost</li>
-        <li>Prioritized recommendations you can act on immediately</li>
-        <li>Delivered within 3–5 business days of your request</li>
-        <li>No phone call required to get started</li>
+<section id="services">
+  <div class="pricing-intro">
+    <div class="section-label">Services & Pricing</div>
+    <h2 class="section-title">Transparent pricing,<br><em>real results.</em></h2>
+    <p class="section-subtitle">Every engagement starts with a free audit. From there, choose the service that fits your firm's needs — no surprise fees, no hourly billing.</p>
+  </div>
+
+  <!-- Free audit highlight -->
+
+  <div class="free-audit-card">
+    <div class="fac-left">
+      <h3>Free Intake Audit</h3>
+      <p>The best place to start. We review your entire intake process and show you exactly where clients are slipping through — with zero commitment required.</p>
+    </div>
+    <div class="fac-price">$0</div>
+    <button class="fac-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Claim Your Free Audit →</button>
+  </div>
+
+  <!-- 3 paid tiers -->
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-icon">⚙️</div>
+      <div class="pricing-name">Intake System Build</div>
+      <div class="pricing-tag">One-Time Project</div>
+      <div class="pricing-price"><sup>$</sup>1,500</div>
+      <div class="pricing-price-note">flat project rate</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li>Full intake process audit &amp; redesign</li>
+        <li>Lead capture &amp; follow-up system setup</li>
+        <li>Intake form builds and optimization</li>
+        <li>Client journey mapping from contact to retainer</li>
+        <li>Handoff documentation &amp; training</li>
+        <li>30-day post-launch check-in</li>
       </ul>
+      <button class="pricing-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started →</button>
+    </div>
+
+```
+<div class="pricing-card featured">
+  <div class="featured-badge">Popular</div>
+  <div class="pricing-icon">📋</div>
+  <div class="pricing-name">Clio Optimization</div>
+  <div class="pricing-tag">One-Time Project</div>
+  <div class="pricing-price"><sup>$</sup>1,200</div>
+  <div class="pricing-price-note">flat project rate</div>
+  <div class="pricing-divider"></div>
+  <ul class="pricing-features">
+    <li>Full Clio account audit</li>
+    <li>Custom workflow &amp; automation builds</li>
+    <li>Matter type and pipeline setup</li>
+    <li>Document template optimization</li>
+    <li>Staff training session (async)</li>
+    <li>30-day post-project support</li>
+  </ul>
+  <button class="pricing-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started →</button>
+</div>
+
+<div class="pricing-card">
+  <div class="pricing-icon">🔄</div>
+  <div class="pricing-name">Monthly Retainer</div>
+  <div class="pricing-tag">Ongoing Support</div>
+  <div class="pricing-price"><sup>$</sup>2,500</div>
+  <div class="pricing-price-note">per month</div>
+  <div class="pricing-divider"></div>
+  <ul class="pricing-features">
+    <li>Dedicated legal ops support each month</li>
+    <li>Ongoing Clio management &amp; optimization</li>
+    <li>Intake monitoring &amp; continuous improvement</li>
+    <li>Priority async communication</li>
+    <li>Monthly ops report &amp; recommendations</li>
+    <li>Cancel anytime — no long-term contract</li>
+  </ul>
+  <button class="pricing-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started →</button>
+</div>
+```
+
+  </div>
+
+  <!-- Add-on -->
+
+  <div class="addon-card">
+    <div class="addon-icon">📞</div>
+    <div class="addon-info">
+      <div class="addon-name">Strategy Call Add-On</div>
+      <div class="addon-desc">Need to talk through a specific challenge, plan a new workflow, or get focused consulting time? Add a dedicated strategy call to any service or retainer.</div>
+    </div>
+    <div>
+      <div class="addon-price">$250</div>
+      <div class="addon-note">per call</div>
     </div>
   </div>
-  <div class="audit-form">
-    <div class="form-head">Request Your Free Audit</div>
-    <div class="form-sub">No obligation · Delivered within 5 business days</div>
-    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <input type="hidden" name="_subject" value="New Free Intake Audit Request — Bridge Point">
-      <div class="fg"><label>Your Name *</label><input type="text" name="name" required placeholder="Jane Smith"></div>
-      <div class="fg"><label>Firm Name *</label><input type="text" name="firm_name" required placeholder="Smith & Associates"></div>
-      <div class="fg"><label>Email Address *</label><input type="email" name="email" required placeholder="jane@yourfirm.com"></div>
-      <div class="fg"><label>Phone Number *</label><input type="tel" name="phone" required placeholder="(555) 000-0000"></div>
-      <div class="fg">
-        <label>Practice Area</label>
-        <select name="practice_area">
-          <option value="">Select one…</option>
-          <option>Personal Injury</option>
-          <option>Criminal Defense</option>
-          <option>Immigration</option>
-          <option>Family Law</option>
-          <option>Workers Compensation</option>
-          <option>Estate Planning</option>
-          <option>Other</option>
-        </select>
+</section>
+
+<!-- WHO IT'S FOR / TRUST -->
+
+<section id="trust">
+  <div class="trust-left">
+    <div class="section-label">Why Bridge Point</div>
+    <h2 class="section-title">Built for firms<br><em>ready to grow.</em></h2>
+    <blockquote class="trust-quote">"Your intake process is the front door of your firm. If it's broken, you're losing clients before they ever meet you."</blockquote>
+    <div class="trust-list">
+      <div class="trust-row">
+        <div class="trust-check">✓</div>
+        <div class="trust-row-text">
+          <strong>Fully remote &amp; async</strong>
+          <span>No phone calls required. All communication is handled via email or your preferred async tool — on your schedule.</span>
+        </div>
       </div>
-      <div class="fg">
-        <label>Best Time to Call Your Firm</label>
-        <select name="best_time">
-          <option value="">Select one…</option>
-          <option>Morning (9am – 12pm)</option>
-          <option>Afternoon (12pm – 3pm)</option>
-          <option>Late Afternoon (3pm – 5pm)</option>
-        </select>
+      <div class="trust-row">
+        <div class="trust-check">✓</div>
+        <div class="trust-row-text">
+          <strong>Clio-certified expertise</strong>
+          <span>Deep, hands-on experience with Clio's full feature set — from workflows to billing to client portal setup.</span>
+        </div>
       </div>
-      <div class="fg"><label>Biggest Intake Challenge *</label><textarea name="biggest_challenge" required placeholder="e.g. Leads go cold, slow follow-up, staff don't know what to ask…"></textarea></div>
-      <button type="submit" class="form-btn">Submit Audit Request →</button>
-      <p class="form-note">We confirm within 1 business day. Your information is never shared.</p>
-    </form>
+      <div class="trust-row">
+        <div class="trust-check">✓</div>
+        <div class="trust-row-text">
+          <strong>No fluff, just results</strong>
+          <span>Clear deliverables, defined timelines, and systems that actually work — not 80-page strategy decks.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Who We Work With</div>
+    <h2 class="section-title" style="font-size:32px;margin-bottom:28px;">This is for you <em>if…</em></h2>
+    <div class="who-grid">
+      <div class="who-item">
+        <div class="who-icon">📉</div>
+        <div class="who-text">
+          <strong>Leads are going cold</strong>
+          <span>Prospects reach out and never hear back — or fall through the cracks before signing.</span>
+        </div>
+      </div>
+      <div class="who-item">
+        <div class="who-icon">🔀</div>
+        <div class="who-text">
+          <strong>Clio is underutilized</strong>
+          <span>You're paying for Clio but only scratching the surface of what it can do for your firm.</span>
+        </div>
+      </div>
+      <div class="who-item">
+        <div class="who-icon">🏃</div>
+        <div class="who-text">
+          <strong>Operations feel chaotic</strong>
+          <span>Your team is busy but workflows are inconsistent, manual, or rely on one person's memory.</span>
+        </div>
+      </div>
+      <div class="who-item">
+        <div class="who-icon">📈</div>
+        <div class="who-text">
+          <strong>You're ready to scale</strong>
+          <span>Growth is happening — or you want it to — but your current systems can't keep up.</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- CONTACT — gavel on open book, strong overlay, white text -->
+<!-- CONTACT -->
 
-<section class="contact-sec" id="contact">
-  <img class="contact-bg" src="img7.jpeg" alt="">
-  <div class="contact-overlay"></div>
-  <div class="contact-inner">
-    <p class="sec-label">Get In Touch</p>
-    <h2 class="contact-heading">Start with a free audit.<br><em>No pitch. Just findings.</em></h2>
-    <p class="contact-tag">Bridge the Gap.</p>
-    <p class="contact-note">Questions? Reach us directly.</p>
-    <a href="mailto:destiny@bridgepointlegal.com" class="contact-link">destiny@bridgepointlegal.com</a>
+<section id="contact">
+  <div class="contact-info">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Let's fix your<br><em>intake.</em></h2>
+    <p>Fill out the form and we'll be in touch within one business day. Not sure where to start? Just request the free intake audit — there's no commitment and no cost.</p>
+    <div class="contact-details">
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📍</div>
+        Florida-based · Serving firms nationwide
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">💬</div>
+        All communication handled async
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">⚡</div>
+        Response within 1 business day
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">🔒</div>
+        Your information is kept confidential
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form">
+    <div id="formContent">
+      <div class="form-title">Start the conversation</div>
+      <div class="form-subtitle">Tell us a bit about your firm and what you're dealing with. We'll take it from there.</div>
+      <div class="form-grid" id="contactForm">
+        <div class="form-group">
+          <label for="fname">Your Name *</label>
+          <input type="text" id="fname" placeholder="Jane Smith" required>
+        </div>
+        <div class="form-group">
+          <label for="ffirm">Firm Name *</label>
+          <input type="text" id="ffirm" placeholder="Smith Law Group" required>
+        </div>
+        <div class="form-group">
+          <label for="femail">Email Address *</label>
+          <input type="email" id="femail" placeholder="jane@smithlawgroup.com" required>
+        </div>
+        <div class="form-group">
+          <label for="fphone">Phone Number</label>
+          <input type="tel" id="fphone" placeholder="(555) 555-5555">
+        </div>
+        <div class="form-group full">
+          <label for="fpractice">Practice Area</label>
+          <select id="fpractice">
+            <option value="" disabled selected>Select your practice area</option>
+            <option>Personal Injury</option>
+            <option>Family Law</option>
+            <option>Criminal Defense</option>
+            <option>Immigration</option>
+            <option>Estate Planning</option>
+            <option>Business / Corporate</option>
+            <option>Real Estate</option>
+            <option>Employment Law</option>
+            <option>Bankruptcy</option>
+            <option>Other / Multiple</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="fmessage">What's going on with your firm? *</label>
+          <textarea id="fmessage" placeholder="Tell us what's not working — intake issues, Clio challenges, general ops chaos, or all of the above. We want to hear it." required></textarea>
+        </div>
+        <div class="form-group full">
+          <label for="fservice">I'm interested in…</label>
+          <select id="fservice">
+            <option value="" disabled selected>Select a service (optional)</option>
+            <option>Free Intake Audit (start here!)</option>
+            <option>Intake System Build — $1,500</option>
+            <option>Clio Optimization — $1,200</option>
+            <option>Monthly Retainer — $2,500/mo</option>
+            <option>Strategy Call Add-On — $250</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <button class="form-submit" onclick="submitForm()">Send Message →</button>
+          <p class="form-note">No spam, no cold outreach. Just a response from Destiny at Bridge Point Legal Consulting.</p>
+        </div>
+      </div>
+    </div>
+    <div class="form-success" id="formSuccess">
+      <div class="form-success-icon">🌸</div>
+      <h3>Message received!</h3>
+      <p>Thank you for reaching out. Destiny will be in touch within one business day to follow up on your inquiry.</p>
+    </div>
   </div>
 </section>
+
+<!-- FOOTER CTA BAR -->
+
+<div class="footer-cta-bar">
+  <div class="fcb-left">
+    <h3>Start with a free intake audit.</h3>
+    <p>No commitment. No cost. Just clarity on where your firm is losing clients — and how to fix it.</p>
+  </div>
+  <a href="#contact" class="fcb-btn">Book Free Audit →</a>
+</div>
 
 <!-- FOOTER -->
 
 <footer>
-  <div class="ft-brand">
-    <svg width="22" height="20" viewBox="0 0 58 54" fill="none">
-      <rect x="27" y="5" width="3.5" height="38" fill="#f5f1ea"/>
-      <circle cx="28.75" cy="5" r="3.2" fill="#8B1A1A"/>
-      <rect x="2" y="16" width="54" height="2.5" fill="#A63030"/>
-      <line x1="7.5" y1="18.5" x2="7.5" y2="33" stroke="#f5f1ea" stroke-width="1.4"/>
-      <line x1="49.5" y1="18.5" x2="49.5" y2="33" stroke="#f5f1ea" stroke-width="1.4"/>
-      <path d="M 1 33 Q 7.5 40 14 33" stroke="#f5f1ea" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-      <path d="M 43 33 Q 49.5 40 56 33" stroke="#f5f1ea" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-      <rect x="20" y="43" width="17" height="3" fill="#A63030"/>
-      <rect x="23" y="40" width="11" height="3.5" fill="#f5f1ea"/>
-    </svg>
-    <div class="ft-text">
-      <div class="ft-name">Bridge Point Legal Consulting LLC</div>
-      <div class="ft-tag">Bridge the Gap.</div>
-    </div>
+  <a href="#" class="footer-logo">Bridge<em>Point</em> Legal Consulting LLC</a>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#process">How It Works</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
   </div>
-  <div class="ft-copy">© 2026 Bridge Point Legal Consulting LLC · Florida</div>
+  <div class="footer-copy">© 2025 Bridge Point Legal Consulting LLC · bridgepointlegal.com</div>
 </footer>
+
+<script>
+  // Show desktop CTA after page loads
+  document.getElementById('nav-cta-desktop').style.display = 'inline-block';
+
+  function toggleMenu() {
+    const m = document.getElementById('mobileMenu');
+    m.classList.toggle('open');
+  }
+
+  // Close mobile menu on outside click
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('mobileMenu');
+    const hamburger = document.querySelector('.hamburger');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+
+  function submitForm() {
+    const name    = document.getElementById('fname').value.trim();
+    const firm    = document.getElementById('ffirm').value.trim();
+    const email   = document.getElementById('femail').value.trim();
+    const message = document.getElementById('fmessage').value.trim();
+
+    if (!name || !firm || !email || !message) {
+      alert('Please fill in your name, firm name, email, and a brief description before submitting.');
+      return;
+    }
+    if (!email.includes('@')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
