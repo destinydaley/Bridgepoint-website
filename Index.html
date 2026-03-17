@@ -9,11 +9,11 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --ink: #0f0e0c;
-    --cream: #f5f1ea;
-    --white: #fdfcf9;
-    --rule: #e0d5d5;
-    --muted: #7a6868;
+    --ink:       #0f0e0c;
+    --cream:     #f5f1ea;
+    --white:     #fdfcf9;
+    --rule:      #ddd0d0;
+    --muted:     #7a6868;
     --red-deep:  #6B0000;
     --red-core:  #8B1A1A;
     --red-mid:   #A63030;
@@ -21,180 +21,189 @@
     --red-blush: #E8C5C0;
     --red-tint:  #F7EEEC;
   }
-  html { scroll-behavior: smooth; }
-  body { background: var(--cream); color: var(--ink); font-family: 'Cormorant Garamond', serif; font-size: 18px; line-height: 1.6; overflow-x: hidden; }
 
-/* kill default blue links everywhere */
+html { scroll-behavior: smooth; }
+body { background: var(–cream); color: var(–ink); font-family: ‘Cormorant Garamond’, serif; font-size: 18px; line-height: 1.65; overflow-x: hidden; }
 a { color: inherit; text-decoration: none; }
 
-/* NAV */
+/* shared image treatment */
+.site-img { display: block; width: 100%; object-fit: cover; filter: grayscale(15%) sepia(20%) saturate(65%) hue-rotate(320deg) brightness(0.88); }
+
+/* ── NAV ── */
 nav {
 position: fixed; top: 0; left: 0; right: 0; z-index: 100;
 display: flex; align-items: center; justify-content: space-between;
-padding: 1rem 3rem; gap: 1rem;
-background: rgba(245,241,234,0.97); backdrop-filter: blur(10px);
+padding: 1.1rem 4rem; gap: 1rem;
+background: rgba(245,241,234,0.97); backdrop-filter: blur(12px);
 border-bottom: 1px solid var(–rule);
 }
-.nav-brand { display: flex; align-items: center; gap: 0.9rem; flex-shrink: 0; }
-.nav-text { display: flex; flex-direction: column; }
-.nav-name { font-family: ‘Libre Baskerville’, serif; font-size: 0.78rem; font-weight: 700; color: var(–ink); white-space: nowrap; letter-spacing: 0.02em; }
-.nav-slogan { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(–red-warm); }
-.nav-links { display: flex; gap: 2rem; list-style: none; flex-shrink: 0; }
-.nav-links a { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(–muted); transition: color 0.2s; white-space: nowrap; }
+.nav-brand { display: flex; align-items: center; gap: 0.85rem; flex-shrink: 0; }
+.nav-text { display: flex; flex-direction: column; line-height: 1.2; }
+.nav-name { font-family: ‘Libre Baskerville’, serif; font-size: 0.82rem; font-weight: 700; color: var(–ink); letter-spacing: 0.02em; }
+.nav-slogan { font-family: ‘DM Mono’, monospace; font-size: 0.48rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(–red-warm); margin-top: 0.1rem; }
+.nav-links { display: flex; gap: 2.2rem; list-style: none; }
+.nav-links a { font-family: ‘DM Mono’, monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(–muted); transition: color 0.2s; }
 .nav-links a:hover { color: var(–red-core); }
 
-/* HERO — text left, image right, clean split */
-.hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 4.5rem; }
-.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 5rem 4rem 5rem 5rem; position: relative; background: var(–cream); }
-.hero-left::after { content: ‘’; position: absolute; right: 0; top: 15%; bottom: 15%; width: 1px; background: var(–rule); }
-.eyebrow { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(–red-core); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
-.hero-headline { font-size: clamp(2.6rem, 4vw, 4.8rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.01em; opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
+/* ── HERO ── */
+.hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; padding-top: 4rem; }
+
+.hero-text { display: flex; flex-direction: column; justify-content: center; padding: 6rem 5rem 6rem 4rem; background: var(–cream); }
+.eyebrow { font-family: ‘DM Mono’, monospace; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(–red-core); margin-bottom: 1.8rem; opacity: 0; animation: rise 0.9s 0.2s forwards; }
+.hero-headline { font-size: clamp(2.8rem, 3.8vw, 4.6rem); font-weight: 300; line-height: 1.04; opacity: 0; animation: rise 0.9s 0.4s forwards; }
 .hero-headline em { font-style: italic; color: var(–red-core); }
-.hero-sub { margin-top: 1.8rem; font-size: 1.05rem; font-weight: 300; color: var(–muted); max-width: 42ch; line-height: 1.7; opacity: 0; animation: fadeUp 0.8s 0.6s forwards; }
-.hero-cta { margin-top: 2.5rem; display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
-.btn-primary { display: inline-block; padding: 0.85rem 2rem; background: var(–red-core); color: var(–white); font-family: ‘DM Mono’, monospace; font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; transition: background 0.2s, transform 0.2s; }
-.btn-primary:hover { background: var(–red-mid); transform: translateY(-1px); }
-.btn-ghost { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(–muted); border-bottom: 1px solid var(–rule); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
-.btn-ghost:hover { color: var(–red-core); border-color: var(–red-core); }
+.hero-sub { margin-top: 2rem; font-size: 1.05rem; font-weight: 300; color: var(–muted); line-height: 1.75; max-width: 40ch; opacity: 0; animation: rise 0.9s 0.6s forwards; }
+.hero-actions { margin-top: 3rem; display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; opacity: 0; animation: rise 0.9s 0.8s forwards; }
+.btn-fill { display: inline-block; padding: 0.85rem 2.2rem; background: var(–red-core); color: var(–white); font-family: ‘DM Mono’, monospace; font-size: 0.63rem; letter-spacing: 0.18em; text-transform: uppercase; transition: background 0.2s, transform 0.15s; }
+.btn-fill:hover { background: var(–red-mid); transform: translateY(-1px); }
+.btn-line { font-family: ‘DM Mono’, monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(–muted); border-bottom: 1px solid var(–rule); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+.btn-line:hover { color: var(–red-core); border-color: var(–red-core); }
 
-/* hero right — pure image, no overlay, no text */
-.hero-right { overflow: hidden; }
-.hero-right img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 500px; filter: grayscale(20%) sepia(25%) saturate(70%) hue-rotate(320deg) brightness(0.82); }
+/* hero image — full height panel, no text on it */
+.hero-visual { position: relative; background: var(–ink); }
+.hero-visual img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 100%; filter: grayscale(15%) sepia(22%) saturate(65%) hue-rotate(320deg) brightness(0.82); opacity: 0; animation: rise 1.2s 0.3s forwards; }
 
-/* STATS BAND — standalone below hero */
-.stats-band { background: var(–red-deep); display: grid; grid-template-columns: repeat(4, 1fr); }
-.stat-item { padding: 2.5rem 2rem; border-right: 1px solid rgba(255,255,255,0.08); }
-.stat-item:last-child { border-right: none; }
-.stat-num { font-size: 2.8rem; font-weight: 300; line-height: 1; color: var(–red-blush); font-family: ‘Cormorant Garamond’, serif; }
-.stat-label { font-family: ‘DM Mono’, monospace; font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,241,234,0.5); margin-top: 0.4rem; }
+/* ── STATS ── */
+.stats { display: grid; grid-template-columns: repeat(4,1fr); background: var(–red-deep); }
+.stat { padding: 2.8rem 2.2rem; border-right: 1px solid rgba(245,241,234,0.1); }
+.stat:last-child { border-right: none; }
+.stat-n { font-family: ‘Cormorant Garamond’, serif; font-size: 3rem; font-weight: 300; color: var(–red-blush); line-height: 1; }
+.stat-l { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(245,241,234,0.5); margin-top: 0.5rem; line-height: 1.5; }
 
-/* LOGO BAND */
-.logo-band { background: var(–white); border-top: 1px solid var(–rule); border-bottom: 1px solid var(–rule); padding: 3rem 5rem; display: flex; align-items: center; justify-content: center; gap: 2.5rem; }
-.logo-band-text { display: flex; flex-direction: column; }
-.logo-band-name { font-family: ‘Libre Baskerville’, serif; font-size: 1.8rem; font-weight: 700; color: var(–ink); letter-spacing: 0.02em; line-height: 1.1; }
-.logo-band-rule { width: 100%; height: 2px; background: var(–red-warm); margin: 0.5rem 0; }
-.logo-band-tag { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(–red-core); }
-.logo-band-sub { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(–muted); margin-top: 0.15rem; }
+/* ── LOGO MARK ── */
+.logomark { background: var(–white); padding: 4rem 5rem; display: flex; align-items: center; justify-content: center; gap: 3rem; border-bottom: 1px solid var(–rule); }
+.lm-text { display: flex; flex-direction: column; }
+.lm-name { font-family: ‘Libre Baskerville’, serif; font-size: 2rem; font-weight: 700; color: var(–ink); letter-spacing: 0.02em; line-height: 1.1; }
+.lm-rule { height: 2px; background: var(–red-warm); margin: 0.55rem 0; width: 100%; }
+.lm-tag  { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(–red-core); }
+.lm-sub  { font-family: ‘DM Mono’, monospace; font-size: 0.48rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(–muted); margin-top: 0.2rem; }
 
-/* SECTIONS */
-section { padding: 6rem 5rem; }
-.section-label { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(–red-core); margin-bottom: 1rem; }
-.section-heading { font-size: clamp(1.8rem, 3vw, 3rem); font-weight: 300; line-height: 1.1; max-width: 22ch; }
-.section-heading em { font-style: italic; color: var(–red-core); }
+/* ── SECTION SHELL ── */
+.sec { padding: 7rem 4rem; }
+.sec-label { font-family: ‘DM Mono’, monospace; font-size: 0.58rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(–red-core); margin-bottom: 1rem; }
+.sec-heading { font-size: clamp(1.9rem, 2.8vw, 3rem); font-weight: 300; line-height: 1.1; max-width: 22ch; }
+.sec-heading em { font-style: italic; color: var(–red-core); }
 
-/* IMAGE BLOCKS — standalone, no text on top */
-.img-block { width: 100%; display: block; }
-.img-block img { width: 100%; display: block; object-fit: cover; filter: grayscale(20%) sepia(25%) saturate(70%) hue-rotate(320deg) brightness(0.85); }
-.img-block-tall img { height: 480px; }
-.img-block-medium img { height: 320px; }
-.img-block-short img { height: 220px; }
+/* ── PROBLEM ── */
+.problem-sec { background: var(–red-deep); color: var(–cream); padding: 0; }
+.problem-inner { display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; }
+.problem-img { overflow: hidden; }
+.problem-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(20%) sepia(25%) saturate(50%) hue-rotate(320deg) brightness(0.6); }
+.problem-content { padding: 6rem 5rem; display: flex; flex-direction: column; justify-content: center; }
+.problem-content .sec-label { color: var(–red-blush); }
+.problem-content .sec-heading { color: var(–cream); max-width: 26ch; }
+.problem-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 0; }
+.problem-row { display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid rgba(245,241,234,0.1); align-items: start; }
+.problem-row:first-child { border-top: 1px solid rgba(245,241,234,0.1); }
+.p-num { font-family: ‘DM Mono’, monospace; font-size: 0.55rem; letter-spacing: 0.18em; color: var(–red-blush); padding-top: 4px; }
+.p-title { font-family: ‘Libre Baskerville’, serif; font-size: 1rem; font-weight: 700; color: var(–cream); margin-bottom: 0.3rem; }
+.p-desc  { font-size: 0.88rem; color: rgba(245,241,234,0.58); line-height: 1.7; }
 
-/* PROBLEM */
-#problem { background: var(–red-deep); color: var(–cream); padding: 5rem 5rem 0; }
-#problem .section-heading { color: var(–cream); max-width: 28ch; }
-#problem .section-label { color: var(–red-blush); }
-.problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 4rem; border-top: 1px solid rgba(255,255,255,0.08); }
-.problem-item { padding: 2.5rem 2.5rem 3rem 0; border-right: 1px solid rgba(255,255,255,0.08); }
-.problem-item:last-child { border-right: none; padding-right: 0; padding-left: 2.5rem; }
-.problem-item:nth-child(2) { padding-left: 2.5rem; }
-.problem-num { font-family: ‘DM Mono’, monospace; font-size: 0.56rem; letter-spacing: 0.18em; color: var(–red-blush); margin-bottom: 0.8rem; }
-.problem-title { font-size: 1.3rem; font-weight: 400; margin-bottom: 0.7rem; color: var(–cream); }
-.problem-desc { font-size: 0.88rem; color: rgba(245,241,234,0.55); line-height: 1.7; }
+/* ── SERVICES ── */
+.services-sec { background: var(–white); padding: 0; }
+.services-inner { display: grid; grid-template-columns: 5fr 4fr; }
+.services-content { padding: 6rem 5rem; }
+.services-intro { font-size: 0.95rem; color: var(–muted); line-height: 1.8; margin: 1.5rem 0 3rem; max-width: 46ch; }
+.svc { display: grid; grid-template-columns: auto 1fr auto; gap: 1.8rem; padding: 1.8rem 0; border-bottom: 1px solid var(–rule); align-items: start; cursor: default; }
+.svc:first-of-type { border-top: 1px solid var(–rule); }
+.svc:hover .svc-name { color: var(–red-core); }
+.svc-idx   { font-family: ‘DM Mono’, monospace; font-size: 0.54rem; letter-spacing: 0.1em; color: var(–muted); padding-top: 3px; }
+.svc-name  { font-size: 1.2rem; font-weight: 400; transition: color 0.2s; line-height: 1.2; }
+.svc-desc  { font-size: 0.84rem; color: var(–muted); margin-top: 0.35rem; line-height: 1.6; }
+.svc-price { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(–red-core); white-space: nowrap; padding-top: 3px; }
+/* services image column — full height, flush */
+.services-visual { background: var(–ink); overflow: hidden; }
+.services-visual img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(15%) sepia(22%) saturate(65%) hue-rotate(320deg) brightness(0.78); }
 
-/* SERVICES — two column layout, image above content */
-#services { background: var(–white); padding: 6rem 5rem; }
-.services-top { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 3rem; align-items: end; }
-.services-intro { font-size: 0.95rem; color: var(–muted); line-height: 1.8; margin-top: 1.5rem; }
-.services-image { width: 100%; height: 340px; object-fit: cover; display: block; filter: grayscale(20%) sepia(25%) saturate(70%) hue-rotate(320deg) brightness(0.82); }
-.service-list { display: flex; flex-direction: column; }
-.service-item { display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(–rule); }
-.service-item:first-child { border-top: 1px solid var(–rule); }
-.service-item:hover .service-name { color: var(–red-core); }
-.service-idx { font-family: ‘DM Mono’, monospace; font-size: 0.56rem; letter-spacing: 0.1em; color: var(–muted); padding-top: 3px; }
-.service-name { font-size: 1.2rem; font-weight: 400; transition: color 0.2s; }
-.service-desc { font-size: 0.84rem; color: var(–muted); margin-top: 0.3rem; line-height: 1.6; }
-.service-price { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(–red-core); white-space: nowrap; padding-top: 3px; }
-
-/* PROCESS */
-#process { background: var(–red-tint); }
-.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; margin-top: 4rem; }
+/* ── PROCESS ── */
+.process-sec { background: var(–red-tint); }
+.process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem; margin-top: 4rem; }
 .step { position: relative; }
-.step::after { content: ‘→’; position: absolute; right: -1.5rem; top: 0.3rem; color: var(–red-blush); font-size: 1.2rem; }
-.step:last-child::after { display: none; }
-.step-num { font-family: ‘DM Mono’, monospace; font-size: 0.56rem; letter-spacing: 0.2em; color: var(–red-core); margin-bottom: 0.8rem; }
-.step-title { font-size: 1.15rem; font-weight: 400; margin-bottom: 0.5rem; color: var(–ink); }
-.step-desc { font-size: 0.85rem; color: var(–muted); line-height: 1.65; }
+.step-num   { font-family: ‘DM Mono’, monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(–red-core); margin-bottom: 1rem; }
+.step-title { font-family: ‘Libre Baskerville’, serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.6rem; }
+.step-desc  { font-size: 0.86rem; color: var(–muted); line-height: 1.65; }
+.step-rule  { width: 2rem; height: 2px; background: var(–red-warm); margin-bottom: 1.2rem; }
 
-/* WHO — solid red section, no image background */
-#who { background: var(–red-core); color: var(–white); }
-#who .section-label { color: var(–red-blush); }
-#who .section-heading { color: var(–white); max-width: 30ch; }
-.who-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 4rem; }
-.who-image-col img { width: 100%; height: 420px; object-fit: cover; display: block; filter: grayscale(20%) sepia(20%) saturate(50%) hue-rotate(320deg) brightness(0.75); }
-.who-grid { display: flex; flex-direction: column; gap: 1.5rem; }
-.who-card { background: rgba(255,255,255,0.1); padding: 1.6rem; border: 1px solid rgba(255,255,255,0.18); }
-.who-card-title { font-size: 1.1rem; margin-bottom: 0.4rem; color: var(–white); font-weight: 400; }
-.who-card-desc { font-size: 0.84rem; color: rgba(255,255,255,0.72); line-height: 1.65; }
+/* ── WHO ── */
+.who-sec { background: var(–red-core); color: var(–cream); padding: 0; }
+.who-inner { display: grid; grid-template-columns: 4fr 5fr; min-height: 600px; }
+.who-visual { overflow: hidden; }
+.who-visual img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(20%) sepia(20%) saturate(50%) hue-rotate(320deg) brightness(0.7); }
+.who-content { padding: 6rem 5rem; display: flex; flex-direction: column; justify-content: center; }
+.who-content .sec-label { color: var(–red-blush); }
+.who-content .sec-heading { color: var(–cream); max-width: 28ch; }
+.who-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 3rem; }
+.who-card { background: rgba(245,241,234,0.1); padding: 1.6rem; border: 1px solid rgba(245,241,234,0.18); }
+.who-card-title { font-family: ‘Libre Baskerville’, serif; font-size: 0.95rem; font-weight: 700; color: var(–cream); margin-bottom: 0.4rem; }
+.who-card-desc  { font-size: 0.84rem; color: rgba(245,241,234,0.68); line-height: 1.65; }
 
-/* AUDIT REQUEST */
-#audit { background: var(–cream); }
-.audit-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 4rem; align-items: start; }
-.audit-intro { font-size: 1rem; color: var(–muted); line-height: 1.8; }
-.audit-intro p { margin-bottom: 1.2rem; }
-.audit-checklist { list-style: none; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.7rem; }
-.audit-checklist li { font-size: 0.88rem; color: var(–muted); display: flex; align-items: flex-start; gap: 0.7rem; line-height: 1.5; }
-.audit-checklist li::before { content: ‘✓’; color: var(–red-core); font-weight: 700; flex-shrink: 0; margin-top: 0.1rem; }
-.audit-img { width: 100%; height: 200px; object-fit: cover; display: block; margin-top: 2rem; filter: grayscale(20%) sepia(25%) saturate(70%) hue-rotate(320deg) brightness(0.82); }
-.audit-form { background: var(–white); border: 1px solid var(–rule); padding: 2rem; }
-.form-title { font-family: ‘Libre Baskerville’, serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; color: var(–ink); }
-.form-group { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 1.1rem; }
-.form-group label { font-family: ‘DM Mono’, monospace; font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(–muted); }
-.form-group input, .form-group select, .form-group textarea { background: var(–cream); border: 1px solid var(–rule); padding: 0.65rem 0.9rem; font-family: ‘Cormorant Garamond’, serif; font-size: 1rem; color: var(–ink); outline: none; transition: border-color 0.2s; }
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(–red-core); }
-.form-group textarea { resize: vertical; min-height: 90px; }
-.form-submit { width: 100%; padding: 0.9rem; background: var(–red-core); color: var(–white); font-family: ‘DM Mono’, monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; margin-top: 0.5rem; }
-.form-submit:hover { background: var(–red-mid); transform: translateY(-1px); }
-.form-note { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.1em; color: var(–muted); text-align: center; margin-top: 0.8rem; }
+/* ── AUDIT / FORM ── */
+.audit-sec { background: var(–cream); padding: 0; }
+.audit-inner { display: grid; grid-template-columns: 1fr 1fr; }
+/* left: image stacked above intro copy */
+.audit-left { display: flex; flex-direction: column; }
+.audit-left img { width: 100%; height: 360px; object-fit: cover; object-position: center 40%; display: block; filter: grayscale(15%) sepia(20%) saturate(65%) hue-rotate(320deg) brightness(0.82); }
+.audit-copy { padding: 4rem 4rem 4rem 4rem; background: var(–white); flex: 1; }
+.audit-copy .sec-label { color: var(–red-core); }
+.audit-copy .sec-heading { font-size: clamp(1.6rem, 2.5vw, 2.4rem); }
+.audit-intro-text { font-size: 0.95rem; color: var(–muted); line-height: 1.8; margin: 1.5rem 0; }
+.audit-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.audit-list li { font-size: 0.88rem; color: var(–muted); display: flex; gap: 0.8rem; align-items: flex-start; line-height: 1.55; }
+.audit-list li::before { content: ‘—’; color: var(–red-warm); flex-shrink: 0; }
+/* right: form */
+.audit-form { background: var(–red-deep); padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; }
+.form-head { font-family: ‘Libre Baskerville’, serif; font-size: 1.4rem; font-weight: 700; color: var(–cream); margin-bottom: 0.5rem; }
+.form-sub  { font-family: ‘DM Mono’, monospace; font-size: 0.52rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(–red-blush); margin-bottom: 2rem; }
+.fg { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 1rem; }
+.fg label { font-family: ‘DM Mono’, monospace; font-size: 0.52rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(245,241,234,0.5); }
+.fg input, .fg select, .fg textarea { background: rgba(245,241,234,0.07); border: 1px solid rgba(245,241,234,0.18); padding: 0.65rem 0.85rem; font-family: ‘Cormorant Garamond’, serif; font-size: 1rem; color: var(–cream); outline: none; transition: border-color 0.2s; width: 100%; }
+.fg input::placeholder, .fg textarea::placeholder { color: rgba(245,241,234,0.3); }
+.fg select { color: var(–cream); }
+.fg select option { background: var(–red-deep); color: var(–cream); }
+.fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(–red-blush); }
+.fg textarea { resize: vertical; min-height: 80px; }
+.form-btn { width: 100%; padding: 0.9rem; background: var(–red-warm); color: var(–white); font-family: ‘DM Mono’, monospace; font-size: 0.63rem; letter-spacing: 0.18em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem; }
+.form-btn:hover { background: var(–red-blush); color: var(–ink); }
+.form-note { font-family: ‘DM Mono’, monospace; font-size: 0.48rem; letter-spacing: 0.1em; color: rgba(245,241,234,0.35); text-align: center; margin-top: 0.9rem; }
 
-/* CONTACT */
-#contact { background: var(–ink); color: var(–cream); text-align: center; padding: 7rem 4rem; }
-#contact .section-label { color: var(–red-warm); }
-#contact .section-heading { color: var(–cream); margin: 0 auto 1rem; text-align: center; max-width: none; }
-.contact-tagline { font-family: ‘DM Mono’, monospace; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(–red-warm); margin-bottom: 1.5rem; }
-.contact-sub { color: rgba(245,241,234,0.5); font-size: 1rem; margin-bottom: 2.5rem; }
-.contact-email { display: inline-block; font-family: ‘DM Mono’, monospace; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(–white); border: 1px solid var(–red-warm); padding: 0.9rem 2.5rem; transition: background 0.2s, color 0.2s; }
-.contact-email:hover { background: var(–red-core); border-color: var(–red-core); }
+/* ── CONTACT ── */
+.contact-sec { background: var(–ink); text-align: center; padding: 8rem 4rem; }
+.contact-sec .sec-label { color: var(–red-warm); }
+.contact-heading { font-size: clamp(2rem, 3.5vw, 3.5rem); font-weight: 300; color: var(–cream); margin: 0 auto 1rem; line-height: 1.1; }
+.contact-heading em { font-style: italic; color: var(–red-warm); }
+.contact-tag { font-family: ‘DM Mono’, monospace; font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(–red-warm); margin-bottom: 1.5rem; }
+.contact-note { font-size: 1rem; color: rgba(245,241,234,0.45); margin-bottom: 2.5rem; }
+.contact-link { display: inline-block; font-family: ‘DM Mono’, monospace; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(–cream); border: 1px solid var(–red-warm); padding: 1rem 2.8rem; transition: background 0.2s, color 0.2s; }
+.contact-link:hover { background: var(–red-core); border-color: var(–red-core); }
 
-/* FOOTER */
-footer { background: var(–ink); border-top: 1px solid rgba(255,255,255,0.08); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-.footer-brand { display: flex; align-items: center; gap: 0.8rem; }
-.footer-text { display: flex; flex-direction: column; gap: 0.2rem; }
-.footer-logo { font-family: ‘Libre Baskerville’, serif; font-size: 0.7rem; font-weight: 700; color: var(–cream); white-space: nowrap; }
-.footer-slogan { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(–red-warm); }
-.footer-copy { font-family: ‘DM Mono’, monospace; font-size: 0.52rem; letter-spacing: 0.1em; color: rgba(245,241,234,0.22); white-space: nowrap; }
+/* ── FOOTER ── */
+footer { background: var(–ink); border-top: 1px solid rgba(245,241,234,0.08); padding: 2.2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.ft-brand { display: flex; align-items: center; gap: 0.8rem; }
+.ft-text { display: flex; flex-direction: column; gap: 0.2rem; }
+.ft-name { font-family: ‘Libre Baskerville’, serif; font-size: 0.72rem; font-weight: 700; color: var(–cream); }
+.ft-tag  { font-family: ‘DM Mono’, monospace; font-size: 0.48rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(–red-warm); }
+.ft-copy { font-family: ‘DM Mono’, monospace; font-size: 0.5rem; letter-spacing: 0.1em; color: rgba(245,241,234,0.28); }
 
-@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes rise { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
 
-@media (max-width: 900px) {
+@media (max-width:960px) {
 nav { padding: 1rem 1.5rem; }
 .nav-links { display: none; }
 .hero { grid-template-columns: 1fr; }
-.hero-left { padding: 4rem 1.5rem 2.5rem; }
-.hero-left::after { display: none; }
-.hero-right img { min-height: 300px; }
-.stats-band { grid-template-columns: 1fr 1fr; }
-.stat-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
-.logo-band { padding: 2.5rem 1.5rem; flex-direction: column; text-align: center; }
-section { padding: 4rem 1.5rem; }
-#problem { padding: 4rem 1.5rem 0; }
-.problem-grid { grid-template-columns: 1fr; }
-.problem-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 2rem 0; }
-.problem-item:last-child, .problem-item:nth-child(2) { padding-left: 0; }
-.services-top { grid-template-columns: 1fr; }
-.process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
-.step::after { display: none; }
-.who-layout { grid-template-columns: 1fr; gap: 2rem; }
-.audit-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+.hero-text { padding: 5rem 1.5rem 3rem; }
+.hero-visual img { min-height: 360px; }
+.stats { grid-template-columns: 1fr 1fr; }
+.stat { border-bottom: 1px solid rgba(245,241,234,0.1); }
+.logomark { padding: 3rem 1.5rem; flex-direction: column; text-align: center; }
+.problem-inner, .services-inner, .who-inner, .audit-inner { grid-template-columns: 1fr; }
+.problem-img, .services-visual, .who-visual { height: 280px; }
+.problem-img img, .services-visual img, .who-visual img { height: 280px; }
+.problem-content, .services-content, .who-content { padding: 4rem 1.5rem; }
+.who-cards { grid-template-columns: 1fr; }
+.process-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+.audit-left img { height: 260px; }
+.audit-copy, .audit-form { padding: 3rem 1.5rem; }
+.sec { padding: 5rem 1.5rem; }
 footer { padding: 2rem 1.5rem; }
 }
 </style>
@@ -225,42 +234,42 @@ footer { padding: 2rem 1.5rem; }
   <ul class="nav-links">
     <li><a href="#problem">The Problem</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#process">How It Works</a></li>
     <li><a href="#audit">Free Audit</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
-<!-- HERO — text left, clean image right -->
+<!-- HERO -->
 
 <section class="hero">
-  <div class="hero-left">
+  <div class="hero-text">
     <p class="eyebrow">Legal Intake & Practice Operations &nbsp;·&nbsp; Bridge the Gap.</p>
     <h1 class="hero-headline">Your firm is losing clients <em>before</em> they ever sign.</h1>
     <p class="hero-sub">Bridge Point Legal Consulting helps law firms fix the intake and workflow gaps that quietly cost them cases, revenue, and reputation.</p>
-    <div class="hero-cta">
-      <a href="#audit" class="btn-primary">Request a Free Audit</a>
-      <a href="#services" class="btn-ghost">See What We Do</a>
+    <div class="hero-actions">
+      <a href="#audit" class="btn-fill">Request a Free Audit</a>
+      <a href="#services" class="btn-line">See What We Do</a>
     </div>
   </div>
-  <div class="hero-right">
-    <!-- Professional workspace — clean desk, focused work, not legal cliché -->
-    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80" alt="Professional workspace">
+  <div class="hero-visual">
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80" alt="Professional workspace" class="site-img" style="height:100%;min-height:580px;">
   </div>
 </section>
 
-<!-- STATS BAND -->
+<!-- STATS -->
 
-<div class="stats-band">
-  <div class="stat-item"><div class="stat-num">42%</div><div class="stat-label">of legal leads never get a timely follow-up</div></div>
-  <div class="stat-item"><div class="stat-num">67%</div><div class="stat-label">of clients choose the first firm that responds</div></div>
-  <div class="stat-item"><div class="stat-num">3×</div><div class="stat-label">more revenue with structured intake systems</div></div>
-  <div class="stat-item"><div class="stat-num">$0</div><div class="stat-label">cost to find where your firm is leaking clients</div></div>
+<div class="stats">
+  <div class="stat"><div class="stat-n">42%</div><div class="stat-l">of legal leads never receive a timely follow-up</div></div>
+  <div class="stat"><div class="stat-n">67%</div><div class="stat-l">of clients choose the first firm that responds</div></div>
+  <div class="stat"><div class="stat-n">3×</div><div class="stat-l">more revenue with a structured intake system</div></div>
+  <div class="stat"><div class="stat-n">$0</div><div class="stat-l">cost to find out where your firm is leaking clients</div></div>
 </div>
 
-<!-- LOGO BAND -->
+<!-- LOGO MARK -->
 
-<div class="logo-band">
-  <svg width="72" height="68" viewBox="0 0 58 54" fill="none">
+<div class="logomark">
+  <svg width="80" height="76" viewBox="0 0 58 54" fill="none">
     <rect x="27" y="5" width="3.5" height="38" fill="#0f0e0c"/>
     <circle cx="28.75" cy="5" r="3.2" fill="#8B1A1A"/>
     <rect x="2" y="16" width="54" height="2.5" fill="#A63030"/>
@@ -271,161 +280,139 @@ footer { padding: 2rem 1.5rem; }
     <rect x="20" y="43" width="17" height="3" fill="#A63030"/>
     <rect x="23" y="40" width="11" height="3.5" fill="#0f0e0c"/>
   </svg>
-  <div class="logo-band-text">
-    <div class="logo-band-name">Bridge Point Legal Consulting</div>
-    <div class="logo-band-rule"></div>
-    <div class="logo-band-tag">Bridge the Gap.</div>
-    <div class="logo-band-sub">Legal Intake & Practice Operations · Florida</div>
+  <div class="lm-text">
+    <div class="lm-name">Bridge Point Legal Consulting</div>
+    <div class="lm-rule"></div>
+    <div class="lm-tag">Bridge the Gap.</div>
+    <div class="lm-sub">Legal Intake & Practice Operations · Florida</div>
   </div>
 </div>
 
-<!-- PROBLEM -->
+<!-- PROBLEM — image left, content right -->
 
-<section id="problem">
-  <p class="section-label">The Real Issue</p>
-  <h2 class="section-heading">Most firms don't have a marketing problem. They have an <em>operations</em> problem.</h2>
-  <div class="problem-grid">
-    <div class="problem-item">
-      <p class="problem-num">01</p>
-      <h3 class="problem-title">Slow Response Times</h3>
-      <p class="problem-desc">Potential clients contact multiple firms at once. The one that responds first — within minutes, not days — wins the case. Most firms respond in 48+ hours.</p>
+<section class="problem-sec" id="problem">
+  <div class="problem-inner">
+    <div class="problem-img">
+      <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80" alt="Office environment">
     </div>
-    <div class="problem-item">
-      <p class="problem-num">02</p>
-      <h3 class="problem-title">Disorganized Workflows</h3>
-      <p class="problem-desc">Cases fall through the cracks. Staff use different systems. Leads go cold because no one is accountable for follow-through.</p>
-    </div>
-    <div class="problem-item">
-      <p class="problem-num">03</p>
-      <h3 class="problem-title">Underused Technology</h3>
-      <p class="problem-desc">Firms pay for powerful tools like Clio and use 20% of their features. The automation and reporting they're already paying for sits idle.</p>
+    <div class="problem-content">
+      <p class="sec-label">The Real Issue</p>
+      <h2 class="sec-heading">Most firms don't have a marketing problem. They have an <em>operations</em> problem.</h2>
+      <div class="problem-list">
+        <div class="problem-row">
+          <span class="p-num">01</span>
+          <div><div class="p-title">Slow Response Times</div><div class="p-desc">Potential clients contact multiple firms at once. The firm that responds first — within minutes — wins the case. Most respond in 48+ hours.</div></div>
+        </div>
+        <div class="problem-row">
+          <span class="p-num">02</span>
+          <div><div class="p-title">Disorganized Workflows</div><div class="p-desc">Cases fall through the cracks. Staff use different systems. Leads go cold because no one is accountable for follow-through.</div></div>
+        </div>
+        <div class="problem-row">
+          <span class="p-num">03</span>
+          <div><div class="p-title">Underused Technology</div><div class="p-desc">Firms pay for powerful tools like Clio and use 20% of their features. The automation they're paying for sits idle.</div></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- IMAGE BREAK — standalone, no text -->
+<!-- SERVICES — content left, image right -->
 
-<div class="img-block img-block-medium">
-  <!-- Modern open office, people working, warm tones -->
-  <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1400&q=80" alt="Professional office environment">
-</div>
-
-<!-- SERVICES -->
-
-<section id="services">
-  <div class="services-top">
-    <div>
-      <p class="section-label">What We Offer</p>
-      <h2 class="section-heading">Consulting built for how <em>real</em> firms operate.</h2>
-      <p class="services-intro">Every engagement starts with your actual workflows — not a generic template. All work is delivered remotely, asynchronously, and fully documented so your team owns it long-term.</p>
+<section class="services-sec" id="services">
+  <div class="services-inner">
+    <div class="services-content">
+      <p class="sec-label">What We Offer</p>
+      <h2 class="sec-heading">Consulting built for how <em>real</em> firms operate.</h2>
+      <p class="services-intro">Every engagement starts with your actual workflows — not a generic template. All work is delivered remotely, documented, and built so your team owns it long-term.</p>
+      <div class="svc">
+        <span class="svc-idx">01</span>
+        <div><div class="svc-name">Intake Audit</div><div class="svc-desc">A full review of your intake process — response times, screening, follow-up, and conversion rates. Delivered as an actionable report.</div></div>
+        <span class="svc-price">Free</span>
+      </div>
+      <div class="svc">
+        <span class="svc-idx">02</span>
+        <div><div class="svc-name">Intake System Build</div><div class="svc-desc">A complete intake workflow from first contact to signed retainer, tailored to your practice area and team.</div></div>
+        <span class="svc-price">From $1,500</span>
+      </div>
+      <div class="svc">
+        <span class="svc-idx">03</span>
+        <div><div class="svc-name">Clio Optimization</div><div class="svc-desc">Full Clio setup, automation, custom workflows, and staff training. Stop paying for features you're not using.</div></div>
+        <span class="svc-price">From $1,200</span>
+      </div>
+      <div class="svc">
+        <span class="svc-idx">04</span>
+        <div><div class="svc-name">Ongoing Operations Retainer</div><div class="svc-desc">Monthly consulting to monitor intake performance and keep your systems scaling as your firm grows.</div></div>
+        <span class="svc-price">From $2,500/mo</span>
+      </div>
     </div>
-    <!-- Clean desk / organized workspace -->
-    <img class="services-image" src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&q=80" alt="Organized professional workspace">
-  </div>
-  <div class="service-list">
-    <div class="service-item">
-      <span class="service-idx">01</span>
-      <div><div class="service-name">Intake Audit</div><div class="service-desc">A full review of your intake process — response times, screening, follow-up, and conversion. Delivered as an actionable report.</div></div>
-      <span class="service-price">Free</span>
-    </div>
-    <div class="service-item">
-      <span class="service-idx">02</span>
-      <div><div class="service-name">Intake System Build</div><div class="service-desc">A complete intake workflow from first contact to signed retainer, tailored to your practice area and team.</div></div>
-      <span class="service-price">From $1,500</span>
-    </div>
-    <div class="service-item">
-      <span class="service-idx">03</span>
-      <div><div class="service-name">Clio Optimization</div><div class="service-desc">Full Clio setup, automation, custom workflows, and staff training. Stop paying for features you're not using.</div></div>
-      <span class="service-price">From $1,200</span>
-    </div>
-    <div class="service-item">
-      <span class="service-idx">04</span>
-      <div><div class="service-name">Ongoing Operations Retainer</div><div class="service-desc">Monthly consulting to monitor intake performance and keep your systems scaling with your growth.</div></div>
-      <span class="service-price">From $2,500/mo</span>
+    <div class="services-visual">
+      <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&q=80" alt="Organized workspace">
     </div>
   </div>
 </section>
 
 <!-- PROCESS -->
 
-<section id="process">
-  <p class="section-label">How It Works</p>
-  <h2 class="section-heading">Simple by design. <em>Thorough</em> by execution.</h2>
-  <div class="process-steps">
-    <div class="step"><p class="step-num">Step 01</p><h3 class="step-title">Request Your Audit</h3><p class="step-desc">Fill out the form below. No calls required — just your firm details and your biggest challenge.</p></div>
-    <div class="step"><p class="step-num">Step 02</p><h3 class="step-title">We Audit Your Intake</h3><p class="step-desc">We conduct a full review of your intake process and identify exactly where clients are slipping through.</p></div>
-    <div class="step"><p class="step-num">Step 03</p><h3 class="step-title">You Get a Report</h3><p class="step-desc">A clear, prioritized findings report with specific gaps and recommended fixes — no jargon, no fluff.</p></div>
-    <div class="step"><p class="step-num">Step 04</p><h3 class="step-title">We Build & You Own It</h3><p class="step-desc">If you'd like us to implement the fixes, we get to work remotely. Everything is documented so your team owns it.</p></div>
+<section class="process-sec sec" id="process">
+  <p class="sec-label">How It Works</p>
+  <h2 class="sec-heading">Simple by design. <em>Thorough</em> by execution.</h2>
+  <div class="process-grid">
+    <div class="step"><div class="step-rule"></div><p class="step-num">Step 01</p><h3 class="step-title">Request Your Audit</h3><p class="step-desc">Fill out the form below. No calls required — just your firm details and your biggest intake challenge.</p></div>
+    <div class="step"><div class="step-rule"></div><p class="step-num">Step 02</p><h3 class="step-title">We Audit Your Intake</h3><p class="step-desc">We conduct a full review of your intake process and identify exactly where clients are being lost.</p></div>
+    <div class="step"><div class="step-rule"></div><p class="step-num">Step 03</p><h3 class="step-title">You Get a Report</h3><p class="step-desc">A clear, prioritized findings report with specific gaps and actionable recommendations — no jargon.</p></div>
+    <div class="step"><div class="step-rule"></div><p class="step-num">Step 04</p><h3 class="step-title">We Build & You Own It</h3><p class="step-desc">We implement the fixes remotely on your timeline. Everything is documented so your staff runs it independently.</p></div>
   </div>
 </section>
 
-<!-- WHO -->
+<!-- WHO — image left, cards right -->
 
-<section id="who">
-  <p class="section-label">Who This Is For</p>
-  <h2 class="section-heading">We work best with firms that are <em>ready to grow.</em></h2>
-  <div class="who-layout">
-    <!-- Image sits beside the cards, not behind them -->
-    <div class="who-image-col">
-      <!-- Two people in a business meeting, focused and professional -->
-      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Business consultation">
+<section class="who-sec" id="who">
+  <div class="who-inner">
+    <div class="who-visual">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Professional consultation">
     </div>
-    <div class="who-grid">
-      <div class="who-card"><h3 class="who-card-title">High-Volume Practice Areas</h3><p class="who-card-desc">Personal injury, criminal defense, immigration, and family law firms where intake speed and volume directly impacts revenue.</p></div>
-      <div class="who-card"><h3 class="who-card-title">Firms Scaling Quickly</h3><p class="who-card-desc">Your caseload is growing but your systems haven't kept up. Staff are overwhelmed and things are falling through the cracks.</p></div>
-      <div class="who-card"><h3 class="who-card-title">Clio Users</h3><p class="who-card-desc">Already on Clio but not getting full value? We turn underutilized platforms into automated, revenue-generating systems.</p></div>
-      <div class="who-card"><h3 class="who-card-title">Firms Investing in Marketing</h3><p class="who-card-desc">Running ads or SEO but conversions are low? Your intake system isn't capturing what marketing brings in.</p></div>
+    <div class="who-content">
+      <p class="sec-label">Who This Is For</p>
+      <h2 class="sec-heading">Built for firms that are <em>ready to grow.</em></h2>
+      <div class="who-cards">
+        <div class="who-card"><div class="who-card-title">High-Volume Practice Areas</div><div class="who-card-desc">Personal injury, criminal defense, immigration, and family law firms where intake speed directly impacts revenue.</div></div>
+        <div class="who-card"><div class="who-card-title">Firms Scaling Quickly</div><div class="who-card-desc">Your caseload is growing but your systems haven't kept up. Things are falling through the cracks.</div></div>
+        <div class="who-card"><div class="who-card-title">Clio Users</div><div class="who-card-desc">Already on Clio but not getting full value? We turn underutilized platforms into automated systems.</div></div>
+        <div class="who-card"><div class="who-card-title">Firms Investing in Marketing</div><div class="who-card-desc">Running ads but conversions are low? Your intake system isn't capturing what marketing brings in.</div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- IMAGE BREAK -->
+<!-- AUDIT REQUEST — image above copy left, dark form right -->
 
-<div class="img-block img-block-short">
-  <!-- City skyline or modern building — professional, aspirational -->
-  <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=80" alt="Modern city buildings">
-</div>
-
-<!-- AUDIT REQUEST -->
-
-<section id="audit">
-  <p class="section-label">Free Intake Audit</p>
-  <h2 class="section-heading">Find out where your firm is losing clients. <em>At no cost.</em></h2>
-  <div class="audit-layout">
-    <div class="audit-intro">
-      <p>We conduct a real-world audit of your intake process and deliver a detailed findings report — completely free, no strings attached.</p>
-      <p>What you'll receive:</p>
-      <ul class="audit-checklist">
-        <li>A scored assessment of your response time, tone, intake questions, and follow-up process</li>
-        <li>Specific findings on where potential clients are being lost</li>
-        <li>Prioritized recommendations you can act on immediately</li>
-        <li>Delivered within 3–5 business days of your request</li>
-      </ul>
-      <p style="margin-top:1.5rem;font-size:0.88rem;">No phone call required to get started. Fill out the form and we'll handle everything from here.</p>
-      <!-- Standalone image below the copy -->
-      <img class="audit-img" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt="Professional reviewing work">
+<section class="audit-sec" id="audit">
+  <div class="audit-inner">
+    <div class="audit-left">
+      <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt="Professional at work">
+      <div class="audit-copy">
+        <p class="sec-label">Free Intake Audit</p>
+        <h2 class="sec-heading">Find out exactly where your firm is losing clients.</h2>
+        <p class="audit-intro-text">We conduct a real-world audit of your intake process and deliver a detailed findings report — completely free, no obligation.</p>
+        <ul class="audit-list">
+          <li>Scored assessment across response time, tone, intake questions, and follow-up</li>
+          <li>Specific findings on where potential clients are being lost</li>
+          <li>Prioritized recommendations you can act on immediately</li>
+          <li>Delivered within 3–5 business days of your request</li>
+          <li>No phone call required to get started</li>
+        </ul>
+      </div>
     </div>
     <div class="audit-form">
-      <div class="form-title">Request Your Free Audit</div>
+      <div class="form-head">Request Your Free Audit</div>
+      <div class="form-sub">No obligation · Delivered within 5 business days</div>
       <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <input type="hidden" name="_subject" value="New Free Intake Audit Request — Bridge Point">
-        <div class="form-group">
-          <label>Your Name *</label>
-          <input type="text" name="name" required placeholder="Jane Smith">
-        </div>
-        <div class="form-group">
-          <label>Firm Name *</label>
-          <input type="text" name="firm_name" required placeholder="Smith & Associates">
-        </div>
-        <div class="form-group">
-          <label>Email Address *</label>
-          <input type="email" name="email" required placeholder="jane@yourfirm.com">
-        </div>
-        <div class="form-group">
-          <label>Phone Number *</label>
-          <input type="tel" name="phone" required placeholder="(555) 000-0000">
-        </div>
-        <div class="form-group">
+        <div class="fg"><label>Your Name *</label><input type="text" name="name" required placeholder="Jane Smith"></div>
+        <div class="fg"><label>Firm Name *</label><input type="text" name="firm_name" required placeholder="Smith & Associates"></div>
+        <div class="fg"><label>Email Address *</label><input type="email" name="email" required placeholder="jane@yourfirm.com"></div>
+        <div class="fg"><label>Phone Number *</label><input type="tel" name="phone" required placeholder="(555) 000-0000"></div>
+        <div class="fg">
           <label>Practice Area</label>
           <select name="practice_area">
             <option value="">Select one…</option>
@@ -438,7 +425,7 @@ footer { padding: 2rem 1.5rem; }
             <option>Other</option>
           </select>
         </div>
-        <div class="form-group">
+        <div class="fg">
           <label>Best Time to Call Your Firm</label>
           <select name="best_time">
             <option value="">Select one…</option>
@@ -447,12 +434,9 @@ footer { padding: 2rem 1.5rem; }
             <option>Late Afternoon (3pm – 5pm)</option>
           </select>
         </div>
-        <div class="form-group">
-          <label>What's your biggest intake challenge? *</label>
-          <textarea name="biggest_challenge" required placeholder="e.g. We're not following up fast enough, leads go cold, staff don't know what to ask…"></textarea>
-        </div>
-        <button type="submit" class="form-submit">Submit Audit Request →</button>
-        <p class="form-note">We'll confirm your request within 1 business day. Your information is never shared.</p>
+        <div class="fg"><label>Biggest Intake Challenge *</label><textarea name="biggest_challenge" required placeholder="e.g. Leads go cold, slow follow-up, staff don't know what to ask…"></textarea></div>
+        <button type="submit" class="form-btn">Submit Audit Request →</button>
+        <p class="form-note">We confirm within 1 business day. Your information is never shared.</p>
       </form>
     </div>
   </div>
@@ -460,18 +444,18 @@ footer { padding: 2rem 1.5rem; }
 
 <!-- CONTACT -->
 
-<section id="contact">
-  <p class="section-label">Get In Touch</p>
-  <h2 class="section-heading" style="margin:0 auto 1rem;text-align:center;max-width:none;">Start with a free audit.<br><em>No pitch. Just findings.</em></h2>
-  <p class="contact-tagline">Bridge the Gap.</p>
-  <p class="contact-sub">Questions? Reach us directly.</p>
-  <a href="mailto:destiny@bridgepointlegal.com" class="contact-email">destiny@bridgepointlegal.com</a>
+<section class="contact-sec" id="contact">
+  <p class="sec-label">Get In Touch</p>
+  <h2 class="contact-heading">Start with a free audit.<br><em>No pitch. Just findings.</em></h2>
+  <p class="contact-tag">Bridge the Gap.</p>
+  <p class="contact-note">Questions? Reach us directly.</p>
+  <a href="mailto:destiny@bridgepointlegal.com" class="contact-link">destiny@bridgepointlegal.com</a>
 </section>
 
 <!-- FOOTER -->
 
 <footer>
-  <div class="footer-brand">
+  <div class="ft-brand">
     <svg width="22" height="20" viewBox="0 0 58 54" fill="none">
       <rect x="27" y="5" width="3.5" height="38" fill="#f5f1ea"/>
       <circle cx="28.75" cy="5" r="3.2" fill="#8B1A1A"/>
@@ -483,12 +467,12 @@ footer { padding: 2rem 1.5rem; }
       <rect x="20" y="43" width="17" height="3" fill="#A63030"/>
       <rect x="23" y="40" width="11" height="3.5" fill="#f5f1ea"/>
     </svg>
-    <div class="footer-text">
-      <div class="footer-logo">Bridge Point Legal Consulting LLC</div>
-      <div class="footer-slogan">Bridge the Gap.</div>
+    <div class="ft-text">
+      <div class="ft-name">Bridge Point Legal Consulting LLC</div>
+      <div class="ft-tag">Bridge the Gap.</div>
     </div>
   </div>
-  <div class="footer-copy">© 2026 Bridge Point Legal Consulting LLC · Florida</div>
+  <div class="ft-copy">© 2026 Bridge Point Legal Consulting LLC · Florida</div>
 </footer>
 
 </body>
