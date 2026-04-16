@@ -795,11 +795,16 @@ align-items: center;
 </footer>
 
 <script>
+
 function submitForm() {
-  var name    = document.getElementById('fname').value.trim();
-  var firm    = document.getElementById('ffirm').value.trim();
-  var email   = document.getElementById('femail').value.trim();
-  var message = document.getElementById('fmessage').value.trim();
+  var name     = document.getElementById('fname').value.trim();
+  var firm     = document.getElementById('ffirm').value.trim();
+  var email    = document.getElementById('femail').value.trim();
+  var phone    = document.getElementById('fphone').value.trim();
+  var practice = document.getElementById('fpractice').value;
+  var message  = document.getElementById('fmessage').value.trim();
+  var service  = document.getElementById('fservice').value;
+
   if (!name || !firm || !email || !message) {
     alert('Please fill in your name, firm name, email, and a brief description before submitting.');
     return;
@@ -808,17 +813,24 @@ function submitForm() {
     alert('Please enter a valid email address.');
     return;
   }
-  document.getElementById('formContent').style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'block';
-}
-document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-  a.addEventListener('click', function(e) {
-    var href = this.getAttribute('href');
-    if (href === '#') return;
-    var target = document.querySelector(href);
-    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+
+  fetch('https://formspree.io/f/mvzdzlyk'), {  // 👈 replace with your endpoint
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, firm, email, phone, practice, message, service })
+  })
+  .then(function(res) {
+    if (res.ok) {
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } else {
+      alert('Something went wrong. Please try again or email directly.');
+    }
+  })
+  .catch(function() {
+    alert('Something went wrong. Please try again or email directly.');
   });
-});
+}
 </script>
 
 </body>
