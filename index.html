@@ -814,7 +814,7 @@ function submitForm() {
     return;
   }
 
-  fetch('https://formspree.io/f/mvzdzlyk'), {  // 👈 replace with your endpoint
+  fetch('https://formspree.io/f/mvzdzlyk', {  // 👈 replace with your endpoint
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, firm, email, phone, practice, message, service })
