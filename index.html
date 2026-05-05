@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/jpeg" href="IMG_8715.jpg">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bridge Point Legal Consulting | Stop Losing Leads. Start Converting Clients.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +17,6 @@ body {
   font-family: 'Outfit', Georgia, serif;
   color: #3a1520;
   overflow-x: hidden;
-  min-width: 1024px;
 }
 
 @keyframes fadeUp {
@@ -31,13 +29,13 @@ body {
 .d3 { animation-delay: 0.34s; }
 .d4 { animation-delay: 0.46s; }
 
-/* NAV */
+/* ─── NAV ─── */
 nav {
   background: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 80px;
+  padding: 18px 80px;
   border-bottom: 1px solid #e8d0d5;
   position: sticky;
   top: 0;
@@ -71,9 +69,60 @@ nav {
 }
 .nav-cta:hover { background: #3a1520; }
 
-/* HERO */
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #6b2d3e;
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: #ffffff;
+  border-bottom: 1px solid #e8d0d5;
+  padding: 0 24px 20px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-size: 15px;
+  color: #6b2d3e;
+  text-decoration: none;
+  padding: 14px 0;
+  border-bottom: 1px solid #f0dde1;
+  letter-spacing: 0.03em;
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu .mobile-cta {
+  margin-top: 14px;
+  background: #6b2d3e;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 14px;
+  border-bottom: none;
+}
+
+/* ─── HERO ─── */
 .hero {
-  padding: 100px 80px 88px;
+  padding: 80px 80px 72px;
   display: grid;
   grid-template-columns: 1.15fr 1fr;
   gap: 72px;
@@ -108,7 +157,7 @@ h1 em { font-style: italic; color: #6b2d3e; }
   font-weight: 300;
   max-width: 480px;
 }
-.btns { display: flex; gap: 14px; }
+.btns { display: flex; gap: 14px; flex-wrap: wrap; }
 .btn-primary {
   background: #6b2d3e;
   color: #ffffff;
@@ -166,7 +215,7 @@ h1 em { font-style: italic; color: #6b2d3e; }
 }
 .hero-card-desc { font-size: 13px; color: #9b7080; line-height: 1.55; }
 
-/* TRUST BAR */
+/* ─── TRUST BAR ─── */
 .trust-bar {
   background: #ffffff;
   border-top: 1px solid #e8d0d5;
@@ -176,6 +225,7 @@ h1 em { font-style: italic; color: #6b2d3e; }
   justify-content: center;
   gap: 56px;
   align-items: center;
+  flex-wrap: wrap;
 }
 .trust-item { display: flex; align-items: center; gap: 10px; color: #9b7080; font-size: 13px; }
 .trust-icon {
@@ -186,7 +236,7 @@ h1 em { font-style: italic; color: #6b2d3e; }
   font-size: 13px; color: #6b2d3e; flex-shrink: 0;
 }
 
-/* THE PROBLEM STRIP */
+/* ─── PROBLEM STRIP ─── */
 .problem-strip {
   background: #3a1520;
   padding: 64px 80px;
@@ -246,7 +296,7 @@ h1 em { font-style: italic; color: #6b2d3e; }
 }
 .problem-stat-l { font-size: 13px; color: rgba(245,230,232,0.5); line-height: 1.5; }
 
-/* SECTIONS */
+/* ─── SECTIONS ─── */
 section { padding: 96px 80px; }
 .section-label {
   font-size: 11px;
@@ -271,7 +321,7 @@ section { padding: 96px 80px; }
 .section-title em { font-style: italic; color: #6b2d3e; }
 .section-subtitle { font-size: 16px; color: #7a4a56; font-weight: 300; line-height: 1.75; max-width: 560px; }
 
-/* ABOUT */
+/* ─── ABOUT ─── */
 #about {
   background: linear-gradient(125deg, #edd5db, #f5e6e8);
   display: grid;
@@ -283,7 +333,7 @@ section { padding: 96px 80px; }
 .about-name-block {
   background: #ffffff;
   border-radius: 14px;
-  padding: 28px 28px;
+  padding: 28px;
   box-shadow: 0 2px 18px rgba(107,45,62,0.06);
   border-left: 3px solid #b06080;
   margin-top: 8px;
@@ -313,7 +363,7 @@ section { padding: 96px 80px; }
 .about-stat-n { font-family: 'Instrument Serif', Georgia, serif; font-size: 34px; color: #6b2d3e; margin-bottom: 6px; }
 .about-stat-l { font-size: 12px; color: #9b7080; line-height: 1.45; }
 
-/* PROCESS */
+/* ─── PROCESS ─── */
 #process { background: #ffffff; }
 .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; }
 .process-step {
@@ -331,7 +381,7 @@ section { padding: 96px 80px; }
 .step-title { font-family: 'Instrument Serif', Georgia, serif; font-size: 20px; color: #3a1520; margin-bottom: 10px; }
 .step-desc { font-size: 13px; color: #9b7080; line-height: 1.65; }
 
-/* PRICING */
+/* ─── PRICING ─── */
 #services { background: linear-gradient(140deg, #f5e6e8, #edd5db); }
 .pricing-intro { max-width: 600px; margin-bottom: 48px; }
 .free-audit-card {
@@ -343,6 +393,7 @@ section { padding: 96px 80px; }
   align-items: center;
   gap: 32px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 .fac-left h3 { font-family: 'Instrument Serif', Georgia, serif; font-size: 28px; font-style: italic; color: #f5e6e8; margin-bottom: 8px; }
 .fac-left p { font-size: 14px; color: rgba(245,230,232,0.65); font-weight: 300; line-height: 1.6; }
@@ -425,7 +476,7 @@ section { padding: 96px 80px; }
 .pricing-btn:hover { background: #edd5db; }
 .pricing-card.featured .pricing-btn { background: #ffffff; color: #6b2d3e; }
 
-/* MYSTERY CALLER SPOTLIGHT */
+/* ─── MYSTERY CALLER ─── */
 .mystery-spotlight {
   background: #ffffff;
   border-radius: 18px;
@@ -444,8 +495,7 @@ section { padding: 96px 80px; }
   content: '';
   position: absolute;
   top: 0; left: 0;
-  width: 4px;
-  height: 100%;
+  width: 4px; height: 100%;
   background: linear-gradient(180deg, #b06080, #6b2d3e);
 }
 .ms-badge {
@@ -499,15 +549,16 @@ section { padding: 96px 80px; }
   gap: 24px;
   box-shadow: 0 2px 20px rgba(107,45,62,0.07);
   border: 1.5px dashed #d4a0b0;
+  flex-wrap: wrap;
 }
 .addon-icon { font-size: 32px; flex-shrink: 0; }
-.addon-info { flex: 1; }
+.addon-info { flex: 1; min-width: 200px; }
 .addon-name { font-family: 'Instrument Serif', Georgia, serif; font-size: 20px; color: #3a1520; margin-bottom: 5px; }
 .addon-desc { font-size: 13px; color: #9b7080; line-height: 1.55; }
 .addon-price { font-family: 'Instrument Serif', Georgia, serif; font-size: 30px; color: #6b2d3e; white-space: nowrap; flex-shrink: 0; }
 .addon-note { font-size: 11px; color: #9b7080; text-align: right; margin-top: 2px; }
 
-/* TRUST */
+/* ─── TRUST ─── */
 #trust { background: #ffffff; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
 .trust-quote {
   font-family: 'Instrument Serif', Georgia, serif;
@@ -536,7 +587,7 @@ section { padding: 96px 80px; }
 .who-text strong { display: block; font-size: 14px; color: #3a1520; font-weight: 600; margin-bottom: 2px; }
 .who-text span { font-size: 12px; color: #9b7080; }
 
-/* CONTACT */
+/* ─── CONTACT ─── */
 #contact { background: linear-gradient(135deg, #edd5db, #f5e6e8); display: grid; grid-template-columns: 1fr 1.3fr; gap: 72px; align-items: start; }
 .contact-info p { font-size: 15px; color: #7a4a56; line-height: 1.8; font-weight: 300; margin: 20px 0 36px; }
 .contact-details { display: flex; flex-direction: column; gap: 14px; }
@@ -591,7 +642,7 @@ textarea { resize: vertical; min-height: 110px; }
 .form-success h3 { font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; color: #3a1520; margin-bottom: 8px; font-style: italic; }
 .form-success p { font-size: 14px; color: #9b7080; line-height: 1.6; }
 
-/* FOOTER CTA */
+/* ─── FOOTER CTA ─── */
 .footer-cta-bar {
   background: #6b2d3e;
   padding: 64px 80px;
@@ -599,6 +650,7 @@ textarea { resize: vertical; min-height: 110px; }
   justify-content: space-between;
   align-items: center;
   gap: 40px;
+  flex-wrap: wrap;
 }
 .fcb-left h3 { font-family: 'Instrument Serif', Georgia, serif; font-size: 34px; font-style: italic; color: #f5e6e8; margin-bottom: 8px; }
 .fcb-left p { font-size: 14px; color: rgba(245,230,232,0.6); font-weight: 300; }
@@ -625,18 +677,110 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 .footer-logo { font-family: 'Instrument Serif', Georgia, serif; font-size: 18px; color: rgba(245,230,232,0.7); text-decoration: none; }
 .footer-logo-em { font-style: italic; color: rgba(176,96,128,0.8); }
-.footer-links { display: flex; gap: 28px; }
+.footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
 .footer-links a { font-size: 12px; color: rgba(245,230,232,0.4); text-decoration: none; letter-spacing: 0.04em; }
 .footer-links a:hover { color: rgba(245,230,232,0.8); }
 .footer-copy { font-size: 11px; color: rgba(245,230,232,0.3); letter-spacing: 0.04em; }
+
+/* ══════════════════════════════════════
+   TABLET  (≤ 900px)
+══════════════════════════════════════ */
+@media (max-width: 900px) {
+  nav { padding: 16px 32px; }
+  .navlinks, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+
+  .hero { grid-template-columns: 1fr; padding: 60px 32px 56px; gap: 48px; }
+  h1 { font-size: 46px; }
+
+  .trust-bar { padding: 20px 32px; gap: 28px; }
+
+  .problem-strip { padding: 56px 32px; }
+  .problem-headline { font-size: 30px; }
+  .problem-stats { flex-direction: column; border-radius: 14px; }
+  .problem-stat { border-right: none; border-bottom: 1px solid rgba(176,96,128,0.25); }
+  .problem-stat:last-child { border-bottom: none; }
+
+  section { padding: 72px 32px; }
+  #about { grid-template-columns: 1fr; gap: 48px; }
+  .process-grid { grid-template-columns: 1fr 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+
+  .mystery-spotlight { grid-template-columns: 1fr; }
+  .ms-right { text-align: left; }
+
+  #trust { grid-template-columns: 1fr; gap: 56px; }
+  #contact { grid-template-columns: 1fr; gap: 48px; }
+  .contact-form { padding: 36px 28px; }
+
+  .footer-cta-bar { padding: 48px 32px; flex-direction: column; align-items: flex-start; }
+  footer { padding: 28px 32px; flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+
+/* ══════════════════════════════════════
+   MOBILE  (≤ 600px)
+══════════════════════════════════════ */
+@media (max-width: 600px) {
+  nav { padding: 16px 20px; }
+
+  .hero { padding: 48px 20px 44px; gap: 40px; }
+  h1 { font-size: 36px; }
+  .hero-body { font-size: 15px; }
+  .btns { flex-direction: column; }
+  .btn-primary, .btn-ghost { text-align: center; }
+
+  .pill-text { font-size: 11px; }
+
+  .trust-bar { padding: 18px 20px; gap: 18px; justify-content: flex-start; }
+  .trust-item { font-size: 12px; }
+
+  .problem-strip { padding: 48px 20px; }
+  .problem-headline { font-size: 26px; }
+  .problem-body { font-size: 14px; }
+  .problem-stat-n { font-size: 34px; }
+
+  section { padding: 56px 20px; }
+  .section-title { font-size: 34px; }
+
+  .about-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .about-stat-n { font-size: 26px; }
+
+  .process-grid { grid-template-columns: 1fr; }
+
+  .free-audit-card { padding: 28px 24px; flex-direction: column; align-items: flex-start; gap: 20px; }
+  .fac-price { font-size: 40px; }
+
+  .mystery-spotlight { padding: 28px 24px; }
+  .ms-title { font-size: 22px; }
+
+  .pricing-card { padding: 28px 22px; }
+
+  .addon-card { padding: 22px 20px; }
+
+  .form-grid { grid-template-columns: 1fr; }
+  .form-group.full { grid-column: 1; }
+  .contact-form { padding: 28px 20px; }
+  .form-title { font-size: 22px; }
+
+  .footer-cta-bar { padding: 40px 20px; }
+  .fcb-left h3 { font-size: 26px; }
+  .fcb-btn { width: 100%; text-align: center; }
+
+  footer { padding: 24px 20px; }
+  .footer-links { gap: 18px; }
+  .footer-copy { font-size: 10px; }
+}
 
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="#" class="logo">Bridge<span class="logo-em"> Point</span> Legal Consulting</a>
   <ul class="navlinks">
@@ -646,8 +790,21 @@ footer {
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Free Audit</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#process" onclick="closeMenu()">How It Works</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="#contact" class="mobile-cta" onclick="closeMenu()">Get Free Audit &rarr;</a>
+</div>
+
+<!-- HERO -->
 <div class="hero">
   <div class="hero-left">
     <div class="pill fade-up d1">
@@ -686,6 +843,7 @@ footer {
   </div>
 </div>
 
+<!-- TRUST BAR -->
 <div class="trust-bar">
   <div class="trust-item"><div class="trust-icon">&#10003;</div> 100% Remote &amp; Async</div>
   <div class="trust-item"><div class="trust-icon">&#9670;</div> Intake Specialists</div>
@@ -717,6 +875,7 @@ footer {
   </div>
 </div>
 
+<!-- ABOUT -->
 <section id="about">
   <div>
     <div class="section-label">About Bridge Point</div>
@@ -737,6 +896,7 @@ footer {
   </div>
 </section>
 
+<!-- PROCESS -->
 <section id="process">
   <div class="section-label">The Process</div>
   <h2 class="section-title">How it <em>works.</em></h2>
@@ -765,6 +925,7 @@ footer {
   </div>
 </section>
 
+<!-- SERVICES -->
 <section id="services">
   <div class="pricing-intro">
     <div class="section-label">Services &amp; Pricing</div>
@@ -781,7 +942,6 @@ footer {
     <a href="#contact" class="fac-cta">Claim Your Free Audit &rarr;</a>
   </div>
 
-  <!-- MYSTERY CALLER SPOTLIGHT -->
   <div class="mystery-spotlight">
     <div>
       <div class="ms-badge"><div class="ms-badge-dot"></div><span class="ms-badge-text">New Service</span></div>
@@ -866,6 +1026,7 @@ footer {
   </div>
 </section>
 
+<!-- TRUST -->
 <section id="trust">
   <div>
     <div class="section-label">Why Bridge Point</div>
@@ -915,6 +1076,7 @@ footer {
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <div class="contact-info">
     <div class="section-label">Get In Touch</div>
@@ -976,6 +1138,7 @@ footer {
   </div>
 </section>
 
+<!-- FOOTER CTA -->
 <div class="footer-cta-bar">
   <div class="fcb-left">
     <h3>Stop losing leads you already have.</h3>
@@ -996,6 +1159,19 @@ footer {
 </footer>
 
 <script>
+// Hamburger menu
+var hamburger = document.getElementById('hamburger');
+var mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', function() {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+function closeMenu() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+}
+
+// Form submission
 function submitForm() {
   var name     = document.getElementById('fname').value.trim();
   var firm     = document.getElementById('ffirm').value.trim();
@@ -1024,11 +1200,11 @@ function submitForm() {
       document.getElementById('formContent').style.display = 'none';
       document.getElementById('formSuccess').style.display = 'block';
     } else {
-      alert('Something went wrong. Please try again or email directly at info@bridgepointlegalconsulting.com.');
+      alert('Something went wrong. Please try again or email directly at Destiny@bridgepointlegalconsulting.com.');
     }
   })
   .catch(function() {
-    alert('Something went wrong. Please try again or email directly at info@bridgepointlegalconsulting.com.');
+    alert('Something went wrong. Please try again or email directly at Destiny@bridgepointlegalconsulting.com.');
   });
 }
 </script>
